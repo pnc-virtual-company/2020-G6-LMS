@@ -8,7 +8,7 @@
       <a class="nav-link text-white" href="#"> Leaves </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link text-white" href="#"> Employees </a>
+      <a class="nav-link text-white" href="/employee"> Employees </a>
     </li>
     <li class="nav-item">
       <a class="nav-link text-white" href="#"> Positions </a>

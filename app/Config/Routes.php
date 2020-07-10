@@ -33,6 +33,7 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 $routes->add('index', 'Showview::index');
 $routes->add('department', 'Departments::showDepartment');
+$routes->add('employee', 'Employee::viewmployee');
 
 
 
