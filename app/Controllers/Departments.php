@@ -1,10 +1,10 @@
 <?php namespace App\Controllers;
 
-class Showview extends BaseController
+class Departments extends BaseController
 {
-	public function index()
+	public function showDepartment()
 	{
-		return view('index');
+		return view('department');
 	}
 	//--------------------------------------------------------------------
 
