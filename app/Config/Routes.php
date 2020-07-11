@@ -34,6 +34,7 @@ $routes->get('/', 'Home::index');
 $routes->add('index', 'Showview::index');
 $routes->add('department', 'Departments::showDepartment');
 $routes->add('position', 'Positions::showPosition');
+$routes->add('employee', 'Employee::viewmployee');
 
 
 
