@@ -151,6 +151,7 @@
       <div class="modal-content">
       
         <!-- Modal Header -->
+		
         <div class="modal-header">
           <h3 class="modal-title">Edit Employee</h3>
         </div>
