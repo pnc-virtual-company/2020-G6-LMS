@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+<nav class="navbar navbar-expand-sm bg-info navbar-dark">
   <!-- Links -->
   <ul class="navbar-nav">
     <li class="nav-item">
@@ -11,7 +11,7 @@
       <a class="nav-link text-white" href="/employee"> Employees </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link text-white" href="#"> Positions </a>
+      <a class="nav-link text-white" href="position"> Positions </a>
     </li>
     <li class="nav-item">
       <a class="nav-link text-white" href="department"> Departments </a>
