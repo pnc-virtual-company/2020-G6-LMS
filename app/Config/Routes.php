@@ -35,7 +35,11 @@ $routes->add('index', 'Showview::index');
 $routes->add('department', 'Departments::showDepartment');
 $routes->add('position', 'Positions::showPosition');
 $routes->add('employee', 'Employee::viewmployee');
+<<<<<<< HEAD
 $routes->add('yourLeave', 'YourLeave::showYourLeave');
+=======
+$routes->add('leave', 'Leave::showLeaveView');
+>>>>>>> 76058862863c2427145849636208acffe50c8873
 
 
 

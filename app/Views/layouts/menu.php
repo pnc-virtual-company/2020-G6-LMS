@@ -5,10 +5,10 @@
       <a class="nav-link text-white" href="yourLeave"> Your Leaves </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link text-white" href="#"> Leaves </a>
+      <a class="nav-link text-white" href="leave"> Leaves </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link text-white" href="/employee"> Employees </a>
+      <a class="nav-link text-white" href="employee"> Employees </a>
     </li>
     <li class="nav-item">
       <a class="nav-link text-white" href="position"> Positions </a>
