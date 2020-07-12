@@ -2,7 +2,7 @@
   <!-- Links -->
   <ul class="navbar-nav">
     <li class="nav-item">
-      <a class="nav-link text-white" href="#"> Your Leaves </a>
+      <a class="nav-link text-white" href="yourLeave"> Your Leaves </a>
     </li>
     <li class="nav-item">
       <a class="nav-link text-white" href="#"> Leaves </a>
