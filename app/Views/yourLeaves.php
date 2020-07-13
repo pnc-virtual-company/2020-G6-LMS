@@ -35,8 +35,8 @@
                         <td> 25/05/2005 </td>
                         <td> 1day </td>
                         <td> Vacation </td>
-                        <td> <button type="button" class="btn btn-info btn-sm"> Requested </button></td>
-						<td>
+                        <td> <span class="badge badge-info"> Requested </span> </td>
+						<td style="display:flex;justify-content:flex-end">
 							<a href="" data-toggle="modal" data-target="#updateYourLeave"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Your Leave!" data-placement="left">edit</i></a>
 							<a href="" data-toggle="modal" data-target="#deleteYourLeave"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Your Leave!" data-placement="right">delete</i></a>
 						</td>
@@ -46,8 +46,8 @@
                         <td> 25/05/2005 </td>
                         <td> 2day </td>
                         <td> Training </td>
-                        <td> <button type="button" class="btn btn-danger btn-sm"> Cancelled </button></td>
-						<td>
+                        <td> <span class="badge badge-danger"> Cancelled </span> </td>
+						<td style="display:flex;justify-content:flex-end">
 							<a href="" data-toggle="modal" data-target="#updateYourLeave"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Your Leave!" data-placement="left">edit</i></a>
 							<a href="" data-toggle="modal" data-target="#deleteYourLeave"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Your Leave!" data-placement="right">delete</i></a>
 						</td>
@@ -57,8 +57,8 @@
                         <td> 25/05/2005 </td>
                         <td> 0.5day </td>
                         <td> Vacation </td>
-                        <td> <button type="button" class="btn btn-danger btn-sm"> Rejected </button></td>
-						<td>
+                        <td> <span class="badge badge-danger"> Rejected </span> </td>
+						<td style="display:flex;justify-content:flex-end">
 							<a href="" data-toggle="modal" data-target="#updateYourLeave"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Your Leave!" data-placement="left">edit</i></a>
 							<a href="" data-toggle="modal" data-target="#deleteYourLeave"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Your Leave!" data-placement="right">delete</i></a>
 						</td>
@@ -68,8 +68,8 @@
                         <td> 25/05/2005 </td>
                         <td> 1day </td>
                         <td> Vacation </td>
-                        <td> <button type="button" class="btn btn-success btn-sm"> Accepted </button></td>
-						<td>
+                        <td> <span class="badge badge-success"> Accepted </span> </td>
+						<td style="display:flex;justify-content:flex-end">
 							<a href="" data-toggle="modal" data-target="#updateYourLeave"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Your Leave!" data-placement="left">edit</i></a>
 							<a href="" data-toggle="modal" data-target="#deleteYourLeave"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Your Leave!" data-placement="right">delete</i></a>
 						</td>
@@ -96,11 +96,11 @@
             <div class="modal-body text-right">
 			    <form  action="/" method="post">
 				    <div class="form-group">
-					    <p> Are you sure you want to remove the selected your leave?</p>
+					    <p style="display:flex;justify-content:flex-start"> Are you sure you want to remove the selected your leave?</p>
 				    </div>
 			        <a data-dismiss="modal" class="closeModal">DON'T REMOVE</a>
 		 	            &nbsp;
-		            <input type="submit" value="REMOVE" class="createBtn text-warning">
+                    <a href="" type ="submit" value = "DELETE" class="text-warning">DELETE</a>
                 </form>
             </div>
         </div>
@@ -143,7 +143,7 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <select id="select" class="form-control">
-                                        <option value="" disabled selected> Select... </option>
+                                        <option value="" disabled selected> Select time... </option>
                                         <option value="Morning"> MORNING </option>
                                         <option value="Afternoon"> AFTERNOON </option>
                                     </select>
@@ -152,7 +152,7 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <select id="select" class="form-control">
-                                        <option value="" disabled selected> Select... </option>
+                                        <option value="" disabled selected> Select time... </option>
                                         <option value="Morning"> MORNING </option>
                                         <option value="Afternoon"> AFTERNOON </option>
                                     </select>
@@ -160,14 +160,9 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-2">
+                            <div class="col-12">
                                 <div class="form-group">
-                                    <label class="font-weight-bolder"> Duration: </label>
-                                </div>
-                            </div>
-                            <div class="col-10">
-                                <div class="form-group">
-                                    <input type="number" class="form-control-md" style="display:flex;justify-content:flex-start;width:360px">
+                                    <input type="number" class="form-control" placeholder="Duration">
                                 </div>
                             </div>
                         </div>
@@ -193,7 +188,7 @@
                     </div>
 			        <a data-dismiss="modal" class="closeModal">DISCARD</a>
 		 	            &nbsp;
-		            <input type="submit" value="SUBMIT" class="createBtn text-warning">
+                    <a href="" type ="submit" value = "CREATE" class="text-warning">CREATE</a>
                 </form>
             </div>
         </div>
@@ -237,7 +232,7 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <select id="select" class="form-control">
-                                        <option value="" disabled selected> Select... </option>
+                                        <option value="" disabled selected> Select time... </option>
                                         <option value="Morning"> MORNING </option>
                                         <option value="Afternoon"> AFTERNOON </option>
                                     </select>
@@ -246,7 +241,7 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <select id="select" class="form-control">
-                                        <option value="" disabled selected> Select... </option>
+                                        <option value="" disabled selected> Select time... </option>
                                         <option value="Morning"> MORNING </option>
                                         <option value="Afternoon"> AFTERNOON </option>
                                     </select>
@@ -254,14 +249,9 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-2">
+                            <div class="col-12">
                                 <div class="form-group">
-                                    <label class="font-weight-bolder"> Duration: </label>
-                                </div>
-                            </div>
-                            <div class="col-10">
-                                <div class="form-group">
-                                    <input type="number" class="form-control-md" style="display:flex;justify-content:flex-start;width:360px">
+                                    <input type="number" class="form-control" placeholder="Duration">
                                 </div>
                             </div>
                         </div>
@@ -287,7 +277,7 @@
                     </div>
 			        <a data-dismiss="modal" class="closeModal">DISCARD</a>
 		 	            &nbsp;
-		            <input type="submit" value="UPDATE" class="createBtn text-warning">
+                    <a href="" type ="submit" value = "UPDATE" class="text-warning">UPDATE</a>
                 </form>
             </div>
         </div>
