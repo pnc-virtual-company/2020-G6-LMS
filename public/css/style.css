@@ -9,9 +9,6 @@ body{
 .dropdown-item:hover{
     background-color: rgb(10, 187, 241);
 }
-.nav-item{
-    padding: 10px;
-}
 .nav-item:hover{
     background-color: rgb(10, 187, 241);
 }

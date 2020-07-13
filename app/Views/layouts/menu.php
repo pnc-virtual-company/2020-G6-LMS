@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-sm bg-info navbar-dark">
   <!-- Links -->
   <ul class="navbar-nav">
+    <div class="navbar">
     <li class="nav-item">
       <a class="nav-link text-white" href="yourLeave"> Your Leaves </a>
     </li>
@@ -28,6 +29,7 @@
           <a class="dropdown-item font-weight-bolder" href="#"> Log Out </a>
         </div>
       </li>
+    </div>
     </div>
   </ul>
 </nav>
