@@ -2,13 +2,13 @@
   <!-- Links -->
   <ul class="navbar-nav">
     <li class="nav-item">
-      <a class="nav-link text-white" href="#"> Your Leaves </a>
+      <a class="nav-link text-white" href="request"> Your Leaves </a>
     </li>
     <li class="nav-item">
       <a class="nav-link text-white" href="#"> Leaves </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link text-white" href="/employee"> Employees </a>
+      <a class="nav-link text-white" href="employee"> Employees </a>
     </li>
     <li class="nav-item">
       <a class="nav-link text-white" href="position"> Positions </a>

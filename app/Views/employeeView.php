@@ -15,11 +15,13 @@
                     <input class="form-control my-0 py-1" type="text" placeholder="Search" aria-label="Search">
                 </div><br>
 				<h3 class="font-weight-bolder"> Employee </h3>
+
 					<div class="text-right">
-								<a href="" class="btn btn-warning btn-sm text-white font-weight-bolder" data-toggle="modal" data-target="#createDepartment">
+								<a href="" class="btn btn-warning btn-sm text-white font-weight-bolder" data-toggle="modal" data-target="#createEmployee">
 									<i class="material-icons float-left" data-toggle="tooltip" title="Add Department!" data-placement="left">add</i>&nbsp;Create
 								</a>
 					</div><br>
+
 						<table class="table table-borderless table-hover">
         			<tr>
 						<th>FirsnName</th>
@@ -106,7 +108,7 @@
 </div>
 <!-- ========================================START Model CREATE================================================ -->
 	<!-- The Modal -->
-	<div class="modal fade" id="createPizza">
+	<div class="modal fade" id="createEmployee">
     <div class="modal-dialog">
       <div class="modal-content">
       
