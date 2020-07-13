@@ -15,7 +15,7 @@
                 </div>
                 <br>
 				<div class="text-right">
-                    <a href="" class="btn btn-warning btn-sm text-white font-weight-bolder" data-toggle="modal" data-target="#createPosition">
+                    <a href="" class="btn btn-info btn-sm text-white font-weight-bolder" data-toggle="modal" data-target="#createPosition">
                         <i class="material-icons float-left" data-toggle="tooltip" title="Add Position!" data-placement="left">add</i>&nbsp;Create
 					</a>
                 </div>

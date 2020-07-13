@@ -1,7 +1,7 @@
 <?= $this->extend('layouts/main') ?>
 <?= $this->section('content') ?>
 <div class="container login-container">
-            <div class="row">
+            <div class="row" id="form-shadow">
                 <div class="col-md-6 login-form-1">
                     <h3>Login</h3>
                     <form>

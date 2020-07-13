@@ -15,7 +15,7 @@
                 </div>
                 <br>
 				<div class="text-right">
-                    <a href="" class="btn btn-warning btn-sm text-white font-weight-bolder" data-toggle="modal" data-target="#createYourLeave">
+                    <a href="" class="btn btn-info btn-sm text-white font-weight-bolder" data-toggle="modal" data-target="#createYourLeave">
                         <i class="material-icons float-left" data-toggle="tooltip" title="Add Your Leave!" data-placement="left"></i>&nbsp;Request a leave
 					</a>
                 </div>
