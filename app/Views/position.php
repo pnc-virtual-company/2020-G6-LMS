@@ -24,28 +24,28 @@
 				<table class="table table-borderless table-hover">
 					<tr>
 						<td> IT Admin </td>
-						<td>
+						<td  style="display:flex;justify-content:flex-end">
 							<a href="" data-toggle="modal" data-target="#updatePosition"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Position!" data-placement="left">edit</i></a>
 							<a href="" data-toggle="modal" data-target="#deletePosition"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Position!" data-placement="right">delete</i></a>
 						</td>
 					</tr>
 					<tr>
 						<td> WEB Trainer </td>
-						<td>
+						<td style="display:flex;justify-content:flex-end">
 							<a href="" data-toggle="modal" data-target="#updatePosition"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Position!" data-placement="left">edit</i></a>
 							<a href="" data-toggle="modal" data-target="#deletePosition"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Position!" data-placement="right">delete</i></a>
 						</td>
 					</tr>
 					<tr>
 						<td> WEB coordintor </td>
-						<td>
+						<td style="display:flex;justify-content:flex-end">
 							<a href="" data-toggle="modal" data-target="#updatePosition"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Position!" data-placement="left">edit</i></a>
 							<a href="" data-toggle="modal" data-target="#deletePosition"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Position!" data-placement="right">delete</i></a>
 						</td>
 					</tr>
 					<tr>
 						<td> IT admin </td>
-						<td>
+						<td style="display:flex;justify-content:flex-end">
 							<a href="" data-toggle="modal" data-target="#updatePosition"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Position!" data-placement="left">edit</i></a>
 							<a href="" data-toggle="modal" data-target="#deletePosition"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Position!" data-placement="right">delete</i></a>
 						</td>
@@ -72,11 +72,11 @@
             <div class="modal-body text-right">
 			    <form  action="/" method="post">
 				    <div class="form-group">
-					    <p> Are you sure you want to remove the selected position?</p>
+					    <p style="display:flex;justify-content:flex-start"> Are you sure you want to remove the selected position?</p>
 				    </div>
 			        <a data-dismiss="modal" class="closeModal">DON'T REMOVE</a>
 		 	            &nbsp;
-		            <input type="submit" value="REMOVE" class="createBtn text-warning">
+					<a href="" type ="submit" value = "DELETE" class="text-warning">DELETE</a>
                 </form>
             </div>
         </div>
@@ -105,7 +105,7 @@
 				    </div>
 			        <a data-dismiss="modal" class="closeModal">DISCARD</a>
 		 	            &nbsp;
-		            <input type="submit" value="CREATE" class="createBtn text-warning">
+					<a href="" type ="submit" value = "CREATE" class="text-warning">CREATE</a>
                 </form>
             </div>
         </div>
@@ -134,7 +134,7 @@
 				    </div>
 			        <a data-dismiss="modal" class="closeModal">DISCARD</a>
 		 	            &nbsp;
-		            <input type="submit" value="UPDATE" class="createBtn text-warning">
+					<a href="" type ="submit" value = "UPDATE" class="text-warning">UPDATE</a>
                 </form>
             </div>
         </div>
