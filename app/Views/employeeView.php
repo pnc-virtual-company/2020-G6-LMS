@@ -140,9 +140,9 @@
 							</div>
 							<div class="form-group">
 								<select id="select" class="form-control">
-									<option value="" disabled selected> Department </option>
+									<option value="" disabled selected> Departments </option>
 									<option value="Training"> Training Team </option>
-									<option value="Education"> Education Team </option>
+									<option value="Education"> Educations Team </option>
 									<option value="Admin"> Admin Team </option>
 								</select>	
                 			</div>
