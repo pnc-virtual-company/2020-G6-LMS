@@ -9,3 +9,4 @@ class Departments extends BaseController
 	//--------------------------------------------------------------------
 
 }
+
