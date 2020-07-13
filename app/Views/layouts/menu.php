@@ -2,10 +2,14 @@
   <!-- Links -->
   <ul class="navbar-nav">
     <li class="nav-item">
+<<<<<<< HEAD
       <a class="nav-link text-white" href="request"> Your Leaves </a>
+=======
+      <a class="nav-link text-white" href="yourLeave"> Your Leaves </a>
+>>>>>>> 91c75a8cff0785617b1cd0f44c9b5658e39abbe6
     </li>
     <li class="nav-item">
-      <a class="nav-link text-white" href="#"> Leaves </a>
+      <a class="nav-link text-white" href="leave"> Leaves </a>
     </li>
     <li class="nav-item">
       <a class="nav-link text-white" href="employee"> Employees </a>

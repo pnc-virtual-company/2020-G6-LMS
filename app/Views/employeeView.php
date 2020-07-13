@@ -108,81 +108,122 @@
 </div>
 <!-- ========================================START Model CREATE================================================ -->
 	<!-- The Modal -->
+<<<<<<< HEAD
 	<div class="modal fade" id="createEmployee">
+=======
+<div class="modal fade" id="createEmployee">
+>>>>>>> 91c75a8cff0785617b1cd0f44c9b5658e39abbe6
     <div class="modal-dialog">
       <div class="modal-content">
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <h3 class="modal-title">Create Employee</h3>
+          <h3 class="modal-title font-weight-bolder">Create Employee</h3>
         </div>
         
         <!-- Modal body -->
         <div class="modal-body text-right">
 			<form  action="/" method="post">
 				<div class="form-group">
-              <input type="text" class="form-control" placeholder="First name" name= "firstname">
+              		<input type="text" class="form-control" placeholder="First name" name= "firstname">
 				</div>
 				<div class="form-group">
-              <input type="text" class="form-control" placeholder="Last name" name= "lastname">
+              		<input type="text" class="form-control" placeholder="Last name" name= "lastname">
 				</div>
 				<div class="form-group">
-              <input type="text" class="form-control" placeholder="Department" name= "department">
-				</div>
+                    <select id="select" class="form-control">
+                        <option value="" disabled selected> Department </option>
+                        <option value="Training"> Training Team </option>
+                        <option value="Education"> Education Team </option>
+                        <option value="Admin"> Admin Team </option>
+                    </select>
+                </div>
 				<div class="form-group">
-              <input type="text" class="form-control" placeholder="Position" name= "position">
-				</div>
-				<div class="form-group">
-              <input type="date" class="form-control" placeholder="Start Date" name= "startdate">
-				</div>
-			<a data-dismiss="modal" class="closeModal">DISCARD</a>
-        &nbsp;
-        <a href="" type ="submit" value = "CREATE" class="text-warning">CREATE</a>
-      <!-- <input type="submit" value="CREATE" class="text-info"> -->
-        </div>
-        </form>
-      </div>
-    </div>
+                    <select id="select" class="form-control">
+                        <option value="" disabled selected> Position </option>
+                        <option value="Web Trainer"> Web Trainer </option>
+                        <option value="Web Coordinator"> Web Coordinator </option>
+                        <option value=" IT Admin"> IT Admin </option>
+                    </select>
+                </div>
+				<div class="row">
+                    <div class="col-3-sm" style="padding-left: 12px;">
+                        <div class="form-group">
+                            <label class="font-weight-bolder"> Start Date: </label>
+                        </div>
+                    </div>
+                    <div class="col-9">
+                        <div class="form-group">
+                            <input type="date" class="form-control" style="display:flex;justify-content:flex-start;width:370px">
+                        </div>
+                    </div>
+                </div>
+				<a data-dismiss="modal" class="closeModal">DISCARD</a>
+        			&nbsp;
+        		<a href="" type ="submit" value = "CREATE" class="text-warning">CREATE</a>
+      			<!-- <input type="submit" value="CREATE" class="text-info"> -->
+        	</form>
+      	</div>
+	 </div>
   </div>
+</div>
   <!-- =================================END MODEL CREATE==================================================== -->
 
   <!-- ========================================START Model UPDATE================================================ -->
 	<!-- The Modal -->
-	<div class="modal fade" id="updateEmployee">
+<div class="modal fade" id="updateEmployee">
     <div class="modal-dialog">
       <div class="modal-content">
       
         <!-- Modal Header -->
-		
         <div class="modal-header">
-          <h3 class="modal-title">Edit Employee</h3>
+          <h3 class="modal-title font-weight-bolder">Update Employee</h3>
         </div>
         
         <!-- Modal body -->
         <div class="modal-body text-right">
 			<form  action="/" method="post">
 				<div class="form-group">
-					<input type="text" class="form-control" value="Sophorn">
+              		<input type="text" class="form-control" placeholder="First name" name= "firstname">
 				</div>
 				<div class="form-group">
-          <input type="text" class="form-control" value="Morn">
+              		<input type="text" class="form-control" placeholder="Last name" name= "lastname">
 				</div>
 				<div class="form-group">
-          <input type="text" class="form-control" value="Training">
-				</div>
+                    <select id="select" class="form-control">
+                        <option value="" disabled selected> Department </option>
+                        <option value="Training"> Training Team </option>
+                        <option value="Education"> Education Team </option>
+                        <option value="Admin"> Admin Team </option>
+                    </select>
+                </div>
 				<div class="form-group">
-          <input type="text" class="form-control" value="WEB trainer">
-				</div>
-				<div class="form-group">
-          <input type="text" class="form-control" value="20/2/2020">
-				</div>
-			<a data-dismiss="modal" class="closeModal">DISCARD</a>
-		 	 &nbsp;
-        <a href="" type ="submit" value = "UPDATE" class="text-warning">UPDATE</a>
-        </div>
-        </form>
-      </div>
-    </div>
+                    <select id="select" class="form-control">
+                        <option value="" disabled selected> Position </option>
+                        <option value="Web Trainer"> Web Trainer </option>
+                        <option value="Web Coordinator"> Web Coordinator </option>
+                        <option value=" IT Admin"> IT Admin </option>
+                    </select>
+                </div>
+				<div class="row">
+                    <div class="col-3-sm" style="padding-left: 12px;">
+                        <div class="form-group">
+                            <label class="font-weight-bolder"> Start Date: </label>
+                        </div>
+                    </div>
+                    <div class="col-9">
+                        <div class="form-group">
+                            <input type="date" class="form-control" style="display:flex;justify-content:flex-start;width:370px">
+                        </div>
+                    </div>
+                </div>
+				<a data-dismiss="modal" class="closeModal">DISCARD</a>
+        			&nbsp;
+        		<a href="" type ="submit" value = "UPDATE" class="text-warning">UPDATE</a>
+        	</form>
+      	</div>
+	 </div>
   </div>
+</div>
   <!-- =================================END MODEL UPDATE==================================================== -->
 <?= $this->endSection() ?>
