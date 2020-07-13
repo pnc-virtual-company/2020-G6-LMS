@@ -46,6 +46,9 @@ body {
   display: flex;
   justify-content: flex-start;
 }
+#date{
+  margin-right: 354.5px;
+}
 
 
 
