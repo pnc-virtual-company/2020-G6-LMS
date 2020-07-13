@@ -42,12 +42,10 @@ body {
   #reject{
     border:1px solid rgb(165, 163, 163);
   }
-/* ====== */
-label{
+#label{
   display: flex;
   justify-content: flex-start;
 }
-
 
 
 

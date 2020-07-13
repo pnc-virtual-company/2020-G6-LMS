@@ -128,13 +128,13 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label class="font-weight-bolder"> Start Date: </label>
+                                    <label class="font-weight-bolder" id="label"> Start Date: </label>
 					                <input type="date" class="form-control">
 				                </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label class="font-weight-bolder"> End Date: </label>
+                                    <label class="font-weight-bolder" id="label"> End Date: </label>
 					                <input type="date" class="form-control">
 				                </div>
                             </div>
@@ -222,13 +222,13 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label class="font-weight-bolder"> Start Date: </label>
+                                    <label class="font-weight-bolder" id="label"> Start Date: </label>
 					                <input type="date" class="form-control">
 				                </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label class="font-weight-bolder"> End Date: </label>
+                                    <label class="font-weight-bolder" id="label"> End Date: </label>
 					                <input type="date" class="form-control">
 				                </div>
                             </div>
