@@ -96,11 +96,11 @@
             <div class="modal-body text-right">
 			    <form  action="/" method="post">
 				    <div class="form-group">
-					    <p> Are you sure you want to remove the selected Employee?</p>
+					    <p  style="display:flex;justify-content:flex-start"> Are you sure you want to remove the selected Employee?</p>
 				    </div>
 			        <a data-dismiss="modal" class="closeModal">DON'T REMOVE</a>
 		 	            &nbsp;
-		            <input type="submit" value="REMOVE" class="createBtn text-warning">
+					<a href="" type ="delete" value = "REMOVE" class="text-warning">REMOVE</a>
                 </form>
             </div>
         </div>
@@ -120,40 +120,49 @@
         <!-- Modal body -->
         <div class="modal-body text-right">
 			<form  action="/" method="post">
-				<div class="form-group">
-              		<input type="text" class="form-control" placeholder="First name" name= "firstname">
-				</div>
-				<div class="form-group">
-              		<input type="text" class="form-control" placeholder="Last name" name= "lastname">
-				</div>
-				<div class="form-group">
-                    <select id="select" class="form-control">
-                        <option value="" disabled selected> Department </option>
-                        <option value="Training"> Training Team </option>
-                        <option value="Education"> Education Team </option>
-                        <option value="Admin"> Admin Team </option>
-                    </select>
-                </div>
-				<div class="form-group">
-                    <select id="select" class="form-control">
-                        <option value="" disabled selected> Position </option>
-                        <option value="Web Trainer"> Web Trainer </option>
-                        <option value="Web Coordinator"> Web Coordinator </option>
-                        <option value=" IT Admin"> IT Admin </option>
-                    </select>
-                </div>
-				<div class="row">
-                    <div class="col-3-sm" style="padding-left: 12px;">
-                        <div class="form-group">
-                            <label class="font-weight-bolder"> Start Date: </label>
-                        </div>
-                    </div>
-                    <div class="col-9">
-                        <div class="form-group">
-                            <input type="date" class="form-control" style="display:flex;justify-content:flex-start;width:370px">
-                        </div>
-                    </div>
-                </div>
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="First name" name= "firstname">
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Last name" name= "lastname">
+							</div>
+							<div class="form-group">
+              					<input type="password" class="form-control" placeholder="password" name= "password">
+							</div>
+						</div>
+
+						<div class="col-sm-6">
+							<div class="form-group">
+								<input type="email" class="form-control" placeholder="email" name= "email">
+							</div>
+							<div class="form-group">
+								<select id="select" class="form-control">
+									<option value="" disabled selected> Department </option>
+									<option value="Training"> Training Team </option>
+									<option value="Education"> Education Team </option>
+									<option value="Admin"> Admin Team </option>
+								</select>	
+                			</div>
+							
+							<div class="form-group">
+								<select id="select" class="form-control">
+									<option value="" disabled selected> Position </option>
+									<option value="Web Trainer"> Web Trainer </option>
+									<option value="Web Coordinator"> Web Coordinator </option>
+									<option value=" IT Admin"> IT Admin </option>
+								</select>
+                			</div>
+						</div>
+					</div>
+					<div class="form-group">
+							<label class="font-weight-bolder mt-2" id ="date"> Start Date </label>
+								<input type="date" class="form-control" style="">
+							</div>
+					</div>
+				
 				<a data-dismiss="modal" class="closeModal">DISCARD</a>
         			&nbsp;
         		<a href="" type ="submit" value = "CREATE" class="text-warning">CREATE</a>
@@ -179,43 +188,51 @@
         <!-- Modal body -->
         <div class="modal-body text-right">
 			<form  action="/" method="post">
-				<div class="form-group">
-              		<input type="text" class="form-control" placeholder="First name" name= "firstname">
-				</div>
-				<div class="form-group">
-              		<input type="text" class="form-control" placeholder="Last name" name= "lastname">
-				</div>
-				<div class="form-group">
-                    <select id="select" class="form-control">
-                        <option value="" disabled selected> Department </option>
-                        <option value="Training"> Training Team </option>
-                        <option value="Education"> Education Team </option>
-                        <option value="Admin"> Admin Team </option>
-                    </select>
-                </div>
-				<div class="form-group">
-                    <select id="select" class="form-control">
-                        <option value="" disabled selected> Position </option>
-                        <option value="Web Trainer"> Web Trainer </option>
-                        <option value="Web Coordinator"> Web Coordinator </option>
-                        <option value=" IT Admin"> IT Admin </option>
-                    </select>
-                </div>
-				<div class="row">
-                    <div class="col-3-sm" style="padding-left: 12px;">
-                        <div class="form-group">
-                            <label class="font-weight-bolder"> Start Date: </label>
-                        </div>
-                    </div>
-                    <div class="col-9">
-                        <div class="form-group">
-                            <input type="date" class="form-control" style="display:flex;justify-content:flex-start;width:370px">
-                        </div>
-                    </div>
-                </div>
-				<a data-dismiss="modal" class="closeModal">DISCARD</a>
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="form-group">
+									<input type="text" class="form-control" placeholder="First name" name= "firstname">
+								</div>
+								<div class="form-group">
+									<input type="text" class="form-control" placeholder="Last name" name= "lastname">
+								</div>
+								<div class="form-group">
+									<input type="password" class="form-control" placeholder="password" name= "password">
+								</div>
+						</div>
+
+						<div class="col-sm-6">
+							<div class="form-group">
+									<input type="email" class="form-control" placeholder="email" name= "email">
+								</div>
+								<div class="form-group">
+									<select id="select" class="form-control">
+										<option value="" disabled selected> Department </option>
+										<option value="Training"> Training Team </option>
+										<option value="Education"> Education Team </option>
+										<option value="Admin"> Admin Team </option>
+									</select>	
+								</div>
+								<div class="form-group">
+								<select id="select" class="form-control">
+									<option value="" disabled selected> Position </option>
+									<option value="Web Trainer"> Web Trainer </option>
+									<option value="Web Coordinator"> Web Coordinator </option>
+									<option value=" IT Admin"> IT Admin </option>
+								</select>
+                			</div>
+						</div>
+					</div>
+					<div class="form-group">
+							<label class="font-weight-bolder mt-2" id ="date"> Start Date </label>
+								<input type="date" class="form-control" style="">
+							</div>
+					</div>
+					<a data-dismiss="modal" class="closeModal">DISCARD</a>
         			&nbsp;
         		<a href="" type ="submit" value = "UPDATE" class="text-warning">UPDATE</a>
+				</div>
         	</form>
       	</div>
 	 </div>
