@@ -108,11 +108,7 @@
 </div>
 <!-- ========================================START Model CREATE================================================ -->
 	<!-- The Modal -->
-<<<<<<< HEAD
 	<div class="modal fade" id="createEmployee">
-=======
-<div class="modal fade" id="createEmployee">
->>>>>>> 91c75a8cff0785617b1cd0f44c9b5658e39abbe6
     <div class="modal-dialog">
       <div class="modal-content">
       
