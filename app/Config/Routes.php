@@ -36,12 +36,8 @@ $routes->add('department', 'Departments::showDepartment');
 $routes->add('position', 'Positions::showPosition');
 $routes->add('employee', 'Employee::viewmployee');
 $routes->add('leave', 'Leave::showLeaveView');
-<<<<<<< HEAD
-$routes->add('yourLeave', 'YourLeave::showYourLeave');
 $routes->add('profile','Profile::profile');
-=======
 
->>>>>>> ec808753bcc3836f3f3ab7cc61f9677eb6a3200d
 
 
 
