@@ -7,14 +7,15 @@ request
 			<div class="col-2"></div>
 			<div class="col-8">
 
-			<div class="input-group md-form form-sm form-1 pl-0 mt-2">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text purple lighten-3" id="basic-text1">
-                            <i class="material-icons text-success" data-toggle="tooltip" title="Search" data-placement="left">search</i>
-                        </span>
-                    </div>
-                    <input class="form-control my-0 py-1" type="text" placeholder="Search" aria-label="Search">
-                </div><br>
+			<div class="input-group md-form form-sm form-2 pl-0">
+  					<input class="form-control my-0 py-1 red-border" type="text" placeholder="Search" aria-label="Search">
+  					<div class="input-group-append">
+    					<span class="input-group-text red lighten-3" id="basic-text1">
+							<i class="material-icons text-success" data-toggle="tooltip" title="Search!" data-placement="left">search</i>
+						</span>
+  					</div>
+				</div>
+				<br>
 				<h3 class="font-weight-bolder"> Leave requests submitted to me </h3>
 					
 					<table class="table table-borderless table-hover">

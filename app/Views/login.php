@@ -1,5 +1,10 @@
 <?= $this->extend('layouts/main') ?>
 <?= $this->section('content') ?>
+<style>
+   body{
+        background-color: #efefef;
+   }
+</style>
 <div class="container login-container">
             <div class="row" id="form-shadow">
                 <div class="col-md-6 login-form-1">

@@ -71,9 +71,6 @@
                 <td>25/11/2019</td>
               </tr>
             </table>
-            <div class="text-right">
-              <a href="" value = "CLOSE" class="text-warning ">CLOSE</a>
-            </div>
             </div>
         </div>
     </div>
