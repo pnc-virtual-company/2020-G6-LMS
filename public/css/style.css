@@ -2,6 +2,7 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #efefef;
 }
 .drop{
     margin-left: 750px;
@@ -20,10 +21,11 @@ body{
 }
 .login-form-1{
   padding: 5%;
+  background-color: white;
 }
 #form-shadow{
   margin-left: 5px;
-  box-shadow: 0 0 8px 3px  rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 0 5px 1px  rgba(0, 0, 0, 0.5);
 }
 .login-form-1 h3{
   text-align: center;
