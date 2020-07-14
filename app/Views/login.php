@@ -9,7 +9,7 @@
             <div class="row" id="form-shadow">
                 <div class="col-md-6 login-form-1">
                     <h3>Login</h3>
-                    <form>
+                    <form action="/yourLeave" method="post">
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Your Email *" value="" />
                         </div>
