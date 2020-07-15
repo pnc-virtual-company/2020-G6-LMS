@@ -26,7 +26,7 @@
           </a>
           <div class="dropdown-menu">
             <a class="dropdown-item font-weight-bolder" href="profile" data-toggle="modal" data-target="#viewProfile"> Profile </a>
-            <a class="dropdown-item font-weight-bolder" href="#"> Log Out </a>
+            <a class="dropdown-item font-weight-bolder" href="/"> Log Out </a>
           </div>
         </li>
       </div>

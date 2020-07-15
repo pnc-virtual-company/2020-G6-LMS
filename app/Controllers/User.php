@@ -10,5 +10,9 @@ class User extends BaseController
 	{
 		return view('profile');
 	}
+	public function logout(){
+		$session()->destroy();
+		return redirect()->to('/');
+	}
 	//--------------------------------------------------------------------
 }

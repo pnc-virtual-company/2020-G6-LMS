@@ -37,6 +37,7 @@ $routes->add('position', 'Positions::showPosition');
 $routes->add('employee', 'Employee::viewmployee');
 $routes->add('leave', 'Leave::showLeaveView');
 $routes->add('profile','User::profile');
+$routes->add('logout','User::logout');
 
 
 
