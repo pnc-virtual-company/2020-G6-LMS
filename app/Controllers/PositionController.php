@@ -24,12 +24,22 @@ class PositionController extends BaseController
 				$newData = [
 				'position_name' => $this->request->getVar('position_name')
 			];
-			
+
 			$model->insertPosition($newData);
 			return redirect()->to('/position');
 		}
 
 		return view('position', $data); 	
+	}
+
+	// delete position of employee
+
+	public function deletePosition($id)
+	{
+		$model = new PositionModel();
+		$model->find($id);
+		$delete = $model->delete($id);
+		return redirect()->to('/position');
 	}
 
 	//--------------------------------------------------------------------

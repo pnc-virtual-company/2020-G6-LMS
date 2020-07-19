@@ -53,7 +53,7 @@
         
             <!-- Modal body -->
             <div class="modal-body text-right">
-			    <form  action="" method="post">
+			    <form  action="removePosition/<?= $values['id'];?>" method="post">
 				    <div class="form-group">
 					    <p style="display:flex;justify-content:flex-start"> Are you sure you want to remove the selected position?</p>
 				    </div>
