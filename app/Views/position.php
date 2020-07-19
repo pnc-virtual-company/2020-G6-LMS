@@ -22,34 +22,17 @@
                 <h4 class="font-weight-bolder"> Position </h4>
                 <br>
 				<table class="table table-borderless table-hover">
+
+				<!-- show data on url -->
+				<?php foreach($positionEmpoyee as $values) :?>
 					<tr>
-						<td> IT Admin </td>
+						<td><?= $values['name'];?></td>
 						<td  style="display:flex;justify-content:flex-end">
 							<a href="" data-toggle="modal" data-target="#updatePosition"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Position!" data-placement="left">edit</i></a>
 							<a href="" data-toggle="modal" data-target="#deletePosition"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Position!" data-placement="right">delete</i></a>
 						</td>
 					</tr>
-					<tr>
-						<td> WEB Trainer </td>
-						<td style="display:flex;justify-content:flex-end">
-							<a href="" data-toggle="modal" data-target="#updatePosition"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Position!" data-placement="left">edit</i></a>
-							<a href="" data-toggle="modal" data-target="#deletePosition"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Position!" data-placement="right">delete</i></a>
-						</td>
-					</tr>
-					<tr>
-						<td> WEB coordintor </td>
-						<td style="display:flex;justify-content:flex-end">
-							<a href="" data-toggle="modal" data-target="#updatePosition"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Position!" data-placement="left">edit</i></a>
-							<a href="" data-toggle="modal" data-target="#deletePosition"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Position!" data-placement="right">delete</i></a>
-						</td>
-					</tr>
-					<tr>
-						<td> IT admin </td>
-						<td style="display:flex;justify-content:flex-end">
-							<a href="" data-toggle="modal" data-target="#updatePosition"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Position!" data-placement="left">edit</i></a>
-							<a href="" data-toggle="modal" data-target="#deletePosition"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Position!" data-placement="right">delete</i></a>
-						</td>
-					</tr>
+				<?php endforeach;?>	
 				</table>
 			</div>
 			<div class="col-2"></div>
@@ -70,13 +53,13 @@
         
             <!-- Modal body -->
             <div class="modal-body text-right">
-			    <form  action="/" method="post">
+			    <form  action="remove/<?= $values['id']?>" method="post">
 				    <div class="form-group">
 					    <p style="display:flex;justify-content:flex-start"> Are you sure you want to remove the selected position?</p>
 				    </div>
 			        <a data-dismiss="modal" class="closeModal">DON'T REMOVE</a>
 		 	            &nbsp;
-					<a href="" type ="submit" value = "DELETE" class="text-warning">DELETE</a>
+					<input type ="submit" value = "DELETE" class="text-warning" style="border:none;background:white;">
                 </form>
             </div>
         </div>
@@ -99,13 +82,20 @@
         
             <!-- Modal body -->
             <div class="modal-body text-right">
-			    <form  action="/" method="post">
+			    <form  action="addPosition" method="post">
 				    <div class="form-group">
-					    <input type="text" class="form-control" placeholder="Position name">
+					    <input type="text" class="form-control" placeholder="Position name" name="name">
 				    </div>
 			        <a data-dismiss="modal" class="closeModal">DISCARD</a>
 		 	            &nbsp;
-					<a href="" type ="submit" value = "CREATE" class="text-warning">CREATE</a>
+					<input type ="submit" value = "CREATE" class="text-warning" style="border:none;background:white;">
+
+					<!-- set validation when create position of employee -->
+					<?php if(isset($validate)): ?>
+						<div class="alert alert-danger" role="alert">
+							<?= $validate->listErrors(); ?>
+						</div>
+          			<?php endif; ?>
                 </form>
             </div>
         </div>
@@ -134,7 +124,7 @@
 				    </div>
 			        <a data-dismiss="modal" class="closeModal">DISCARD</a>
 		 	            &nbsp;
-					<a href="" type ="submit" value = "UPDATE" class="text-warning">UPDATE</a>
+					<input type ="submit" value = "UPDATE" class="text-warning" style="border:none;background:white;">
                 </form>
             </div>
         </div>

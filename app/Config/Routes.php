@@ -33,7 +33,11 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'User::index');
 $routes->add('yourLeave', 'YourLeave::showYourLeave');
 $routes->add('department', 'Departments::showDepartment');
+
+// POSITION CRUD
 $routes->add('position', 'Positions::showPosition');
+$routes->add('addPosition', 'Positions::createPosition');
+
 $routes->add('employee', 'Employee::viewmployee');
 $routes->add('leave', 'Leave::showLeaveView');
 $routes->add('profile','User::profile');
