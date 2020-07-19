@@ -7,12 +7,12 @@ class PositionModel extends Model
     protected $table      = 'position';
     protected $primaryKey = 'id';
     protected $returnType     = 'array';
-    protected $allowedFields = ['name'];
+    protected $allowedFields = ['position_name'];
 
     public function insertPosition($position) 
     {
         $this->insert([
-            'name'=>$position['name'],
+            'position_name'=>$position['position_name'],
         ]);
     }
 }

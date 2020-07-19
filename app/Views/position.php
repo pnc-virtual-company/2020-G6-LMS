@@ -26,7 +26,7 @@
 				<!-- show data on url -->
 				<?php foreach($positionEmpoyee as $values) :?>
 					<tr>
-						<td><?= $values['name'];?></td>
+						<td><?= $values['position_name'];?></td>
 						<td  style="display:flex;justify-content:flex-end">
 							<a href="" data-toggle="modal" data-target="#updatePosition"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Position!" data-placement="left">edit</i></a>
 							<a href="" data-toggle="modal" data-target="#deletePosition"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Position!" data-placement="right">delete</i></a>
@@ -53,7 +53,7 @@
         
             <!-- Modal body -->
             <div class="modal-body text-right">
-			    <form  action="remove/<?= $values['id']?>" method="post">
+			    <form  action="" method="post">
 				    <div class="form-group">
 					    <p style="display:flex;justify-content:flex-start"> Are you sure you want to remove the selected position?</p>
 				    </div>
@@ -84,18 +84,14 @@
             <div class="modal-body text-right">
 			    <form  action="addPosition" method="post">
 				    <div class="form-group">
-					    <input type="text" class="form-control" placeholder="Position name" name="name">
+					    <input type="text" class="form-control" placeholder="Position name" name="position_name">
 				    </div>
 			        <a data-dismiss="modal" class="closeModal">DISCARD</a>
 		 	            &nbsp;
 					<input type ="submit" value = "CREATE" class="text-warning" style="border:none;background:white;">
 
 					<!-- set validation when create position of employee -->
-					<?php if(isset($validate)): ?>
-						<div class="alert alert-danger" role="alert">
-							<?= $validate->listErrors(); ?>
-						</div>
-          			<?php endif; ?>
+					
                 </form>
             </div>
         </div>

@@ -35,8 +35,9 @@ $routes->add('yourLeave', 'YourLeave::showYourLeave');
 $routes->add('department', 'Departments::showDepartment');
 
 // POSITION CRUD
-$routes->add('position', 'Positions::showPosition');
-$routes->add('addPosition', 'Positions::createPosition');
+$routes->add('position', 'PositionController::showPosition');
+$routes->add('addPosition', 'PositionController::createPosition');
+
 
 $routes->add('employee', 'Employee::viewmployee');
 $routes->add('leave', 'Leave::showLeaveView');

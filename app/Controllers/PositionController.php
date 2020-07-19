@@ -1,6 +1,6 @@
 <?php namespace App\Controllers;
 use App\Models\PositionModel;
-class Positions extends BaseController
+class PositionController extends BaseController
 {
 	public function showPosition()
 	{
@@ -18,17 +18,13 @@ class Positions extends BaseController
 
 		if($this->request->getMethod() == "post"){
 			$rules = [
-				'name'=>'required'
+				'position_name'=>'required'
 			];
-			if(!$this->validate($rules)){
-				$data['validate'] = $this->validator;
-				$model = new PositionModel();
-			}else{
 				$model = new PositionModel();
 				$newData = [
-				'name' => $this->request->getVar('name')
+				'position_name' => $this->request->getVar('position_name')
 			];
-			}	
+			
 			$model->insertPosition($newData);
 			return redirect()->to('/position');
 		}
