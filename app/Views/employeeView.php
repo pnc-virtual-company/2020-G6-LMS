@@ -41,7 +41,7 @@
 							<td> <?= $user['startDate'] ?> </td>
 							<td style="display:flex;justify-content:flex-end">
 								<a href="" data-toggle="modal" data-target="#updateEmployee"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Employee!" data-placement="left">edit</i></a>
-								<a href="" data-toggle="modal" data-target="#deleteEmployee"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Employee!" data-placement="right">delete</i></a>
+								<a href="" data-toggle="modal" data-target="#deleteEmployee<?= $user['u_id'] ?>"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Employee!" data-placement="right">delete</i></a>
 							</td>
 						</tr>
 
@@ -193,8 +193,8 @@
   </div>
 </div>
 <!-- delete employee -->
-
-<div class="modal fade" id="deleteEmployee">
+<?php foreach($userData as $user): ?>
+<div class="modal fade" id="deleteEmployee<?= $user['u_id'] ?>">
     <div class="modal-dialog">
         <div class="modal-content">
       
@@ -205,7 +205,7 @@
         
             <!-- Modal body -->
             <div class="modal-body text-right">
-			    <form  action="/" method="post">
+			    <form  action="remove/<?= $user['u_id']?>" method="post">
 				    <div class="form-group">
 					    <p  style="display:flex;justify-content:flex-start"> Are you sure you want to remove the selected Employee?</p>
 				    </div>
@@ -218,6 +218,6 @@
         </div>
     </div>
 </div>
-
+<?php endforeach ?>
   <!-- =================================END MODEL UPDATE==================================================== -->
 <?= $this->endSection() ?>
