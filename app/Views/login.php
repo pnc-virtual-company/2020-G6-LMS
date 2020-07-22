@@ -9,15 +9,15 @@
             <div class="row" id="form-shadow">
                 <div class="col-md-6 login-form-1">
                     <h3>Login</h3>
-                    <form action="/yourLeave" method="post">
+                    <form action="<?php echo base_url()?>" method="post">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Your Email *" value="" />
+                            <input type="text" class="form-control" placeholder="Your Email *" name="email" value="<?= set_value('email') ?>">
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Your Password *" value="" />
+                            <input type="password" class="form-control" placeholder="Your Password *" name="password" value="<?= set_value('password') ?>">
                         </div>
                         <div class="form-group">
-                            <input type="submit" class="btnSubmit" value="Login" />
+                            <input type="submit" class="btnSubmit" value="Login" name="submit" />
                         </div>
                     </form>
                 </div>
@@ -25,5 +25,13 @@
                     <img src="images/teamWork.jpeg" style="height:460px; width: 560px">
                 </div>
             </div>
+            <?php if(isset($validation)):?>
+                <div class="col-12 mt-3"​ style="margin-left: -10px; width: 53%;">
+                    <div class="alert alert-danger" role="alert">
+                        <?=$validation->listErrors()?>
+                    </div>
+                </div>
+            <?php endif?>
         </div>
 <?= $this->endSection() ?>
+
