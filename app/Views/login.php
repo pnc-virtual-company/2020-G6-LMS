@@ -9,7 +9,7 @@
             <div class="row" id="form-shadow">
                 <div class="col-md-6 login-form-1">
                     <h3>Login</h3>
-                    <form action="" method="post">
+                    <form action="<?php echo base_url()?>" method="post">
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Your Email *" name="email" value="<?= set_value('email') ?>">
                         </div>
@@ -17,9 +17,7 @@
                             <input type="password" class="form-control" placeholder="Your Password *" name="password" value="<?= set_value('password') ?>">
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btnSubmit">
-                                Login
-                            </button>
+                            <input type="submit" class="btnSubmit" value="Login" name="submit" />
                         </div>
                     </form>
                 </div>

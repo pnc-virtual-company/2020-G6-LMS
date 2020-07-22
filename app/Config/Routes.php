@@ -30,8 +30,10 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'User::index');
-$routes->add('yourLeave', 'YourLeave::showYourLeave');
+$routes->get('/', 'User::index',['filter' => 'noauth']);
+$routes->add('yourLeave', 'YourLeave::showYourLeave',['filter' => 'auth']);
+
+
 $routes->add('department', 'Departments::showDepartment');
 $routes->add('position', 'Positions::showPosition');
 $routes->add('employee', 'Employee::viewmployee');

@@ -8,4 +8,7 @@ class UserModel extends Model
     protected $primaryKey = 'id';
     protected $returnType     = 'array';
     protected $allowedFields = ['firstName','lastName','startDate','profile','email','password','role'];
+
+    // 'password' => password_hash($userInfo['password'], PASSWORD_DEFAULT), 
+
 }

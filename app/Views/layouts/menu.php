@@ -22,11 +22,12 @@
       <div class="drop">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown">
-            Ronan
+          <?php $username = strstr(session()->get('email'),'@',true) ?>
+              <?= $username ?>
           </a>
           <div class="dropdown-menu">
             <a class="dropdown-item font-weight-bolder" href="profile" data-toggle="modal" data-target="#viewProfile"> Profile </a>
-            <a class="dropdown-item font-weight-bolder" href="/"> Log Out </a>
+            <a class="dropdown-item font-weight-bolder" href="logout"> Log Out </a>
           </div>
         </li>
       </div>
