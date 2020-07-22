@@ -2,11 +2,16 @@
 
 use App\Models\UserModel;
 
-class User extends BaseController{
+class UserController extends BaseController{
+	
+	public function viewmployee()
+	{
+		return view('employeeView');
+	}
 
 	public function setUserSession($user){
 		$data = [
-			'id' => $user['id'],
+			'u_id' => $user['u_id'],
 			'firstName' => $user['firstName'],
 			'lastName' => $user['lastName'],
 			'startDate' => $user['startDate'],

@@ -1,6 +1,6 @@
 <?php namespace App\Controllers;
 
-class Positions extends BaseController
+class PositionController extends BaseController
 {
 	public function showPosition()
 	{
