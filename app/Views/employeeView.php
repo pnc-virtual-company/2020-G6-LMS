@@ -163,8 +163,9 @@
   <!-- =================================END MODEL CREATE==================================================== -->
 
   <!-- ========================================START Model UPDATE================================================ -->
+  
 	<!-- The Modal -->
-<div class="modal fade" id="updateEmployee">
+<div class="modal fade" id="updateEmployee<?= $user['u_id'] ?>">
     <div class="modal-dialog">
       	<div class="modal-content">
       
@@ -230,11 +231,14 @@
         					&nbsp;
 						<input type="submit" value="UPDATE" class="text-warning added">
 					</div>
-        		</form>
-      		</div>
-	 	</div>
-  	</div>
+					<a data-dismiss="modal" class="closeModal">DISCARD</a>
+        			&nbsp;
+        		<a href="" type ="submit" value = "UPDATE" class="text-warning">UPDATE</a>
+				</div>
+        	</form>
+      	</div>
+	 </div>
+  </div>
 </div>
-
   <!-- =================================END MODEL UPDATE==================================================== -->
 <?= $this->endSection() ?>
