@@ -40,7 +40,7 @@
 							<td> <?= $user['dname'] ?> </td>
 							<td> <?= $user['startDate'] ?> </td>
 							<td style="display:flex;justify-content:flex-end">
-								<a href="" data-toggle="modal" data-target="#updateEmployee"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Employee!" data-placement="left">edit</i></a>
+								<a href="" data-toggle="modal" data-target="#updateEmployee<?= $user['u_id'] ?>"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Employee!" data-placement="left">edit</i></a>
 								<a href="" data-toggle="modal" data-target="#deleteEmployee<?= $user['u_id'] ?>"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Employee!" data-placement="right">delete</i></a>
 							</td>
 						</tr>
@@ -129,8 +129,9 @@
   <!-- =================================END MODEL CREATE==================================================== -->
 
   <!-- ========================================START Model UPDATE================================================ -->
+  <?php foreach($userData as $user): ?>
 	<!-- The Modal -->
-<div class="modal fade" id="updateEmployee">
+<div class="modal fade" id="updateEmployee<?= $user['u_id'] ?>">
     <div class="modal-dialog">
       <div class="modal-content">
       
@@ -141,7 +142,7 @@
         
         <!-- Modal body -->
         <div class="modal-body text-right">
-			<form  action="/" method="post">
+			<form  action="/update" method="post">
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-6">
@@ -192,6 +193,7 @@
 	 </div>
   </div>
 </div>
+<?php endforeach ?>
 <!-- delete employee -->
 <?php foreach($userData as $user): ?>
 <div class="modal fade" id="deleteEmployee<?= $user['u_id'] ?>">

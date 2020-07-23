@@ -39,9 +39,13 @@ $routes->add('positionAdd', 'PositionController::addPosition');
 $routes->add('addUser', 'UserController::createUser');
 $routes->add('leave', 'Leave::showLeaveView');
 $routes->add('profile','UserController::profile');
+
 // Route employee
+
 $routes->add('employee', 'UserController::showUser');
 $routes->add('remove/(:num)', 'UserController::deleteEmployee/$1');
+$routes->add('update/(:num)', 'UserController::updateUser/$1');
+$routes->add('edit/(:num)', 'UserController::editPizza/$1');
 
 
 

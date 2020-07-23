@@ -61,6 +61,33 @@ class UserController extends BaseController
         }
         return redirect()->to("/employee");
     }
+
+    public function updateUser() 
+    {
+        $firstName = $this->request->getVar('firstName');
+        $lastName = $this->request->getVar('lastName');
+        $email = $this->request->getVar('email');
+        $password = $this->request->getVar('password');
+        $position = $this->request->getVar('position');
+        $department = $this->request->getVar('department');
+        $startDate = $this->request->getVar('startDate');
+        $data = array(
+            "firstName" => $firstName,
+            "lastName" => $lastName,
+            "email" => $email,
+            "password" => $password,
+            "position_id" => $position,
+            "department_id" => $department,
+            "startDate" => $startDate,
+        );
+        if ($position != "" and $department != "") {
+            $this->user->insert($data);
+        } else { 
+            // message error here with session 
+        }
+        return redirect()->to("/employee");
+    }
+
     public function deleteEmployee($id){
         $employee = new UserModel();
         $employee->delete($id);
