@@ -22,34 +22,22 @@
                 <h4 class="font-weight-bolder"> Position </h4>
                 <br>
 				<table class="table table-borderless table-hover">
+
+				<thead>
 					<tr>
-						<td> IT Admin </td>
+						<th class="hide">id</th>
+					</tr>
+				</thead>
+				<?php foreach($positionData as $position): ?>
+					<tr>
+						<td class="hide"><?= $position['p_id'] ?></td>
+						<td><?= $position['pname'] ?></td>
 						<td  style="display:flex;justify-content:flex-end">
 							<a href="" data-toggle="modal" data-target="#updatePosition"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Position!" data-placement="left">edit</i></a>
 							<a href="" data-toggle="modal" data-target="#deletePosition"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Position!" data-placement="right">delete</i></a>
 						</td>
 					</tr>
-					<tr>
-						<td> WEB Trainer </td>
-						<td style="display:flex;justify-content:flex-end">
-							<a href="" data-toggle="modal" data-target="#updatePosition"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Position!" data-placement="left">edit</i></a>
-							<a href="" data-toggle="modal" data-target="#deletePosition"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Position!" data-placement="right">delete</i></a>
-						</td>
-					</tr>
-					<tr>
-						<td> WEB coordintor </td>
-						<td style="display:flex;justify-content:flex-end">
-							<a href="" data-toggle="modal" data-target="#updatePosition"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Position!" data-placement="left">edit</i></a>
-							<a href="" data-toggle="modal" data-target="#deletePosition"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Position!" data-placement="right">delete</i></a>
-						</td>
-					</tr>
-					<tr>
-						<td> IT admin </td>
-						<td style="display:flex;justify-content:flex-end">
-							<a href="" data-toggle="modal" data-target="#updatePosition"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Position!" data-placement="left">edit</i></a>
-							<a href="" data-toggle="modal" data-target="#deletePosition"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Position!" data-placement="right">delete</i></a>
-						</td>
-					</tr>
+				<?php endforeach ?>	
 				</table>
 			</div>
 			<div class="col-2"></div>

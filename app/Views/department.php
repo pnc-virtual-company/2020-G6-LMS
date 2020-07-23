@@ -23,34 +23,21 @@
                 <br>
 				<table class="table table-borderless table-hover">
 
+					<thead>
+						<tr>
+							<th class="hide">id</th>
+						</tr>
+					</thead>
+					<?php foreach($departmentData as $department): ?>
 					<tr>
-						<td> Training and education team </td>
+						<td class="hide"><?= $department['d_id'] ?></td>
+						<td><?= $department['dname'] ?></td>
 						<td style="display:flex;justify-content:flex-end">
 							<a href="" data-toggle="modal" data-target="#updateDepartment"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Department!" data-placement="left">edit</i></a>
 							<a href="" data-toggle="modal" data-target="#deleteDepartment"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Department!" data-placement="right">delete</i></a>
 						</td>
 					</tr>
-					<tr>
-						<td> External relation team </td>
-						<td style="display:flex;justify-content:flex-end">
-							<a href="" data-toggle="modal" data-target="#updateDepartment"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Department!" data-placement="left">edit</i></a>
-							<a href="" data-toggle="modal" data-target="#deleteDepartment"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Department!" data-placement="right">delete</i></a>
-						</td>
-					</tr>
-					<tr>
-						<td> Admin and finance team </td>
-						<td style="display:flex;justify-content:flex-end">
-							<a href="" data-toggle="modal" data-target="#updateDepartment"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Department!" data-placement="left">edit</i></a>
-							<a href="" data-toggle="modal" data-target="#deleteDepartment"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Department!" data-placement="right">delete</i></a>
-						</td>
-					</tr>
-					<tr>
-						<td> Selection team </td>
-						<td style="display:flex;justify-content:flex-end">
-							<a href="" data-toggle="modal" data-target="#updateDepartment"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Department!" data-placement="left">edit</i></a>
-							<a href="" data-toggle="modal" data-target="#deleteDepartment"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Department!" data-placement="right">delete</i></a>
-						</td>
-					</tr>
+					<?php endforeach ?>
 				</table>
 			</div>
 			<div class="col-2"></div>
@@ -97,6 +84,7 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
         
+
             <!-- Modal body -->
             <div class="modal-body text-right">
 			    <form  action="/" method="post">

@@ -8,15 +8,19 @@ class UserController extends BaseController
 	{
 		return view('login');
 	}
+    
+    //--------------------------------------------------------------------
 
 	public function profile()
 	{
 		return view('profile');
-	}
-	//--------------------------------------------------------------------
+    }
+    
+    //--------------------------------------------------------------------
+    
 	protected $user;
-    protected $department;
     protected $position;
+    protected $department;
 
     public function __construct() 
     {
@@ -34,7 +38,9 @@ class UserController extends BaseController
             
         ];
 		return view('employeeView', $data);
-	}
+    }
+    
+    //--------------------------------------------------------------------
 
 	public function createUser() 
     {
@@ -61,11 +67,41 @@ class UserController extends BaseController
         }
         return redirect()->to("/employee");
     }
+
+    //--------------------------------------------------------------------
+
     public function deleteEmployee($id){
         $employee = new UserModel();
         $employee->delete($id);
-        // $employee->where
-        // $data['employee'] = $employee->where('id',$id)->delete();
         return redirect()->to('/employee');
     }
+
+    //--------------------------------------------------------------------
+    public function updateUser()
+    {
+        $userId = $this->request->getVar('user_id');
+        $firstName = $this->request->getVar('firstName');
+        $lastName = $this->request->getVar('lastName');
+        $email = $this->request->getVar('email');
+        $password = $this->request->getVar('password');
+        $position = $this->request->getVar('position');
+        $department = $this->request->getVar('department');
+        $startDate = $this->request->getVar('startDate');
+        $data = array(
+            "firstName" => $firstName,
+            "lastName" => $lastName,
+            "email" => $email,
+            "password" => $password,
+            "position_id" => $position,
+            "department_id" => $department,
+            "startDate" => $startDate,
+        );
+        if ($position != "" and $department != "") {
+            $this->user->update($userId, $data);
+        } else { 
+            // message error here with session 
+        }
+        return redirect()->to("/employee");
+    }
+
 }
