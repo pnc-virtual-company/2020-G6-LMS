@@ -45,8 +45,16 @@ $routes->add('addUser', 'UserController::createUser');
 $routes->add('remove/(:num)', 'UserController::deleteEmployee/$1');
 $routes->add('update', 'UserController::updateUser');
 
+
+$routes->get('/', 'UserController::index',['filter' => 'noauth']);
+$routes->add('yourLeave', 'YourLeave::showYourLeave',['filter' => 'auth']);
+
+
+$routes->add('department', 'DepartmentController::showDepartment');
+
 $routes->add('leave', 'Leave::showLeaveView');
 $routes->add('profile','UserController::profile');
+$routes->add('logout','UserController::logout');
 
 
 

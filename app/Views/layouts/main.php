@@ -17,17 +17,27 @@
     </style>
 </head>
 <body>
-
-    <?= $this->renderSection('content') ?>
     <script src="js/jquery.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+
     <script>
         $(document).ready(function(){
             $('[data-toggle="tooltip"]').tooltip();
         });
+
+    </script>
+
+    <script>
+        function preventBack (){
+            window.history.forward();
+        }
+        setTimeout("preventBack()", 0);
+
+        window.onunload= function () {null};
     </script>
 
 <script src="<?= base_url('js/main.js') ?>"></script>
+    <?= $this->renderSection('content') ?>
 </body>
 </html>
