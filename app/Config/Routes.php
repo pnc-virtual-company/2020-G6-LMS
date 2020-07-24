@@ -37,6 +37,7 @@ $routes->add('department', 'Departments::showDepartment');
 // POSITION CRUD
 $routes->add('position', 'PositionController::showPosition');
 $routes->add('add', 'PositionController::addPosition');
+$routes->add('remove/(:num)', 'PositionController::deletePosition/$1');
 
 
 

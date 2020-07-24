@@ -30,4 +30,12 @@ class PositionController extends BaseController
         }
         return redirect()->to("/position");
     }
+
+   public function deletePosition($id)
+   {
+       $position = new PositionModel();
+       $position->delete($id);
+       return redirect()->to('/position');
+
+   } 
 }
