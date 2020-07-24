@@ -25,9 +25,10 @@
 
 					<?php foreach($departmentData as $department): ?>
 						<tr class="edit_hover_class">
+							<td class="hide"><?= $department['d_id'] ?></td>
 							<td> <?= $department['dname'] ?> </td>
 							<td style="display:flex;justify-content:flex-end">
-								<a href="" data-toggle="modal" data-target="#updateDepartment"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Department!" data-placement="left">edit</i></a>
+								<a href="" data-toggle="modal" data-target="#updateDepartment" class="edit-btn-department"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Department!" data-placement="left">edit</i></a>
 								<a href="" data-toggle="modal" data-target="#deleteDepartment<?= $department['d_id'] ?>"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Department!" data-placement="right">delete</i></a>
 							</td>
 						</tr>
@@ -113,13 +114,14 @@
         
             <!-- Modal body -->
             <div class="modal-body text-right">
-			    <form  action="/" method="post">
+				<form  action="<?= base_url("update") ?>" method="post">
+				<input type="hidden" name="department_id" id="update_id">
 				    <div class="form-group">
-					    <input type="text" class="form-control" placeholder="Department name">
+						<input type="text" class="form-control" placeholder="Department name" name="dname" required id="dname">
 				    </div>
 			        <a data-dismiss="modal" class="closeModal">DISCARD</a>
 		 	            &nbsp;
-					<a href="" type ="submit" value = "UPDATE" class="text-warning">UPDATE</a>
+					<input type="submit" value="UPDATE" class="text-warning added">
                 </form>
             </div>
         </div>

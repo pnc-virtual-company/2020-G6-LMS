@@ -9,6 +9,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        .hide{
+            opacity:0;
+            display:none;
+        }
+    </style>
 </head>
 <body>
     <script src="js/jquery.min.js"></script>
@@ -19,7 +25,7 @@
             $('[data-toggle="tooltip"]').tooltip();
         });
     </script>
-    
+
     <?= $this->renderSection('content') ?>
     <script src="<?= base_url('js/main.js') ?>"></script>
 </body>

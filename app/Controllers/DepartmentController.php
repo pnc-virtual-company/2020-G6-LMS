@@ -40,6 +40,17 @@ class DepartmentController extends BaseController
         return redirect()->to('/department');
     }
 
-    //--------------------------------------------------------------------
+	//--------------------------------------------------------------------
+	
+	public function updateDepartment()
+    {
+        $departmentId = $this->request->getVar('department_id');
+        $department = $this->request->getVar('dname');
+        $data = array(
+            'dname' => $department
+        );
+        $this->department->update($departmentId, $data);
+        return redirect()->to('/department');
+    }
 }
 

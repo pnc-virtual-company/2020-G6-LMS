@@ -36,6 +36,7 @@ $routes->add('yourLeave', 'YourLeave::showYourLeave');
 $routes->add('department', 'DepartmentController::showDepartment');
 $routes->add('add', 'DepartmentController::addDepartment');
 $routes->add('remove/(:num)', 'DepartmentController::deleteDepartment/$1');
+$routes->add('update', 'DepartmentController::updateDepartment');
 
 $routes->add('position', 'Positions::showPosition');
 $routes->add('employee', 'Employee::viewmployee');
