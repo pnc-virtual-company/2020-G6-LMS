@@ -5,14 +5,14 @@ use CodeIgniter\Model;
 class PositionModel extends Model
 {
     protected $table      = 'position';
-    protected $primaryKey = 'id';
-    protected $returnType     = 'array';
-    protected $allowedFields = ['position_name'];
+    protected $primaryKey = 'p_id';
 
-    public function insertPosition($position) 
+    protected $returnType     = 'array';
+
+    protected $allowedFields = ['pname'];
+
+    public function getAllPosition() 
     {
-        $this->insert([
-            'position_name'=>$position['position_name'],
-        ]);
+        return $this->db->table('position')->get()->getResultArray();
     }
 }

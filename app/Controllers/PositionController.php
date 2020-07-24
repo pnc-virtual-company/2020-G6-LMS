@@ -2,46 +2,32 @@
 use App\Models\PositionModel;
 class PositionController extends BaseController
 {
-	public function showPosition()
-	{
-		$model = new PositionModel();
-		$data['positionEmpoyee'] = $model->findAll();
-		return view('position', $data);
-	}
+	protected $position;
 
-	// create position of employee
-
-	public function createPosition(){
-		
-		$data = [];
-		helper(['form']);
-
-		if($this->request->getMethod() == "post"){
-			$rules = [
-				'position_name'=>'required'
-			];
-				$model = new PositionModel();
-				$newData = [
-				'position_name' => $this->request->getVar('position_name')
-			];
-
-			$model->insertPosition($newData);
-			return redirect()->to('/position');
-		}
-
-		return view('position', $data); 	
-	}
-
-	// delete position of employee
-
-	public function deletePosition($id)
-	{
-		$model = new PositionModel();
-		$model->find($id);
-		$delete = $model->delete($id);
-		return redirect()->to('/position');
-	}
-
+    public function __construct() 
+        {
+        $this->position = new PositionModel();
+        }
+        
+        public function showPosition()
+        {
+            $data = [
+                'positionData' => $this->position->getAllPosition(),
+            ];
+            return view('position', $data);
+            //echo "Hello";
+    }
 	//--------------------------------------------------------------------
 
+	public function addPosition() 
+    {
+        $position = $this->request->getVar('pname');
+        $data = array(
+            'pname' => $position
+        );
+        if($position !=""){
+            $this->position->insert($data);
+        }
+        return redirect()->to("/position");
+    }
 }

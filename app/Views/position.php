@@ -24,15 +24,15 @@
 				<table class="table table-borderless table-hover">
 
 				<!-- show data on url -->
-				<?php foreach($positionEmpoyee as $values) :?>
+				<?php foreach($positionData as $position):?>
 					<tr>
-						<td><?= $values['position_name'];?></td>
+						<td><?= $position['pname']?></td>
 						<td  style="display:flex;justify-content:flex-end">
 							<a href="" data-toggle="modal" data-target="#updatePosition"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Position!" data-placement="left">edit</i></a>
 							<a href="" data-toggle="modal" data-target="#deletePosition"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Position!" data-placement="right">delete</i></a>
 						</td>
 					</tr>
-				<?php endforeach;?>	
+				<?php endforeach;?>
 				</table>
 			</div>
 			<div class="col-2"></div>
@@ -53,7 +53,7 @@
         
             <!-- Modal body -->
             <div class="modal-body text-right">
-			    <form  action="removePosition/<?= $values['id'];?>" method="post">
+			    <form  action="" method="post">
 				    <div class="form-group">
 					    <p style="display:flex;justify-content:flex-start"> Are you sure you want to remove the selected position?</p>
 				    </div>
@@ -82,15 +82,13 @@
         
             <!-- Modal body -->
             <div class="modal-body text-right">
-			    <form  action="addPosition" method="post">
+			    <form  action="<?= base_url('add')?>" method="post">
 				    <div class="form-group">
-					    <input type="text" class="form-control" placeholder="Position name" name="position_name">
+					    <input type="text" class="form-control" placeholder="Position name" name="pname">
 				    </div>
 			        <a data-dismiss="modal" class="closeModal">DISCARD</a>
 		 	            &nbsp;
 					<input type ="submit" value = "CREATE" class="text-warning" style="border:none;background:white;">
-
-					<!-- set validation when create position of employee -->
 					
                 </form>
             </div>
