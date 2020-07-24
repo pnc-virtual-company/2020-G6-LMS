@@ -32,7 +32,10 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'User::index');
 $routes->add('yourLeave', 'YourLeave::showYourLeave');
-$routes->add('department', 'Departments::showDepartment');
+
+$routes->add('department', 'DepartmentController::showDepartment');
+$routes->add('add', 'DepartmentController::addDepartment');
+
 $routes->add('position', 'Positions::showPosition');
 $routes->add('employee', 'Employee::viewmployee');
 $routes->add('leave', 'Leave::showLeaveView');

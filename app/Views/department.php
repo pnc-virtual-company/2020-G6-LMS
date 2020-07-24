@@ -23,34 +23,16 @@
                 <br>
 				<table class="table table-borderless table-hover">
 
-					<tr>
-						<td> Training and education team </td>
-						<td style="display:flex;justify-content:flex-end">
-							<a href="" data-toggle="modal" data-target="#updateDepartment"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Department!" data-placement="left">edit</i></a>
-							<a href="" data-toggle="modal" data-target="#deleteDepartment"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Department!" data-placement="right">delete</i></a>
-						</td>
-					</tr>
-					<tr>
-						<td> External relation team </td>
-						<td style="display:flex;justify-content:flex-end">
-							<a href="" data-toggle="modal" data-target="#updateDepartment"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Department!" data-placement="left">edit</i></a>
-							<a href="" data-toggle="modal" data-target="#deleteDepartment"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Department!" data-placement="right">delete</i></a>
-						</td>
-					</tr>
-					<tr>
-						<td> Admin and finance team </td>
-						<td style="display:flex;justify-content:flex-end">
-							<a href="" data-toggle="modal" data-target="#updateDepartment"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Department!" data-placement="left">edit</i></a>
-							<a href="" data-toggle="modal" data-target="#deleteDepartment"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Department!" data-placement="right">delete</i></a>
-						</td>
-					</tr>
-					<tr>
-						<td> Selection team </td>
-						<td style="display:flex;justify-content:flex-end">
-							<a href="" data-toggle="modal" data-target="#updateDepartment"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Department!" data-placement="left">edit</i></a>
-							<a href="" data-toggle="modal" data-target="#deleteDepartment"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Department!" data-placement="right">delete</i></a>
-						</td>
-					</tr>
+					<?php foreach($departmentData as $department): ?>
+						<tr class="edit_hover_class">
+							<td> <?= $department['dname'] ?> </td>
+							<td style="display:flex;justify-content:flex-end">
+								<a href="" data-toggle="modal" data-target="#updateDepartment"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Department!" data-placement="left">edit</i></a>
+								<a href="" data-toggle="modal" data-target="#deleteDepartment"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Department!" data-placement="right">delete</i></a>
+							</td>
+						</tr>
+					<?php endforeach; ?>
+
 				</table>
 			</div>
 			<div class="col-2"></div>
@@ -82,7 +64,7 @@
         </div>
     </div>
 </div>
-  <!-- =================================END MODEL DELETE==================================================== -->
+<!-- =================================END MODEL DELETE==================================================== -->
 
 
 <!-- ========================================START Model CREATE================================================ -->
@@ -99,13 +81,13 @@
         
             <!-- Modal body -->
             <div class="modal-body text-right">
-			    <form  action="/" method="post">
+			    <form  action="<?= base_url("add") ?>" method="post">
 				    <div class="form-group">
-					    <input type="text" class="form-control" placeholder="Department name">
+					    <input type="text" class="form-control" placeholder="Department name" name="dname" required>
 				    </div>
 			        <a data-dismiss="modal" class="closeModal">DISCARD</a>
 		 	            &nbsp;
-					<a href="" type ="submit" value = "CREATE" class="text-warning">CREATE</a>
+					<input type="submit" value="CREATE" class="text-warning added">
                 </form>
             </div>
         </div>
