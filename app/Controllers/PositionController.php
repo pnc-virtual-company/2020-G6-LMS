@@ -38,4 +38,16 @@ class PositionController extends BaseController
        return redirect()->to('/position');
 
    } 
+
+   public function updatePosition() 
+    {
+        $positionId = $this->request->getVar('position_id');
+        $position = $this->request->getVar('pname');
+        $data = array(
+            'pname' => $position
+        );
+
+        $this->position->update($positionId, $data);
+        return redirect()->to("/position");
+    }
 }

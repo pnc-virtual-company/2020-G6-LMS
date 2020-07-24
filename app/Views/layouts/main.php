@@ -9,11 +9,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="css/style.css">
-
     <style>
         .hide{
             opacity:0;
             display:none;
+        }
+        .dropdown{
+            margin-left: 600px;
         }
     </style>
 </head>
@@ -23,9 +25,23 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    
+
     <script>
-        $(document).ready(function(){
-            $('[data-toggle="tooltip"]').tooltip();
+        $(document).ready(function() {
+            // Update position information modal  
+            $('.edit-btn-position').on('click', function() {
+                $('#updatePosition').modal('show');
+
+                $tr = $(this).closest('tr');
+                var data = $tr.children("td").map(function() {
+                return $(this).text();
+                }).get();
+            console.log(data);
+
+                $('#update_id').val(data[0]);
+                $('#PositionName').val(data[1]);
+            });
         });
     </script>
 </body>

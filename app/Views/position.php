@@ -31,7 +31,7 @@
 						<td class="hide"> <?= $position['p_id'] ?> </td>
 						<td><?= $position['pname']?></td>
 						<td  style="display:flex;justify-content:flex-end">
-							<a href="" data-toggle="modal" data-target="#updatePosition"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Position!" data-placement="left">edit</i></a>
+							<a href="" data-toggle="modal" data-target="#updatePosition" class="edit-btn-position"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Position!" data-placement="left">edit</i></a>
 							<a href="" data-toggle="modal" data-target="#deletePosition<?= $position['p_id'];?>"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Position!" data-placement="right">delete</i></a>
 						</td>
 					</tr>
@@ -117,9 +117,10 @@
         
             <!-- Modal body -->
             <div class="modal-body text-right">
-			    <form  action="/" method="post">
+			    <form  action="<?= base_url("update") ?>" method="post"
+				<input type="hidden" name="position_id" id="update_id">
 				    <div class="form-group">
-					    <input type="text" class="form-control" placeholder="Position name">
+					    <input type="text" class="form-control" placeholder="Position name" name="pname" required id="PositionName">
 				    </div>
 			        <a data-dismiss="modal" class="closeModal">DISCARD</a>
 		 	            &nbsp;
