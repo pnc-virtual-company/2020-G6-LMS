@@ -33,6 +33,13 @@ class DepartmentController extends BaseController
 
     //--------------------------------------------------------------------
 
+	public function deleteDepartment($id)
+    {
+        $department = new DepartmentModel();
+        $department->delete($id);
+        return redirect()->to('/department');
+    }
 
+    //--------------------------------------------------------------------
 }
 

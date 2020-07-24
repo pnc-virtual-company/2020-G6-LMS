@@ -28,7 +28,7 @@
 							<td> <?= $department['dname'] ?> </td>
 							<td style="display:flex;justify-content:flex-end">
 								<a href="" data-toggle="modal" data-target="#updateDepartment"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Department!" data-placement="left">edit</i></a>
-								<a href="" data-toggle="modal" data-target="#deleteDepartment"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Department!" data-placement="right">delete</i></a>
+								<a href="" data-toggle="modal" data-target="#deleteDepartment<?= $department['d_id'] ?>"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Department!" data-placement="right">delete</i></a>
 							</td>
 						</tr>
 					<?php endforeach; ?>
@@ -40,8 +40,10 @@
 	</div>
 
 <!-- ========================================START Model DELETE================================================ -->
+
 	<!-- The Modal -->
-<div class="modal fade" id="deleteDepartment">
+<?php foreach($departmentData as $department): ?>
+<div class="modal fade" id="deleteDepartment<?= $department['d_id'] ?>">
     <div class="modal-dialog">
         <div class="modal-content">
       
@@ -52,18 +54,19 @@
         
             <!-- Modal body -->
             <div class="modal-body text-right">
-			    <form  action="/" method="post">
+			    <form  action="remove/<?= $department['d_id'] ?>" method="post">
 				    <div class="form-group">
 					    <p style="display:flex;justify-content:flex-start"> Are you sure you want to remove the selected departments?</p>
 				    </div>
 			        <a data-dismiss="modal" class="closeModal">DON'T REMOVE</a>
 		 	            &nbsp;
-					<a href="" type ="submit" value = "DELETE" class="text-warning">DELETE</a>
+					<input type="submit" value="REMOVE" class="text-warning added">
                 </form>
             </div>
         </div>
     </div>
 </div>
+<?php endforeach ?>
 <!-- =================================END MODEL DELETE==================================================== -->
 
 
