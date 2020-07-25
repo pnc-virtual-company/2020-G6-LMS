@@ -16,7 +16,7 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php'))
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('User');
+$routes->setDefaultController('UserController');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -30,7 +30,7 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'User::index');
+$routes->get('/', 'UserController::index');
 $routes->add('yourLeave', 'YourLeave::showYourLeave');
 $routes->add('department', 'Departments::showDepartment');
 
@@ -40,9 +40,10 @@ $routes->add('add', 'PositionController::addPosition');
 $routes->add('remove/(:num)', 'PositionController::deletePosition/$1');
 $routes->add('updatePosition', 'PositionController::updatePosition');
 
-$routes->add('employee', 'Employee::viewmployee');
+// $routes->add('employee', 'Employee::viewmployee');
 $routes->add('leave', 'Leave::showLeaveView');
-$routes->add('profile','User::profile');
+$routes->add('profile','UserController::profile');
+$routes->add('logout','UserController::logout');
 
 
 

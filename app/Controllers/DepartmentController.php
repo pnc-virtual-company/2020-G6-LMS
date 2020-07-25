@@ -1,6 +1,6 @@
 <?php namespace App\Controllers;
 
-class Departments extends BaseController
+class DepartmentController extends BaseController
 {
 	public function showDepartment()
 	{
