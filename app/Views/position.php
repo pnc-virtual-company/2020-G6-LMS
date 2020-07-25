@@ -22,9 +22,6 @@
                 <h4 class="font-weight-bolder"> Position </h4>
                 <br>
 				<table class="table table-borderless table-hover">
-					<tr>
-						<th class="hide"> id </th>
-					</tr>
 				<!-- show data on url -->
 				<?php foreach($positionData as $position):?>
 					<tr>
@@ -117,10 +114,10 @@
         
             <!-- Modal body -->
             <div class="modal-body text-right">
-			    <form  action="<?= base_url("update") ?>" method="post"
+			    <form  action="<?= base_url("updatePosition") ?>" method="post">
 				<input type="hidden" name="position_id" id="update_id">
 				    <div class="form-group">
-					    <input type="text" class="form-control" placeholder="Position name" name="pname" required id="PositionName">
+					    <input type="text" class="form-control" placeholder="Position name" name="pname" required id="pname">
 				    </div>
 			        <a data-dismiss="modal" class="closeModal">DISCARD</a>
 		 	            &nbsp;

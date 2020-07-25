@@ -21,27 +21,29 @@
 </head>
 <body>
 
-    <?= $this->renderSection('content') ?>
+    
     <script src="js/jquery.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    
+    <?= $this->renderSection('content') ?>
 
     <script>
-        $(document).ready(function() {
-            // Update position information modal  
+        $(document).ready(function(){
+    
+            // Update department information modal
             $('.edit-btn-position').on('click', function() {
-                $('#updatePosition').modal('show');
+            $('#updatePosition').modal('show');
 
-                $tr = $(this).closest('tr');
-                var data = $tr.children("td").map(function() {
+            $tr = $(this).closest('tr');
+            var data = $tr.children("td").map(function() {
                 return $(this).text();
-                }).get();
-            console.log(data);
+            }).get();
+            //  console.log(data);
 
-                $('#update_id').val(data[0]);
-                $('#PositionName').val(data[1]);
+            $('#update_id').val(data[0]);
+            $('#pname').val(data[1]);
             });
+            
         });
     </script>
 </body>

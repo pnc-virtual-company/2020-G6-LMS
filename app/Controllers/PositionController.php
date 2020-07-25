@@ -25,9 +25,8 @@ class PositionController extends BaseController
         $data = array(
             'pname' => $position
         );
-        if($position !=""){
-            $this->position->insert($data);
-        }
+    
+        $this->position->insert($data);
         return redirect()->to("/position");
     }
 
@@ -39,15 +38,16 @@ class PositionController extends BaseController
 
    } 
 
-   public function updatePosition() 
+   public function updatePosition()
     {
         $positionId = $this->request->getVar('position_id');
         $position = $this->request->getVar('pname');
         $data = array(
             'pname' => $position
         );
-
         $this->position->update($positionId, $data);
-        return redirect()->to("/position");
+        return redirect()->to('/position');
     }
+
+
 }
