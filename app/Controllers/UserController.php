@@ -1,14 +1,9 @@
 <?php namespace App\Controllers;
-
 use App\Models\UserModel;
-
-class UserController extends BaseController{
-	
-	public function viewmployee()
-	{
-		return view('employeeView');
-	}
-
+use App\Models\DepartmentModel;
+use App\Models\PositionModel;
+class UserController extends BaseController
+{
 	public function setUserSession($user){
 		$data = [
 			'u_id' => $user['u_id'],
@@ -61,5 +56,96 @@ class UserController extends BaseController{
 		session()->destroy();
 		return redirect()->to('/');
 	}
-	//--------------------------------------------------------------------
+    
+    //--------------------------------------------------------------------
+
+    
+    //--------------------------------------------------------------------
+    
+	protected $user;
+    protected $position;
+    protected $department;
+
+    public function __construct() 
+    {
+        $this->user = new UserModel();
+        $this->department = new DepartmentModel();
+        $this->position = new PositionModel();
+    }
+    
+	public function showUser()
+	{
+        $data = [
+            'userData' => $this->user->getUserInfo(),
+            "positionData" => $this->position->getAllPosition(),
+            "departmentData" => $this->department->getAllDepartment(),
+            
+        ];
+		return view('employeeView', $data);
+    }
+    
+    //--------------------------------------------------------------------
+
+	public function createUser() 
+    {
+        $firstName = $this->request->getVar('firstName');
+        $lastName = $this->request->getVar('lastName');
+        $email = $this->request->getVar('email');
+        $password = $this->request->getVar('password');
+        $position = $this->request->getVar('position');
+        $department = $this->request->getVar('department');
+        $startDate = $this->request->getVar('startDate');
+        $data = array(
+            "firstName" => $firstName,
+            "lastName" => $lastName,
+            "email" => $email,
+            "password" => $password,
+            "position_id" => $position,
+            "department_id" => $department,
+            "startDate" => $startDate,
+        );
+        if ($position != "" and $department != "") {
+            $this->user->insert($data);
+        } else { 
+            // message error here with session 
+        }
+        return redirect()->to("/employee");
+    }
+
+    //--------------------------------------------------------------------
+
+    public function deleteEmployee($id){
+        $employee = new UserModel();
+        $employee->delete($id);
+        return redirect()->to('/employee');
+    }
+
+    //--------------------------------------------------------------------
+    public function updateUser()
+    {
+        $userId = $this->request->getVar('user_id');
+        $firstName = $this->request->getVar('firstName');
+        $lastName = $this->request->getVar('lastName');
+        $email = $this->request->getVar('email');
+        $password = $this->request->getVar('password');
+        $position = $this->request->getVar('position');
+        $department = $this->request->getVar('department');
+        $startDate = $this->request->getVar('startDate');
+        $data = array(
+            "firstName" => $firstName,
+            "lastName" => $lastName,
+            "email" => $email,
+            "password" => $password,
+            "position_id" => $position,
+            "department_id" => $department,
+            "startDate" => $startDate,
+        );
+        if ($position != "" and $department != "") {
+            $this->user->update($userId, $data);
+        } else { 
+            // message error here with session 
+        }
+        return redirect()->to("/employee");
+    }
+
 }

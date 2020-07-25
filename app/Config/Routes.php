@@ -30,9 +30,9 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'UserController::index');
-$routes->add('yourLeave', 'YourLeave::showYourLeave');
-$routes->add('department', 'Departments::showDepartment');
+$routes->get('/', 'UserController::index', ['filter'=> 'noauth']);
+$routes->add('yourLeave', 'YourLeave::showYourLeave', ['filter'=> 'auth']);
+// $routes->add('department', 'Departments::showDepartment');
 
 // POSITION CRUD
 $routes->add('position', 'PositionController::showPosition');
@@ -41,9 +41,22 @@ $routes->add('remove/(:num)', 'PositionController::deletePosition/$1');
 $routes->add('updatePosition', 'PositionController::updatePosition');
 
 // $routes->add('employee', 'Employee::viewmployee');
+// $routes->add('leave', 'Leave::showLeaveView');
+// $routes->add('profile','UserController::profile');
+$routes->add('logout','UserController::logout');
+
+$routes->add('department', 'DepartmentController::showDepartment');
+$routes->add('add', 'DepartmentController::addDepartment');
+
+
+// employee CRUD
+$routes->add('employee', 'UserController::showUser');
+$routes->add('addUser', 'UserController::createUser');
+$routes->add('removeUser/(:num)', 'UserController::deleteEmployee/$1');
+$routes->add('update', 'UserController::updateUser');
+
 $routes->add('leave', 'Leave::showLeaveView');
 $routes->add('profile','UserController::profile');
-$routes->add('logout','UserController::logout');
 
 
 
