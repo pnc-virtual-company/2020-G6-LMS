@@ -62,6 +62,7 @@ class UserController extends BaseController
     
     //--------------------------------------------------------------------
     
+
 	protected $user;
     protected $position;
     protected $department;
