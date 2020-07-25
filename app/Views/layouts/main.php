@@ -15,7 +15,7 @@
             display:none;
         }
         .dropdown{
-            margin-left: 600px;
+            margin-left: 550px;
         }
     </style>
 </head>

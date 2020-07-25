@@ -84,7 +84,7 @@
         
             <!-- Modal body -->
             <div class="modal-body text-right">
-			    <form  action="<?= base_url('add')?>" method="post">
+			    <form  action="<?= base_url('addPosition')?>" method="post">
 				    <div class="form-group">
 					    <input type="text" class="form-control" placeholder="Position name" name="pname">
 				    </div>

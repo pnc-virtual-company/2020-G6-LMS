@@ -46,7 +46,9 @@ $routes->add('updatePosition', 'PositionController::updatePosition');
 $routes->add('logout','UserController::logout');
 
 $routes->add('department', 'DepartmentController::showDepartment');
-$routes->add('add', 'DepartmentController::addDepartment');
+$routes->add('addDepartment', 'DepartmentController::addDepartment');
+$routes->add('updateDepartment', 'DepartmentController::updateDepartment');
+$routes->add('removeDepartment/(:num)', 'DepartmentController::deleteDepartment/$1');
 
 
 // employee CRUD
@@ -58,9 +60,6 @@ $routes->add('update', 'UserController::updateUser');
 
 $routes->get('/', 'UserController::index',['filter' => 'noauth']);
 $routes->add('yourLeave', 'YourLeave::showYourLeave',['filter' => 'auth']);
-
-
-$routes->add('department', 'DepartmentController::showDepartment');
 
 $routes->add('leave', 'Leave::showLeaveView');
 $routes->add('profile','UserController::profile');
