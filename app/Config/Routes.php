@@ -36,7 +36,7 @@ $routes->add('yourLeave', 'YourLeave::showYourLeave', ['filter'=> 'auth']);
 
 // POSITION CRUD
 $routes->add('position', 'PositionController::showPosition');
-$routes->add('add', 'PositionController::addPosition');
+$routes->add('addPosition', 'PositionController::addPosition');
 $routes->add('remove/(:num)', 'PositionController::deletePosition/$1');
 $routes->add('updatePosition', 'PositionController::updatePosition');
 
