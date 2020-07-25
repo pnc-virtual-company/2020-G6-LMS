@@ -22,22 +22,17 @@
                 <h4 class="font-weight-bolder"> Position </h4>
                 <br>
 				<table class="table table-borderless table-hover">
-
-				<thead>
+				<!-- show data on url -->
+				<?php foreach($positionData as $position):?>
 					<tr>
-						<th class="hide">id</th>
-					</tr>
-				</thead>
-				<?php foreach($positionData as $position): ?>
-					<tr>
-						<td class="hide"><?= $position['p_id'] ?></td>
-						<td><?= $position['pname'] ?></td>
+						<td class="hide"> <?= $position['p_id'] ?> </td>
+						<td><?= $position['pname']?></td>
 						<td  style="display:flex;justify-content:flex-end">
-							<a href="" data-toggle="modal" data-target="#updatePosition"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Position!" data-placement="left">edit</i></a>
-							<a href="" data-toggle="modal" data-target="#deletePosition"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Position!" data-placement="right">delete</i></a>
+							<a href="" data-toggle="modal" data-target="#updatePosition" class="edit-btn-position"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Position!" data-placement="left">edit</i></a>
+							<a href="" data-toggle="modal" data-target="#deletePosition<?= $position['p_id'];?>"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Position!" data-placement="right">delete</i></a>
 						</td>
 					</tr>
-				<?php endforeach ?>	
+				<?php endforeach;?>
 				</table>
 			</div>
 			<div class="col-2"></div>
@@ -47,7 +42,8 @@
 
 <!-- ========================================START Model DELETE================================================ -->
 	<!-- The Modal -->
-<div class="modal fade" id="deletePosition">
+<?php foreach($positionData as $position): ?>
+<div class="modal fade" id="deletePosition<?= $position['p_id'];?>">
     <div class="modal-dialog">
         <div class="modal-content">
       
@@ -58,18 +54,19 @@
         
             <!-- Modal body -->
             <div class="modal-body text-right">
-			    <form  action="/" method="post">
+			    <form  action="remove/<?= $position['p_id']?>" method="post">
 				    <div class="form-group">
 					    <p style="display:flex;justify-content:flex-start"> Are you sure you want to remove the selected position?</p>
 				    </div>
 			        <a data-dismiss="modal" class="closeModal">DON'T REMOVE</a>
 		 	            &nbsp;
-					<a href="" type ="submit" value = "DELETE" class="text-warning">DELETE</a>
+					<input type ="submit" value = "DELETE" class="text-warning" style="border:none;background:white;">
                 </form>
             </div>
         </div>
     </div>
 </div>
+<?php endforeach;?>
   <!-- =================================END MODEL DELETE==================================================== -->
 
 
@@ -87,13 +84,14 @@
         
             <!-- Modal body -->
             <div class="modal-body text-right">
-			    <form  action="/" method="post">
+			    <form  action="<?= base_url('addPosition')?>" method="post">
 				    <div class="form-group">
-					    <input type="text" class="form-control" placeholder="Position name">
+					    <input type="text" class="form-control" placeholder="Position name" name="pname">
 				    </div>
 			        <a data-dismiss="modal" class="closeModal">DISCARD</a>
 		 	            &nbsp;
-					<a href="" type ="submit" value = "CREATE" class="text-warning">CREATE</a>
+					<input type ="submit" value = "CREATE" class="text-warning" style="border:none;background:white;">
+					
                 </form>
             </div>
         </div>
@@ -116,13 +114,14 @@
         
             <!-- Modal body -->
             <div class="modal-body text-right">
-			    <form  action="/" method="post">
+			    <form  action="<?= base_url("updatePosition") ?>" method="post">
+				<input type="hidden" name="position_id" id="update_id">
 				    <div class="form-group">
-					    <input type="text" class="form-control" placeholder="Position name">
+					    <input type="text" class="form-control" placeholder="Position name" name="pname" required id="pname">
 				    </div>
 			        <a data-dismiss="modal" class="closeModal">DISCARD</a>
 		 	            &nbsp;
-					<a href="" type ="submit" value = "UPDATE" class="text-warning">UPDATE</a>
+					<input type ="submit" value = "UPDATE" class="text-warning" style="border:none;background:white;">
                 </form>
             </div>
         </div>

@@ -14,6 +14,9 @@
             opacity:0;
             display:none;
         }
+        .dropdown{
+            margin-left: 550px;
+        }
     </style>
 </head>
 <body>
@@ -23,7 +26,21 @@
 
     <script>
         $(document).ready(function(){
-            $('[data-toggle="tooltip"]').tooltip();
+    
+            // Update department information modal
+            $('.edit-btn-position').on('click', function() {
+            $('#updatePosition').modal('show');
+
+            $tr = $(this).closest('tr');
+            var data = $tr.children("td").map(function() {
+                return $(this).text();
+            }).get();
+            //  console.log(data);
+
+            $('#update_id').val(data[0]);
+            $('#pname').val(data[1]);
+            });
+            
         });
 
     </script>

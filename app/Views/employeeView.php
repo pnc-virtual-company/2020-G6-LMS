@@ -74,7 +74,7 @@
         
             <!-- Modal body -->
             <div class="modal-body text-right">
-			    <form  action="remove/<?= $user['u_id']?>" method="post">
+			    <form  action="removeUser/<?= $user['u_id']?>" method="post">
 				    <div class="form-group">
 					    <p  style="display:flex;justify-content:flex-start"> Are you sure you want to remove the selected Employee?</p>
 				    </div>
