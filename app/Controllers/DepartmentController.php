@@ -21,14 +21,36 @@ class DepartmentController extends BaseController
 
 	//--------------------------------------------------------------------
 
-	public function addDepartment() 
+	public function addDepartment()
     {
-        $department = $this->request->getVar('dname');
-        $data = array(
-            'dname' => $department
-        );
-        $this->department->insert($data);
-        return redirect()->to("/department");
+        $data = [];
+        if($this->request->getMethod() == "post"){
+            helper(['form']);
+            $rules = [
+                'dname'=> [
+                    'rules'=> 'required|is_unique[department.dname]',
+                    'errors'=> [
+                        'required'=> 'The department name field is required.',
+                        'is_unique' => 'This is department name already exists.',
+                    ]
+                ],
+            ];
+
+            if($this->validate($rules)){
+                $department = $this->request->getVar('dname');
+                $data = array(      
+                    'dname' => $department
+                );
+                $this->department->insert($data);
+                return redirect()->to('/department');
+            }else{
+                $data['validation'] = $this->validator;
+                $sessionError = session();
+                $validation = $this->validator;
+                $sessionError->setFlashdata('error', $validation);
+                return redirect()->to('/department');
+            }
+        }
     }
 
     //--------------------------------------------------------------------
@@ -44,12 +66,35 @@ class DepartmentController extends BaseController
 	
 	public function updateDepartment()
     {
-        $departmentId = $this->request->getVar('department_id');
-        $department = $this->request->getVar('dname');
-        $data = array(
-            'dname' => $department
-        );
-        $this->department->update($departmentId, $data);
-        return redirect()->to('/department');
+        $data = [];
+        if($this->request->getMethod() == "post"){
+            helper(['form']);
+            $rules = [
+                'dname'=> [
+                    'rules'=> 'required|is_unique[department.dname]',
+                    'errors'=> [
+                        'required'=> 'The department name field is required.',
+                        'is_unique' => 'This is department name already exists.',
+                    ]
+                ],
+            ];
+        }
+        if($this->validate($rules)){
+
+            $departmentId = $this->request->getVar('department_id');
+            $department = $this->request->getVar('dname');
+            $data = array(
+                'dname' => $department
+            );
+            $this->department->update($departmentId, $data);
+            return redirect()->to('/department');
+
+        }else{
+            $data['validation'] = $this->validator;
+            $sessionError = session();
+            $validation = $this->validator;
+            $sessionError->setFlashdata('error', $validation);
+            return redirect()->to('/department');
+        }
     }
 }

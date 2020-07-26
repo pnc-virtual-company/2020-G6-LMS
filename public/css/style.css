@@ -72,7 +72,23 @@ body{
   background-color: white;
   border: none;
 }
-
-
+.errorText{
+  display: flex;
+  justify-content: flex-start;
+}
+.errors li{
+  list-style-type: none;
+  width: 100%;
+}
+.errors ul {
+  padding-left: 0;
+  margin-bottom: 0;
+}
+.edit_hover_class a{
+  visibility:hidden;
+}
+.edit_hover_class:hover a {
+  visibility:visible;
+}
 
 
