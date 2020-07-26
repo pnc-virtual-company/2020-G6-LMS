@@ -47,8 +47,8 @@ $routes->add('logout','UserController::logout');
 
 $routes->add('department', 'DepartmentController::showDepartment');
 $routes->add('addDepartment', 'DepartmentController::addDepartment');
-$routes->add('updateDepartment', 'DepartmentController::updateDepartment');
 $routes->add('removeDepartment/(:num)', 'DepartmentController::deleteDepartment/$1');
+$routes->add('updateDepartment', 'DepartmentController::updateDepartment');
 
 
 // employee CRUD
