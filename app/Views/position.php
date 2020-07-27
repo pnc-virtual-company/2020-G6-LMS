@@ -13,7 +13,24 @@
 						</span>
   					</div>
 				</div>
-                <br>
+				<br>
+				
+				<!-- alert message success if user correctly information-->
+				<?php if(session()->get('success')): ?>
+					<div class="alert alert-success alert-dismissible fade show" >
+					<button type="button" class="close" data-dismiss="alert">&times;</button>
+						<?= session()->get('success') ?>
+					</div>
+                    
+    			<?php endif ?>
+				<!-- alert message success if user incorrect information-->
+				<?php if(session()->get('error')): ?>
+					<div class="alert alert-danger alert-dismissible fade show">
+					<button type="button" class="close" data-dismiss="alert">&times;</button>
+						<?= session()->get('error')->listErrors() ?>
+					</div>
+				<?php endif ?>
+				
 				<div class="text-right">
                     <a href="" class="btn btn-info btn-sm text-white font-weight-bolder" data-toggle="modal" data-target="#createPosition">
                         <i class="material-icons float-left" data-toggle="tooltip" title="Add Position!" data-placement="left">add</i>&nbsp;CREATE
@@ -73,39 +90,41 @@
 
 
 <!-- ========================================START Model CREATE================================================ -->
+	
 	<!-- The Modal -->
-<div class="modal fade" id="createPosition">
-    <div class="modal-dialog">
-        <div class="modal-content">
-      
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title"> Create Position </h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-        
-            <!-- Modal body -->
-            <div class="modal-body text-right">
-			    <form  action="<?= base_url('addPosition')?>" method="post">
-				    <div class="form-group">
-					    <input type="text" class="form-control" placeholder="Position name" name="pname">
-					</div>
-					<!-- valitdation on create position form.  -->
-					<!-- alert message success if user incorrect information. -->
-
-					<?php if(session()->get('error')): ?>
-						<span class="text-danger errorText"> <?= session()->get('error')->listErrors()?> </span>
-					<?php endif;?>
-			        <a data-dismiss="modal" class="closeModal">DISCARD</a>
-		 	            &nbsp;
-					<input type ="submit" value = "CREATE" class="text-warning" style="border:none;background:white;">
-
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+	<div class="modal fade" id="createPosition">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title"> Create Position </h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				
+				<!-- Modal body -->
+				<div class="modal-body text-right">
+					<form  action="<?= base_url('addPosition')?>" method="post">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Position name" name="pname">
+						</div>
+						<!-- valitdation on create position form.  -->
+						<!-- alert message success if user incorrect information. -->
+								
+									
+						
+						<a data-dismiss="modal" class="closeModal">DISCARD</a>
+						&nbsp;
+						<input type ="submit" value = "CREATE" class="text-warning" style="border:none;background:white;">
+						
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	
   <!-- =================================END MODEL CREATE==================================================== -->
+  
 
 
   <!-- ========================================START Model UPDATE================================================ -->

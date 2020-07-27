@@ -44,12 +44,16 @@ class PositionController extends BaseController
                 );
             
                 $this->position->insert($data);
+                $data['validation'] = $this->validator;
+                $sessionSuccess = session();
+                $sessionSuccess->setFlashdata('success', 'Successful create position');
                 return redirect()->to("/position");
             }else{
                 $data['validation'] = $this->validator;
                 $sessionErrror = session();
                 $validation = $this->validator;
                 $sessionErrror->setFlashdata('error', $validation);
+                
                 return redirect()->to('/position');
             }
         }
@@ -89,6 +93,9 @@ class PositionController extends BaseController
                     'pname' => $position
                 );
                 $this->position->update($positionId, $data);
+                $data['validation'] = $this->validator;
+                $sessionSuccess = session();
+                $sessionSuccess->setFlashdata('success', 'Successful update position');
                 return redirect()->to('/position');
             }else{
                 $data['validation'] = $this->validator;
