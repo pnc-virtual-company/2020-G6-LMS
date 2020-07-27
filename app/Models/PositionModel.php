@@ -14,4 +14,6 @@ class PositionModel extends Model
     {
         return $this->db->table('position')->get()->getResultArray();
     }
+
+ 
 }
