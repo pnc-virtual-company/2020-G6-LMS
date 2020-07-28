@@ -13,4 +13,5 @@ class DepartmentModel extends Model
     {
         return $this->db->table('department')->get()->getResultArray();
     }
+    
 }

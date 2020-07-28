@@ -17,7 +17,7 @@ $(document).ready(function(){
     $('#position_id:selected').val(data[5]);
     $('#department_id:selected').val(data[6]);
     $('#startDate').val(data[7]);
-})
+  });
   // Update department information modal
   $('.edit-btn-department').on('click', function() {
     $('#updateDepartment').modal('show');
@@ -30,6 +30,14 @@ $(document).ready(function(){
 
     $('#update_id').val(data[0]);
     $('#dname').val(data[1]);
+  });
+
+  // Search department information
+  $("#search").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myData ").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
   });
   
 });

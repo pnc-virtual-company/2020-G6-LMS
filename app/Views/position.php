@@ -6,14 +6,31 @@
 			<div class="col-2"></div>
 			<div class="col-8">
 				<div class="input-group md-form form-sm form-2 pl-0">
-  					<input class="form-control my-0 py-1 red-border" type="text" placeholder="Search" aria-label="Search">
+  					<input class="form-control my-0 py-1 red-border" type="text" placeholder="Search" aria-label="Search" id="search">
   					<div class="input-group-append">
     					<span class="input-group-text red lighten-3" id="basic-text1">
 							<i class="material-icons text-success" data-toggle="tooltip" title="Search!" data-placement="left">search</i>
 						</span>
   					</div>
 				</div>
-                <br>
+				<br>
+				
+				<!-- alert message success if user correctly information-->
+				<?php if(session()->get('success')): ?>
+					<div class="alert alert-success alert-dismissible fade show" >
+					<button type="button" class="close" data-dismiss="alert">&times;</button>
+						<?= session()->get('success') ?>
+					</div>
+                    
+    			<?php endif ?>
+				<!-- alert message success if user incorrect information-->
+				<?php if(session()->get('error')): ?>
+					<div class="alert alert-danger alert-dismissible fade show">
+					<button type="button" class="close" data-dismiss="alert">&times;</button>
+						<?= session()->get('error')->listErrors() ?>
+					</div>
+				<?php endif ?>
+				
 				<div class="text-right">
                     <a href="" class="btn btn-info btn-sm text-white font-weight-bolder" data-toggle="modal" data-target="#createPosition">
                         <i class="material-icons float-left" data-toggle="tooltip" title="Add Position!" data-placement="left">add</i>&nbsp;CREATE
@@ -24,7 +41,8 @@
 				<table class="table table-borderless table-hover">
 				<!-- show data on url -->
 				<?php foreach($positionData as $position):?>
-					<tr>
+					<tbody id="myData">
+					<tr class="edit_hover_class">
 						<td class="hide"> <?= $position['p_id'] ?> </td>
 						<td><?= $position['pname']?></td>
 						<td  style="display:flex;justify-content:flex-end">
@@ -32,6 +50,7 @@
 							<a href="" data-toggle="modal" data-target="#deletePosition<?= $position['p_id'];?>"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Position!" data-placement="right">delete</i></a>
 						</td>
 					</tr>
+					</tbody>
 				<?php endforeach;?>
 				</table>
 			</div>
@@ -71,33 +90,41 @@
 
 
 <!-- ========================================START Model CREATE================================================ -->
+	
 	<!-- The Modal -->
-<div class="modal fade" id="createPosition">
-    <div class="modal-dialog">
-        <div class="modal-content">
-      
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title"> Create Position </h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-        
-            <!-- Modal body -->
-            <div class="modal-body text-right">
-			    <form  action="<?= base_url('addPosition')?>" method="post">
-				    <div class="form-group">
-					    <input type="text" class="form-control" placeholder="Position name" name="pname">
-				    </div>
-			        <a data-dismiss="modal" class="closeModal">DISCARD</a>
-		 	            &nbsp;
-					<input type ="submit" value = "CREATE" class="text-warning" style="border:none;background:white;">
-					
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+	<div class="modal fade" id="createPosition">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title"> Create Position </h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				
+				<!-- Modal body -->
+				<div class="modal-body text-right">
+					<form  action="<?= base_url('addPosition')?>" method="post">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Position name" name="pname">
+						</div>
+						<!-- valitdation on create position form.  -->
+						<!-- alert message success if user incorrect information. -->
+								
+									
+						
+						<a data-dismiss="modal" class="closeModal">DISCARD</a>
+						&nbsp;
+						<input type ="submit" value = "CREATE" class="text-warning" style="border:none;background:white;">
+						
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	
   <!-- =================================END MODEL CREATE==================================================== -->
+  
 
 
   <!-- ========================================START Model UPDATE================================================ -->
