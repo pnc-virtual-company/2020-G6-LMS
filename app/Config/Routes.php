@@ -40,11 +40,6 @@ $routes->add('addPosition', 'PositionController::addPosition');
 $routes->add('remove/(:num)', 'PositionController::deletePosition/$1');
 $routes->add('updatePosition', 'PositionController::updatePosition');
 
-// $routes->add('employee', 'Employee::viewmployee');
-// $routes->add('leave', 'Leave::showLeaveView');
-// $routes->add('profile','UserController::profile');
-$routes->add('logout','UserController::logout');
-
 $routes->add('department', 'DepartmentController::showDepartment',['filter'=> 'auth']);
 $routes->add('addDepartment', 'DepartmentController::addDepartment');
 $routes->add('removeDepartment/(:num)', 'DepartmentController::deleteDepartment/$1');
@@ -59,6 +54,7 @@ $routes->add('update', 'UserController::updateUser');
 
 $routes->add('leave', 'Leave::showLeaveView',['filter'=> 'auth']);
 $routes->add('profile','UserController::profile');
+$routes->add('logout','UserController::logout');
 
 
 

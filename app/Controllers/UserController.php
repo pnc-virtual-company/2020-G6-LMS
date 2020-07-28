@@ -42,15 +42,8 @@ class UserController extends BaseController
                         'validateUser'=>'password or email incorrect please try again'
 						]
 				],
-				// 'password' => 'validateUser[email,password]'
 			];
-			//messages when user put the email and password incorrect
-			// $error = [
-			// 	'password' => [
-			// 		// 'email' => 'password or email incorrect please try again',
-			// 		'validateUser' => 'password or email incorrect please try again'
-            //     ],
-			// ];
+
 			if(isset($_POST['submit'])){
 				if($this->validate($rules)){
 					$userModel = new UserModel();
