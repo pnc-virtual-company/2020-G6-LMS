@@ -35,7 +35,7 @@ $routes->add('yourLeave', 'YourLeave::showYourLeave', ['filter'=> 'auth']);
 // $routes->add('department', 'Departments::showDepartment');
 
 // POSITION CRUD
-$routes->add('position', 'PositionController::showPosition');
+$routes->add('position', 'PositionController::showPosition',['filter'=> 'auth']);
 $routes->add('addPosition', 'PositionController::addPosition');
 $routes->add('remove/(:num)', 'PositionController::deletePosition/$1');
 $routes->add('updatePosition', 'PositionController::updatePosition');
@@ -45,23 +45,19 @@ $routes->add('updatePosition', 'PositionController::updatePosition');
 // $routes->add('profile','UserController::profile');
 $routes->add('logout','UserController::logout');
 
-$routes->add('department', 'DepartmentController::showDepartment');
+$routes->add('department', 'DepartmentController::showDepartment',['filter'=> 'auth']);
 $routes->add('addDepartment', 'DepartmentController::addDepartment');
 $routes->add('updateDepartment', 'DepartmentController::updateDepartment');
 $routes->add('removeDepartment/(:num)', 'DepartmentController::deleteDepartment/$1');
 
 
 // employee CRUD
-$routes->add('employee', 'UserController::showUser');
+$routes->add('employee', 'UserController::showUser',['filter'=> 'auth']);
 $routes->add('addUser', 'UserController::createUser');
 $routes->add('removeUser/(:num)', 'UserController::deleteEmployee/$1');
 $routes->add('update', 'UserController::updateUser');
 
-
-$routes->get('/', 'UserController::index',['filter' => 'noauth']);
-$routes->add('yourLeave', 'YourLeave::showYourLeave',['filter' => 'auth']);
-
-$routes->add('leave', 'Leave::showLeaveView');
+$routes->add('leave', 'Leave::showLeaveView',['filter'=> 'auth']);
 $routes->add('profile','UserController::profile');
 
 
