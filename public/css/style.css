@@ -3,12 +3,7 @@ body{
     margin: 0;
     padding: 0;
 }
-.drop{
-    margin-left: 750px;
-}
-.dropdown-item:hover{
-    background-color: rgb(10, 187, 241);
-}
+
 .nav-item:hover{
     background-color: rgb(10, 187, 241);
     box-shadow: 0 0 2px 2px rgb(10, 187, 241);
@@ -73,6 +68,27 @@ body{
 #date{
   margin-right: 354.5px;
 }
-
+.added{
+  background-color: white;
+  border: none;
+}
+.errorText{
+  display: flex;
+  justify-content: flex-start;
+}
+.errors li{
+  list-style-type: none;
+  width: 100%;
+}
+.errors ul {
+  padding-left: 0;
+  margin-bottom: 0;
+}
+.edit_hover_class a{
+  visibility:hidden;
+}
+.edit_hover_class:hover a {
+  visibility:visible;
+}
 
 

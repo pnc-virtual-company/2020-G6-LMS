@@ -6,7 +6,7 @@
 			<div class="col-2"></div>
 			<div class="col-8">
 				<div class="input-group md-form form-sm form-2 pl-0">
-  					<input class="form-control my-0 py-1 red-border" type="text" placeholder="Search" aria-label="Search">
+  					<input class="form-control my-0 py-1 red-border" type="text" placeholder="Search" aria-label="Search" id="search">
   					<div class="input-group-append">
     					<span class="input-group-text red lighten-3" id="basic-text1">
 							<i class="material-icons text-success" data-toggle="tooltip" title="Search!" data-placement="left">search</i>
@@ -23,34 +23,21 @@
                 <br>
 				<table class="table table-borderless table-hover">
 
-					<tr>
-						<td> Training and education team </td>
-						<td style="display:flex;justify-content:flex-end">
-							<a href="" data-toggle="modal" data-target="#updateDepartment"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Department!" data-placement="left">edit</i></a>
-							<a href="" data-toggle="modal" data-target="#deleteDepartment"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Department!" data-placement="right">delete</i></a>
-						</td>
-					</tr>
-					<tr>
-						<td> External relation team </td>
-						<td style="display:flex;justify-content:flex-end">
-							<a href="" data-toggle="modal" data-target="#updateDepartment"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Department!" data-placement="left">edit</i></a>
-							<a href="" data-toggle="modal" data-target="#deleteDepartment"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Department!" data-placement="right">delete</i></a>
-						</td>
-					</tr>
-					<tr>
-						<td> Admin and finance team </td>
-						<td style="display:flex;justify-content:flex-end">
-							<a href="" data-toggle="modal" data-target="#updateDepartment"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Department!" data-placement="left">edit</i></a>
-							<a href="" data-toggle="modal" data-target="#deleteDepartment"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Department!" data-placement="right">delete</i></a>
-						</td>
-					</tr>
-					<tr>
-						<td> Selection team </td>
-						<td style="display:flex;justify-content:flex-end">
-							<a href="" data-toggle="modal" data-target="#updateDepartment"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Department!" data-placement="left">edit</i></a>
-							<a href="" data-toggle="modal" data-target="#deleteDepartment"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Department!" data-placement="right">delete</i></a>
-						</td>
-					</tr>
+					<?php foreach($departmentData as $department): ?>
+
+						<tbody id="myData">
+							<tr class="edit_hover_class">
+								<td class="hide"><?= $department['d_id'] ?></td>
+								<td> <?= $department['dname'] ?> </td>
+								<td style="display:flex;justify-content:flex-end">
+									<a href="" data-toggle="modal" data-target="#updateDepartment" class="edit-btn-department"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Department!" data-placement="left">edit</i></a>
+									<a href="" data-toggle="modal" data-target="#deleteDepartment<?= $department['d_id'] ?>"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Department!" data-placement="right">delete</i></a>
+								</td>
+							</tr>
+						</tbody>
+
+					<?php endforeach; ?>
+
 				</table>
 			</div>
 			<div class="col-2"></div>
@@ -58,8 +45,10 @@
 	</div>
 
 <!-- ========================================START Model DELETE================================================ -->
+
 	<!-- The Modal -->
-<div class="modal fade" id="deleteDepartment">
+<?php foreach($departmentData as $department): ?>
+<div class="modal fade" id="deleteDepartment<?= $department['d_id'] ?>">
     <div class="modal-dialog">
         <div class="modal-content">
       
@@ -70,19 +59,20 @@
         
             <!-- Modal body -->
             <div class="modal-body text-right">
-			    <form  action="/" method="post">
+			    <form  action="removeDepartment/<?= $department['d_id'] ?>" method="post">
 				    <div class="form-group">
 					    <p style="display:flex;justify-content:flex-start"> Are you sure you want to remove the selected departments?</p>
 				    </div>
 			        <a data-dismiss="modal" class="closeModal">DON'T REMOVE</a>
 		 	            &nbsp;
-					<a href="" type ="submit" value = "DELETE" class="text-warning">DELETE</a>
+					<input type="submit" value="REMOVE" class="text-warning added">
                 </form>
             </div>
         </div>
     </div>
 </div>
-  <!-- =================================END MODEL DELETE==================================================== -->
+<?php endforeach ?>
+<!-- =================================END MODEL DELETE==================================================== -->
 
 
 <!-- ========================================START Model CREATE================================================ -->
@@ -99,13 +89,17 @@
         
             <!-- Modal body -->
             <div class="modal-body text-right">
-			    <form  action="/" method="post">
+			    <form  action="<?= base_url("addDepartment") ?>" method="post">
 				    <div class="form-group">
-					    <input type="text" class="form-control" placeholder="Department name">
+					    <input type="text" class="form-control" placeholder="Department name" name="dname">
+						<!-- alert message success if user incorrect information-->
+						<?php if(session()->get('error')): ?>
+							<span class="text-danger errorText"> <?= session()->get('error')->listErrors() ?> </span>
+						<?php endif ?>
 				    </div>
 			        <a data-dismiss="modal" class="closeModal">DISCARD</a>
 		 	            &nbsp;
-					<a href="" type ="submit" value = "CREATE" class="text-warning">CREATE</a>
+					<input type="submit" value="CREATE" class="text-warning added">
                 </form>
             </div>
         </div>
@@ -128,13 +122,18 @@
         
             <!-- Modal body -->
             <div class="modal-body text-right">
-			    <form  action="/" method="post">
+				<form  action="<?= base_url("updateDepartment") ?>" method="post">
+				<input type="hidden" name="department_id" id="update_id">
 				    <div class="form-group">
-					    <input type="text" class="form-control" placeholder="Department name">
+						<input type="text" class="form-control" placeholder="Department name" name="dname" id="dname">
+						<!-- alert message success if user incorrect information-->
+						<?php if(session()->get('error')): ?>
+							<span class="text-danger errorText"> <?= session()->get('error')->listErrors() ?> </span>
+						<?php endif ?>
 				    </div>
 			        <a data-dismiss="modal" class="closeModal">DISCARD</a>
 		 	            &nbsp;
-					<a href="" type ="submit" value = "UPDATE" class="text-warning">UPDATE</a>
+					<input type="submit" value="UPDATE" class="text-warning added">
                 </form>
             </div>
         </div>
