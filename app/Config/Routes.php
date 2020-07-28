@@ -34,12 +34,12 @@ $routes->get('/', 'UserController::index',['filter' => 'noauth']);
 $routes->add('yourLeave', 'YourLeave::showYourLeave',['filter' => 'auth']);
 
 
-$routes->add('department', 'DepartmentController::showDepartment');
-$routes->add('position', 'PositionController::showPosition');
-$routes->add('employee', 'UserController::viewmployee');
-$routes->add('leave', 'Leave::showLeaveView');
-$routes->add('profile','UserController::profile');
-$routes->add('logout','UserController::logout');
+$routes->add('department', 'DepartmentController::showDepartment',['filter' => 'auth']);
+$routes->add('position', 'PositionController::showPosition',['filter' => 'auth']);
+$routes->add('employee', 'UserController::viewmployee',['filter' => 'auth']);
+$routes->add('leave', 'Leave::showLeaveView',['filter' => 'auth']);
+$routes->add('profile','UserController::profile',['filter' => 'auth']);
+$routes->add('logout','UserController::logout',['filter' => 'auth']);
 
 
 

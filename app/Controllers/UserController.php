@@ -31,8 +31,22 @@ class UserController extends BaseController{
 		if($this->request->getMethod() == "post"){
 			// rule of user
 			$rules = [
-				'email' => 'required|valid_email',
-				'password' => 'required|validateUser[email,password]'
+				'email' =>[ 
+					'rules'=>'required|valid_email',
+					'label' =>'Email address',
+					'errors'=>[
+						'required'=>'Email address is a required filed',
+						'valid_email' => 'Email address invalid'
+						]
+                ],
+                'password' =>[ 
+					'rules'=>'required|validateUser[email,password]',
+					'label' =>'Password',
+					'errors'=>[
+                        'required'=>'Password is a required filed',
+                        'validateUser'=>'password or email incorrect please try again'
+						]
+				],
 			];
 			//messages when user put the email and password incorrect
 			$error = [
