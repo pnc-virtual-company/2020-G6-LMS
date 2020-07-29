@@ -21,6 +21,7 @@ class PositionController extends BaseController
 
     // Create or add more position of employee
 
+    
 	public function addPosition() 
     {
         
@@ -59,6 +60,7 @@ class PositionController extends BaseController
         }
     }
     
+
     // delete on position of employee
 
    public function deletePosition($id)

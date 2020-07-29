@@ -17,4 +17,15 @@ class UserModel extends Model
         ->join('department', 'department.d_id = user.department_id')
         ->get()->getResultArray();
     }
+    public function registerUser($userInfo){
+        $this->insert([
+        'firstName'=>$userInfo['firstName'],
+        'lastName'=>$userInfo['lastName'],
+        'startDate'=>$userInfo['startDate'],
+        'email'=>$userInfo['email'],
+        'password'=>password_hash($userInfo['password'],PASSWORD_DEFAULT),
+        'position_id'=>$userInfo['position_id'],
+        'department_id'=>$userInfo['department_id'],
+        ]);
+        }
 }
