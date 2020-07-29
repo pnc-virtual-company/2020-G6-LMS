@@ -57,12 +57,8 @@ class UserController extends BaseController
 		return redirect()->to('/');
 	}
     
+    //-------------------------------------------------------------------- 
     //--------------------------------------------------------------------
-
-    
-    //--------------------------------------------------------------------
-    
-
 	protected $user;
     protected $position;
     protected $department;
@@ -89,28 +85,94 @@ class UserController extends BaseController
 
 	public function createUser() 
     {
-        $firstName = $this->request->getVar('firstName');
-        $lastName = $this->request->getVar('lastName');
-        $email = $this->request->getVar('email');
-        $password = $this->request->getVar('password');
-        $position = $this->request->getVar('position');
-        $department = $this->request->getVar('department');
-        $startDate = $this->request->getVar('startDate');
-        $data = array(
-            "firstName" => $firstName,
-            "lastName" => $lastName,
-            "email" => $email,
-            "password" => $password,
-            "position_id" => $position,
-            "department_id" => $department,
-            "startDate" => $startDate,
-        );
-        if ($position != "" and $department != "") {
-            $this->user->insert($data);
-        } else { 
-            // message error here with session 
+        helper(['form']);
+        $data = [];
+        if($this->request->getMethod() == "post"){
+            $rules = [
+                'firstName' => [
+                    'rules' => 'required',
+                    'errors'=>[
+                        'required'=> 'The firstname name field is required.',
+                    ] 
+                ],
+                'lastName' => [
+                    'rules' => 'required',
+                    'errors'=>[
+                        'required'=> 'The lastName name field is required.',
+                    ] 
+                ],
+                'email' => [
+                    'rules' => 'required|is_unique[user.email]',
+                    'errors'=>[
+                        'required'=> 'The email name field is required.',
+                        'is_unique' => 'The email already exists.',
+                    ] 
+                ],
+                'password' => [
+                    'rules' => 'required',
+                    'errors'=>[
+                        'required'=> 'The password name field is required.',
+                    ] 
+                ],
+                'position' => [
+                    'rules' => 'required',
+                    'errors'=>[
+                        'required'=> 'The position name field is required.',
+                    ] 
+                ],
+                'department' => [
+                    'rules' => 'required',
+                    'errors'=>[
+                        'required'=> 'The department name field is required.',
+                    ] 
+                ],
+                'startDate' => [
+                    'rules' => 'required',
+                    'errors'=>[
+                        'required'=> 'The startdate name field is required.',
+                    ] 
+                ],
+            ];
+            if($this->validate($rules)) {
+                $firstName = $this->request->getVar('firstName');
+                $lastName = $this->request->getVar('lastName');
+                $email = $this->request->getVar('email');
+                $password = $this->request->getVar('password');
+                $position = $this->request->getVar('position');
+                $department = $this->request->getVar('department');
+                $startDate = $this->request->getVar('startDate');
+                $data = array(
+                    "firstName" => $firstName,
+                    "lastName" => $lastName,
+                    "email" => $email,
+                    "password" => $password,
+                    "position_id" => $position,
+                    "department_id" => $department,
+                    "startDate" => $startDate,
+                );
+                if ($position != "" and $department != "") {
+                    $this->user->registerUser($data);
+                } else { 
+                    // message error here with session 
+                }
+                
+                
+                
+                $data['validation'] = $this->validator;
+                $sessionSuccess = session();
+                $sessionSuccess->setFlashdata('success', 'Successful create employee');
+                return redirect()->to("/employee");
+            }else{
+                 $data['validation'] = $this->validator;
+                $sessionErrror = session();
+                $validation = $this->validator;
+                $sessionErrror->setFlashdata('error', $validation);
+                
+                return redirect()->to('/employee');
+            }
         }
-        return redirect()->to("/employee");
+       
+        
     }
 
     //--------------------------------------------------------------------
@@ -122,31 +184,96 @@ class UserController extends BaseController
     }
 
     //--------------------------------------------------------------------
-    public function updateUser()
+    public function updateUser() 
     {
-        $userId = $this->request->getVar('user_id');
-        $firstName = $this->request->getVar('firstName');
-        $lastName = $this->request->getVar('lastName');
-        $email = $this->request->getVar('email');
-        $password = $this->request->getVar('password');
-        $position = $this->request->getVar('position');
-        $department = $this->request->getVar('department');
-        $startDate = $this->request->getVar('startDate');
-        $data = array(
-            "firstName" => $firstName,
-            "lastName" => $lastName,
-            "email" => $email,
-            "password" => $password,
-            "position_id" => $position,
-            "department_id" => $department,
-            "startDate" => $startDate,
-        );
-        if ($position != "" and $department != "") {
-            $this->user->update($userId, $data);
-        } else { 
-            // message error here with session 
+        helper(['form']);
+        $data = [];
+        if($this->request->getMethod() == "post"){
+            $rules = [
+                'firstName' => [
+                    'rules' => 'required',
+                    'errors'=>[
+                        'required'=> 'The firstname name field is required.',
+                    ] 
+                ],
+                'lastName' => [
+                    'rules' => 'required',
+                    'errors'=>[
+                        'required'=> 'The lastName name field is required.',
+                    ] 
+                ],
+                'email' => [
+                    'rules' => 'required|is_unique[user.email]',
+                    'errors'=>[
+                        'required'=> 'The email name field is required.',
+                        'is_unique' => 'The email already exists.',
+                    ] 
+                ],
+                'password' => [
+                    'rules' => 'required',
+                    'errors'=>[
+                        'required'=> 'The password name field is required.',
+                    ] 
+                ],
+                'position' => [
+                    'rules' => 'required',
+                    'errors'=>[
+                        'required'=> 'The position name field is required.',
+                    ] 
+                ],
+                'department' => [
+                    'rules' => 'required',
+                    'errors'=>[
+                        'required'=> 'The department name field is required.',
+                    ] 
+                ],
+                'startDate' => [
+                    'rules' => 'required',
+                    'errors'=>[
+                        'required'=> 'The startdate name field is required.',
+                    ] 
+                ],
+            ];
+            if($this->validate($rules)) {
+                $firstName = $this->request->getVar('firstName');
+                $lastName = $this->request->getVar('lastName');
+                $email = $this->request->getVar('email');
+                $password = $this->request->getVar('password');
+                $position = $this->request->getVar('position');
+                $department = $this->request->getVar('department');
+                $startDate = $this->request->getVar('startDate');
+                $data = array(
+                    "firstName" => $firstName,
+                    "lastName" => $lastName,
+                    "email" => $email,
+                    "password" => $password,
+                    "position_id" => $position,
+                    "department_id" => $department,
+                    "startDate" => $startDate,
+                );
+                if ($position != "" and $department != "") {
+                    $this->user->update($data);
+                } else { 
+                    // message error here with session 
+                }
+                
+                
+                
+                $data['validation'] = $this->validator;
+                $sessionSuccess = session();
+                $sessionSuccess->setFlashdata('success', 'Successful update employee');
+                return redirect()->to("/employee");
+            }else{
+                 $data['validation'] = $this->validator;
+                $sessionErrror = session();
+                $validation = $this->validator;
+                $sessionErrror->setFlashdata('error', $validation);
+                
+                return redirect()->to('/employee');
+            }
         }
-        return redirect()->to("/employee");
+       
+        
     }
 
 }

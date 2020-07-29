@@ -7,13 +7,29 @@
 			<div class="col-12">
 
 				<div class="input-group md-form form-sm form-2 pl-0">
-  					<input class="form-control my-0 py-1 red-border" type="text" placeholder="Search" aria-label="Search">
+  					<input class="form-control my-0 py-1 red-border" type="text" placeholder="Search" aria-label="Search" id="search">
   					<div class="input-group-append">
     					<span class="input-group-text red lighten-3" id="basic-text1">
 							<i class="material-icons text-success" data-toggle="tooltip" title="Search!" data-placement="left">search</i>
 						</span>
   					</div>
 				</div><br>
+				<!-- alert message when in correct information -->
+				<?php if(session()->get('success')): ?>
+					<div class="alert alert-success alert-dismissible fade show" >
+					<button type="button" class="close" data-dismiss="alert">&times;</button>
+						<?= session()->get('success') ?>
+					</div>
+				<?php endif ?>
+				
+				<!-- alert message when in incorrect information -->
+
+				<?php if(session()->get('error')): ?>
+					<div class="alert alert-danger alert-dismissible fade show">
+					<button type="button" class="close" data-dismiss="alert">&times;</button>
+						<?= session()->get('error')->listErrors() ?>
+					</div>
+				<?php endif ?>
 				<h3 class="font-weight-bolder"> Employee </h3>
 
 					<div class="text-right">
@@ -32,12 +48,12 @@
 						<th>Position</th>
 						<th>Department</th>
 						<th>Start Date</th>
-						<th>Status</th>
 						
 					</tr>
 					<?php foreach($userData as $user): ?>
 						
-						<tr>
+						<tbody id="myData">
+						<tr class="edit_hover_class">
 							<td class="hide"> <?= $user['u_id'] ?> </td>
 							<td> <?= $user['firstName'] ?> </td>
 							<td> <?= $user['lastName'] ?> </td>
@@ -51,6 +67,7 @@
 								<a href="" data-toggle="modal" data-target="#deleteEmployee<?= $user['u_id'] ?>"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Employee!" data-placement="right">delete</i></a>
 							</td>
 						</tr>
+						</tbody>
 
 					<?php endforeach ?>
           			
@@ -94,7 +111,8 @@
     <div class="modal-dialog">
       	<div class="modal-content">
       
-        	<!-- Modal Header -->
+			<!-- Modal Header -->
+			
         	<div class="modal-header">
           		<h3 class="modal-title font-weight-bolder">Create Employee</h3>
         	</div>
@@ -106,22 +124,22 @@
 						<div class="row">
 							<div class="col-6">
 								<div class="form-group">
-									<input type="text" class="form-control" placeholder="First name" name= "firstName" required>
+									<input type="text" class="form-control" placeholder="First name" name= "firstName">
 								</div>
 							</div>
 							<div class="col-6">
 								<div class="form-group">
-									<input type="text" class="form-control" placeholder="Last name" name= "lastName" required>
+									<input type="text" class="form-control" placeholder="Last name" name= "lastName">
 								</div>
 							</div>
 							<div class="col-6">
 								<div class="form-group">
-									<input type="email" class="form-control" placeholder="email" name= "email" required>
+									<input type="email" class="form-control" placeholder="email" name= "email">
 								</div>
 							</div>
 							<div class="col-6">
 								<div class="form-group">
-									<input type="password" class="form-control" placeholder="password" name= "password" required>
+									<input type="password" class="form-control" placeholder="password" name= "password">
 								</div>
 							</div>
 							<div class="col-6">
@@ -147,7 +165,7 @@
 							<div class="col-12">
 								<div class="form-group">
 									<label class="font-weight-bolder mt-2" id ="date"> Start Date </label>
-									<input type="date" class="form-control" name="startDate" required>
+									<input type="date" class="form-control" name="startDate">
 								</div>
 							</div>
 						</div>
@@ -160,6 +178,7 @@
 	 	</div>
   	</div>
 </div>
+
   <!-- =================================END MODEL CREATE==================================================== -->
 
   <!-- ========================================START Model UPDATE================================================ -->
@@ -181,22 +200,22 @@
 						<div class="row">
 							<div class="col-6">
 								<div class="form-group">
-									<input type="text" class="form-control" placeholder="First name" name= "firstName" required id="firstName">
+									<input type="text" class="form-control" placeholder="First name" name= "firstName" id="firstName" >
 								</div>
 							</div>
 							<div class="col-6">
 								<div class="form-group">
-									<input type="text" class="form-control" placeholder="Last name" name= "lastName" required id="lastName">
+									<input type="text" class="form-control" placeholder="Last name" name= "lastName" id="lastName">
 								</div>
 							</div>
 							<div class="col-6">
 								<div class="form-group">
-									<input type="email" class="form-control" placeholder="email" name= "email" required id="email">
+									<input type="email" class="form-control" placeholder="email" name= "email" id="email">
 								</div>
 							</div>
 							<div class="col-6">
 								<div class="form-group">
-									<input type="password" class="form-control" placeholder="password" name= "password" required id="password">
+									<input type="password" class="form-control" placeholder="password" name= "password" id="password">
 								</div>
 							</div>
 							<div class="col-6">
@@ -222,7 +241,7 @@
 							<div class="col-12">
 								<div class="form-group">
 									<label class="font-weight-bolder mt-2" id ="date"> Start Date </label>
-									<input type="date" class="form-control" name="startDate" required id="startDate">
+									<input type="date" class="form-control" name="startDate" id="startDate">
 								</div>
 							</div>
 						</div>
