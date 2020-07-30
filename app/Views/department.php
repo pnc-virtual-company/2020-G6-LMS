@@ -1,13 +1,4 @@
 
-
-
-
-
-
-
-
-
-
 <?= $this->extend('layouts/main') ?>
 <?= $this->section('content') ?>
 <?= $this->include('layouts/menu') ?>
@@ -88,7 +79,7 @@
         
             <!-- Modal body -->
             <div class="modal-body text-right">
-			    <form  action="removeDepartment/<?= $department['d_id'] ?>" method="post">
+			    <form  action="<?= base_url("removeDepartment/". $department['d_id']) ?>" method="post">
 				    <div class="form-group">
 					    <p style="display:flex;justify-content:flex-start"> Are you sure you want to remove the selected departments?</p>
 				    </div>

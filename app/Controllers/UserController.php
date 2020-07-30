@@ -271,7 +271,7 @@ class UserController extends BaseController
                 $data['validation'] = $this->validator;
                 $sessionSuccess = session();
                 $sessionSuccess->setFlashdata('success', 'Successful update employee');
-                return redirect()->to("/employee");
+                 return redirect()->to("/employee");
             }else{
                  $data['validation'] = $this->validator;
                 $sessionErrror = session();

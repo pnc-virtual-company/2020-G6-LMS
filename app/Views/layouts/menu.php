@@ -3,19 +3,19 @@
   <ul class="navbar-nav">
     <div class="navbar">
       <li class="nav-item">
-        <a class="nav-link text-white" href="yourLeave"> Your Leaves </a>
+        <a class="nav-link text-white" href="<?= base_url('yourLeave')?>"> Your Leaves </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="leave"> Leaves </a>
+        <a class="nav-link text-white" href="<?= base_url('leave')?>"> Leaves </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="employee"> Employees </a>
+        <a class="nav-link text-white" href="<?= base_url('employee')?>"> Employees </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="position"> Positions </a>
+        <a class="nav-link text-white" href="<?= base_url('position')?>"> Positions </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="department"> Departments </a>
+        <a class="nav-link text-white" href="<?= base_url('department')?>"> Departments </a>
       </li>
 
       <!-- Dropdown -->
@@ -26,8 +26,8 @@
               <?= $username ?>
           </a>
           <div class="dropdown-menu">
-            <a class="dropdown-item font-weight-bolder" href="profile" data-toggle="modal" data-target="#viewProfile"> Profile </a>
-            <a class="dropdown-item font-weight-bolder" href="logout"> Log Out </a>
+            <a class="dropdown-item font-weight-bolder" href="<?= base_url('profile')?>" data-toggle="modal" data-target="#viewProfile"> Profile </a>
+            <a class="dropdown-item font-weight-bolder" href="<?= base_url('logout')?>"> Log Out </a>
           </div>
         </li>
       </div>
