@@ -1,3 +1,13 @@
+
+
+
+
+
+
+
+
+
+
 <?= $this->extend('layouts/main') ?>
 <?= $this->section('content') ?>
 <?= $this->include('layouts/menu') ?>
@@ -13,12 +23,31 @@
 						</span>
   					</div>
 				</div>
+				
                 <br>
 				<div class="text-right">
                     <a href="" class="btn btn-info btn-sm text-white font-weight-bolder" data-toggle="modal" data-target="#createDepartment">
                         <i class="material-icons float-left" data-toggle="tooltip" title="Add Department!" data-placement="left">add</i>&nbsp;CREATE
 					</a>
                 </div>
+				<br>
+
+				<!-- alert message success if user correctly information-->
+				<?php if(session()->get('success')): ?>
+					<div class="alert alert-success alert-dismissible fade show" >
+					<button type="button" class="close" data-dismiss="alert">&times;</button>
+						<?= session()->get('success') ?>
+					</div>
+    			<?php endif ?>
+
+				<!-- alert message success if user incorrect information-->
+				<?php if(session()->get('error')): ?>
+					<div class="alert alert-danger alert-dismissible fade show">
+					<button type="button" class="close" data-dismiss="alert">&times;</button>
+						<?= session()->get('error')->listErrors() ?>
+					</div>
+				<?php endif ?>
+
                 <h4 class="font-weight-bolder"> Departments </h4>
                 <br>
 				<table class="table table-borderless table-hover">
@@ -92,10 +121,6 @@
 			    <form  action="<?= base_url("addDepartment") ?>" method="post">
 				    <div class="form-group">
 					    <input type="text" class="form-control" placeholder="Department name" name="dname">
-						<!-- alert message success if user incorrect information-->
-						<?php if(session()->get('error')): ?>
-							<span class="text-danger errorText"> <?= session()->get('error')->listErrors() ?> </span>
-						<?php endif ?>
 				    </div>
 			        <a data-dismiss="modal" class="closeModal">DISCARD</a>
 		 	            &nbsp;
@@ -126,10 +151,6 @@
 				<input type="hidden" name="department_id" id="update_id">
 				    <div class="form-group">
 						<input type="text" class="form-control" placeholder="Department name" name="dname" id="dname">
-						<!-- alert message success if user incorrect information-->
-						<?php if(session()->get('error')): ?>
-							<span class="text-danger errorText"> <?= session()->get('error')->listErrors() ?> </span>
-						<?php endif ?>
 				    </div>
 			        <a data-dismiss="modal" class="closeModal">DISCARD</a>
 		 	            &nbsp;

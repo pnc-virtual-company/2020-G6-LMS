@@ -30,8 +30,8 @@ class DepartmentController extends BaseController
                 'dname'=> [
                     'rules'=> 'required|is_unique[department.dname]',
                     'errors'=> [
-                        'required'=> 'The department name field is required.',
-                        'is_unique' => 'This is department name already exists.',
+                        'required'=> 'The create department name field is required.',
+                        'is_unique' => 'The create department name already exists.',
                     ]
                 ],
             ];
@@ -42,7 +42,9 @@ class DepartmentController extends BaseController
                     'dname' => $department
                 );
                 $this->department->insert($data);
-                return redirect()->to('/department');
+                $sessionSuccess = session();
+                $sessionSuccess->setFlashdata('success', 'Successful create department');
+                return redirect()->to("/department");
             }else{
                 $data['validation'] = $this->validator;
                 $sessionError = session();
@@ -73,8 +75,8 @@ class DepartmentController extends BaseController
                 'dname'=> [
                     'rules'=> 'required|is_unique[department.dname]',
                     'errors'=> [
-                        'required'=> 'The department name field is required.',
-                        'is_unique' => 'This is department name already exists.',
+                        'required'=> 'The update department name field is required.',
+                        'is_unique' => 'The update department name already exists.',
                     ]
                 ],
             ];
@@ -87,8 +89,9 @@ class DepartmentController extends BaseController
                 'dname' => $department
             );
             $this->department->update($departmentId, $data);
+            $sessionSuccess = session();
+            $sessionSuccess->setFlashdata('success', 'Successful update department');
             return redirect()->to('/department');
-
         }else{
             $data['validation'] = $this->validator;
             $sessionError = session();

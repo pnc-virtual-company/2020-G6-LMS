@@ -79,7 +79,7 @@
 				    </div>
 			        <a data-dismiss="modal" class="closeModal">DON'T REMOVE</a>
 		 	            &nbsp;
-					<input type ="submit" value = "DELETE" class="text-warning" style="border:none;background:white;">
+					<input type ="submit" value = "REMOVE" class="text-warning" style="border:none;background:white;">
                 </form>
             </div>
         </div>
@@ -144,7 +144,7 @@
 			    <form  action="<?= base_url("updatePosition") ?>" method="post">
 				<input type="hidden" name="position_id" id="update_id">
 				    <div class="form-group">
-					    <input type="text" class="form-control" placeholder="Position name" name="pname" required id="pname">
+					    <input type="text" class="form-control" placeholder="Position name" name="pname" id="pname">
 				    </div>
 			        <a data-dismiss="modal" class="closeModal">DISCARD</a>
 		 	            &nbsp;
