@@ -91,7 +91,7 @@
         
             <!-- Modal body -->
             <div class="modal-body text-right">
-			    <form  action="removeUser/<?= $user['u_id']?>" method="post">
+			    <form  action="<?= base_url("removeUser/". $user['u_id']) ?>" method="post">
 				    <div class="form-group">
 					    <p  style="display:flex;justify-content:flex-start"> Are you sure you want to remove the selected Employee?</p>
 				    </div>
@@ -194,7 +194,7 @@
         
         	<!-- Modal body -->
         	<div class="modal-body text-right">
-				<form  action="<?= base_url("update") ?>" method="post">
+				<form  action="<?= base_url("updateUser") ?>" method="post">
 					<input type="hidden" name="user_id" id="update_id">
 					<div class="container">
 						<div class="row">

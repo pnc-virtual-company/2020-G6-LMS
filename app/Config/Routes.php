@@ -50,7 +50,7 @@ $routes->add('updateDepartment', 'DepartmentController::updateDepartment');
 $routes->add('employee', 'UserController::showUser',['filter'=> 'auth']);
 $routes->add('addUser', 'UserController::createUser');
 $routes->add('removeUser/(:num)', 'UserController::deleteEmployee/$1');
-$routes->add('update', 'UserController::updateUser');
+$routes->add('updateUser', 'UserController::updateUser');
 
 
 // $routes->get('/', 'UserController::index',['filter' => 'noauth']);

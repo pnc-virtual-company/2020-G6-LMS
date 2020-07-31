@@ -30,8 +30,8 @@ class DepartmentController extends BaseController
                 'dname'=> [
                     'rules'=> 'required|is_unique[department.dname]',
                     'errors'=> [
-                        'required'=> 'The department name field is required.',
-                        'is_unique' => 'This is department name already exists.',
+                        'required'=> 'The create department name field is required.',
+                        'is_unique' => 'The create department name already exists.',
                     ]
                 ],
             ];
@@ -42,7 +42,9 @@ class DepartmentController extends BaseController
                     'dname' => $department
                 );
                 $this->department->insert($data);
-                return redirect()->to('/department');
+                $sessionSuccess = session();
+                $sessionSuccess->setFlashdata('success', 'Successful create department');
+                return redirect()->to("/department");
             }else{
                 $data['validation'] = $this->validator;
                 $sessionError = session();
@@ -67,34 +69,36 @@ class DepartmentController extends BaseController
 	public function updateDepartment()
     {
         $data = [];
-        if($this->request->getMethod() == "post"){
-            helper(['form']);
+        helper(['form']);
+        if($this->request->getMethod() =='post') {
             $rules = [
-                'dname'=> [
-                    'rules'=> 'required|is_unique[department.dname]',
-                    'errors'=> [
-                        'required'=> 'The department name field is required.',
-                        'is_unique' => 'This is department name already exists.',
-                    ]
+                'dname' => [
+                    'rules' => 'required|is_unique[department.dname]',
+                    'errors'=>[
+                        'required'=> 'The position name field is required.',
+                        'is_unique' => 'The position already exists.',
+                    ] 
                 ],
             ];
-        }
-        if($this->validate($rules)){
+            if($this->validate($rules)) {
 
-            $departmentId = $this->request->getVar('department_id');
-            $department = $this->request->getVar('dname');
-            $data = array(
-                'dname' => $department
-            );
-            $this->department->update($departmentId, $data);
-            return redirect()->to('/department');
-
-        }else{
-            $data['validation'] = $this->validator;
-            $sessionError = session();
-            $validation = $this->validator;
-            $sessionError->setFlashdata('error', $validation);
-            return redirect()->to('/department');
+                $departmentId = $this->request->getVar('department_id');
+                $department = $this->request->getVar('dname');
+                $data = array(
+                    'dname' => $department
+                );
+                $this->department->update($departmentId, $data);
+                $data['validation'] = $this->validator;
+                $sessionSuccess = session();
+                $sessionSuccess->setFlashdata('success', 'Successful update department');
+                return redirect()->to('/department');
+            }else{
+                $data['validation'] = $this->validator;
+                $sessionErrror = session();
+                $validation = $this->validator;
+                $sessionErrror->setFlashdata('error', $validation);
+                return redirect()->to('/department'); 
+            }
         }
     }
 }
