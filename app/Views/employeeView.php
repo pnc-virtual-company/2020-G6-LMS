@@ -21,7 +21,7 @@
 						<?= session()->get('success') ?>
 					</div>
 				<?php endif ?>
-				
+                  <!-- ..................................................... -->
 				<!-- alert message when in incorrect information -->
 
 				<?php if(session()->get('error')): ?>

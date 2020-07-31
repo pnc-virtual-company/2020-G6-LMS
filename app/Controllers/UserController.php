@@ -91,7 +91,8 @@ class UserController extends BaseController
     }
     
     //--------------------------------------------------------------------
-
+    
+    // Create user
 	public function createUser() 
     {
         helper(['form']);
@@ -164,9 +165,6 @@ class UserController extends BaseController
                 } else { 
                     // message error here with session 
                 }
-                
-                
-                
                 $data['validation'] = $this->validator;
                 $sessionSuccess = session();
                 $sessionSuccess->setFlashdata('success', 'Successful create employee');
@@ -180,20 +178,10 @@ class UserController extends BaseController
                 return redirect()->to('/employee');
             }
         }
-       
-        
     }
 
-    //--------------------------------------------------------------------
-
-    public function deleteEmployee($id){
-        $employee = new UserModel();
-        $employee->delete($id);
-        return redirect()->to('/employee');
-    }
-
-    //--------------------------------------------------------------------
-    public function updateUser() 
+    // Update employee
+    public function updateUser()
     {
         helper(['form']);
         $data = [];
@@ -243,46 +231,57 @@ class UserController extends BaseController
                     ] 
                 ],
             ];
-            if($this->validate($rules)) {
-                $firstName = $this->request->getVar('firstName');
-                $lastName = $this->request->getVar('lastName');
-                $email = $this->request->getVar('email');
-                $password = $this->request->getVar('password');
-                $position = $this->request->getVar('position');
-                $department = $this->request->getVar('department');
-                $startDate = $this->request->getVar('startDate');
-                $data = array(
-                    "firstName" => $firstName,
-                    "lastName" => $lastName,
-                    "email" => $email,
-                    "password" => $password,
-                    "position_id" => $position,
-                    "department_id" => $department,
-                    "startDate" => $startDate,
-                );
-                if ($position != "" and $department != "") {
-                    $this->user->update($data);
-                } else { 
-                    // message error here with session 
-                }
-                
-                
-                
-                $data['validation'] = $this->validator;
-                $sessionSuccess = session();
-                $sessionSuccess->setFlashdata('success', 'Successful update employee');
-                return redirect()->to("/employee");
-            }else{
-                 $data['validation'] = $this->validator;
-                $sessionErrror = session();
-                $validation = $this->validator;
-                $sessionErrror->setFlashdata('error', $validation);
-                
-                return redirect()->to('/employee');
+        if($this->validate($rules)) {
+        $userId = $this->request->getVar('user_id');
+        $firstName = $this->request->getVar('firstName');
+        $lastName = $this->request->getVar('lastName');
+        $email = $this->request->getVar('email');
+        $password = $this->request->getVar('password');
+        $position = $this->request->getVar('position');
+        $department = $this->request->getVar('department');
+        $startDate = $this->request->getVar('startDate');
+        $data = array(
+            "firstName" => $firstName,
+            "lastName" => $lastName,
+            "email" => $email,
+            "password" => $password,
+            "position_id" => $position,
+            "department_id" => $department,
+            "startDate" => $startDate,
+        );
+        if ($position != "" and $department != "") {
+            $this->user->update($userId, $data);
+        } else { 
+            // message error here with session 
+        }
+        $data['validation'] = $this->validator;
+        $sessionSuccess = session();
+        $sessionSuccess->setFlashdata('success', 'Successful update employee');
+        return redirect()->to("/employee");
+
+    }else{
+
+        $data['validation'] = $this->validator;
+       $sessionErrror = session();
+       $validation = $this->validator;
+       $sessionErrror->setFlashdata('error', $validation);
+       
+       return redirect()->to('/employee');
             }
         }
-       
-        
     }
+
+
+
+    //--------------------------------------------------------------------
+
+    public function deleteEmployee($id){
+        $employee = new UserModel();
+        $employee->delete($id);
+        return redirect()->to('/employee');
+    }
+
+    //--------------------------------------------------------------------
+    
 
 }
