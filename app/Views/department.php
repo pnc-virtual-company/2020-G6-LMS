@@ -138,7 +138,7 @@
         
             <!-- Modal body -->
             <div class="modal-body text-right">
-				<form  action="<?= base_url("updateDepartment") ?>" method="post">
+				<form  action="<?= base_url("updatedDepartment") ?>" method="post">
 				<input type="hidden" name="department_id" id="update_id">
 				    <div class="form-group">
 						<input type="text" class="form-control" placeholder="Department name" name="dname" id="dname">
