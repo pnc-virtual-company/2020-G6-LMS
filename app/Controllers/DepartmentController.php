@@ -75,8 +75,8 @@ class DepartmentController extends BaseController
                 'dname' => [
                     'rules' => 'required|is_unique[department.dname]',
                     'errors'=>[
-                        'required'=> 'The position name field is required.',
-                        'is_unique' => 'The position already exists.',
+                        'required'=> 'The update department name field is required.',
+                        'is_unique' => 'The update department name already exists.',
                     ] 
                 ],
             ];
