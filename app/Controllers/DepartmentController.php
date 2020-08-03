@@ -44,13 +44,13 @@ class DepartmentController extends BaseController
                 $this->department->insert($data);
                 $sessionSuccess = session();
                 $sessionSuccess->setFlashdata('success', 'Successful create department');
-                return redirect()->to("/department");
+                return redirect()->to(base_url("/department"));
             }else{
                 $data['validation'] = $this->validator;
                 $sessionError = session();
                 $validation = $this->validator;
                 $sessionError->setFlashdata('error', $validation);
-                return redirect()->to('/department');
+                return redirect()->to(base_url("/department"));
             }
         }
     }
@@ -61,7 +61,7 @@ class DepartmentController extends BaseController
     {
         $department = new DepartmentModel();
         $department->delete($id);
-        return redirect()->to('/department');
+        return redirect()->to(base_url("/department"));
     }
 
 	//--------------------------------------------------------------------
@@ -91,13 +91,13 @@ class DepartmentController extends BaseController
                 $data['validation'] = $this->validator;
                 $sessionSuccess = session();
                 $sessionSuccess->setFlashdata('success', 'Successful update department');
-                return redirect()->to('/department');
+                return redirect()->to(base_url("/department"));
             }else{
                 $data['validation'] = $this->validator;
                 $sessionErrror = session();
                 $validation = $this->validator;
                 $sessionErrror->setFlashdata('error', $validation);
-                return redirect()->to('/department'); 
+                return redirect()->to(base_url("/department")); 
             }
         }
     }

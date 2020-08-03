@@ -48,14 +48,14 @@ class PositionController extends BaseController
                 $data['validation'] = $this->validator;
                 $sessionSuccess = session();
                 $sessionSuccess->setFlashdata('success', 'Successful create position');
-                return redirect()->to("/position");
+                return redirect()->to(base_url("/position"));
             }else{
                 $data['validation'] = $this->validator;
                 $sessionErrror = session();
                 $validation = $this->validator;
                 $sessionErrror->setFlashdata('error', $validation);
                 
-                return redirect()->to('/position');
+                return redirect()->to(base_url("/position"));
             }
         }
     }
@@ -67,7 +67,7 @@ class PositionController extends BaseController
    {
        $position = new PositionModel();
        $position->delete($id);
-       return redirect()->to('/position');
+       return redirect()->to(base_url("/position"));
 
    } 
 
@@ -98,13 +98,13 @@ class PositionController extends BaseController
                 $data['validation'] = $this->validator;
                 $sessionSuccess = session();
                 $sessionSuccess->setFlashdata('success', 'Successful update position');
-                return redirect()->to('/position');
+                return redirect()->to(base_url("/position"));
             }else{
                 $data['validation'] = $this->validator;
                 $sessionErrror = session();
                 $validation = $this->validator;
                 $sessionErrror->setFlashdata('error', $validation);
-                return redirect()->to('/position'); 
+                return redirect()->to(base_url("/position")); 
             }
         }
     }

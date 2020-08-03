@@ -4,6 +4,18 @@ use App\Models\DepartmentModel;
 use App\Models\PositionModel;
 class UserController extends BaseController
 {
+
+    protected $user;
+    protected $position;
+    protected $department;
+
+    public function __construct() 
+    {
+        $this->user = new UserModel();
+        $this->department = new DepartmentModel();
+        $this->position = new PositionModel();
+    }
+    
 	public function setUserSession($user){
 		$data = [
 			'u_id' => $user['u_id'],
@@ -44,16 +56,15 @@ class UserController extends BaseController
 				],
 			];
 
-			if(isset($_POST['submit'])){
 				if($this->validate($rules)){
 					$userModel = new UserModel();
 					$user = $userModel->where('email',$this->request->getVar('email')) ->first();
 					$this->setUserSession($user);
-					return redirect()->to('/yourLeave');
+					return redirect()->to(base_url('/yourLeave'));
 				}else{
 					$data['validation'] = $this->validator;
 				}
-			}
+			
 		}
 		return view('login',$data);
 	}
@@ -63,21 +74,12 @@ class UserController extends BaseController
 	}
 	public function logout(){
 		session()->destroy();
-		return redirect()->to('/');
+		return redirect()->to(base_url('/'));
 	}
     
     //-------------------------------------------------------------------- 
     //--------------------------------------------------------------------
-	protected $user;
-    protected $position;
-    protected $department;
-
-    public function __construct() 
-    {
-        $this->user = new UserModel();
-        $this->department = new DepartmentModel();
-        $this->position = new PositionModel();
-    }
+	
     
 	public function showUser()
 	{
@@ -168,14 +170,14 @@ class UserController extends BaseController
                 $data['validation'] = $this->validator;
                 $sessionSuccess = session();
                 $sessionSuccess->setFlashdata('success', 'Successful create employee');
-                return redirect()->to("/employee");
+                return redirect()->to(base_url("/employee"));
             }else{
                  $data['validation'] = $this->validator;
                 $sessionErrror = session();
                 $validation = $this->validator;
                 $sessionErrror->setFlashdata('error', $validation);
                 
-                return redirect()->to('/employee');
+                return redirect()->to(base_url('/employee'));
             }
         }
     }
@@ -257,7 +259,7 @@ class UserController extends BaseController
         $data['validation'] = $this->validator;
         $sessionSuccess = session();
         $sessionSuccess->setFlashdata('success', 'Successful update employee');
-        return redirect()->to("/employee");
+        return redirect()->to(base_url("/employee"));
 
     }else{
 
@@ -266,7 +268,7 @@ class UserController extends BaseController
        $validation = $this->validator;
        $sessionErrror->setFlashdata('error', $validation);
        
-       return redirect()->to('/employee');
+       return redirect()->to(base_url('/employee'));
             }
         }
     }
@@ -278,7 +280,7 @@ class UserController extends BaseController
     public function deleteEmployee($id){
         $employee = new UserModel();
         $employee->delete($id);
-        return redirect()->to('/employee');
+        return redirect()->to(base_url('/employee'));
     }
 
     //--------------------------------------------------------------------
