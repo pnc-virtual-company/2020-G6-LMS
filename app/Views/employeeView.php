@@ -47,7 +47,6 @@
 						<th class="hide">Password</th>
 						<th>Position</th>
 						<th>Department</th>
-						<th>Manager</th>
 						<th>Start Date</th>
 						<th class="hide">Role</th>
 						
@@ -63,7 +62,6 @@
 							<td class="hide"> <?= $user['password'] ?> </td>
 							<td> <?= $user['pname'] ?> </td>
 							<td> <?= $user['dname'] ?> </td>
-							<td> <?= $user['manager'] ?> </td>
 							<td> <?= $user['startDate'] ?> </td>
 							<td class = "hide"><?= $user['role']?></td>
 							<td style="display:flex;justify-content:flex-end">
@@ -168,11 +166,6 @@
 							</div>
 							<div class="col-6">
 								<div class="form-group">
-									<input type="text" class="form-control" placeholder="manager" name= "manager">
-								</div>
-							</div>
-							<div class="col-6">
-								<div class="form-group">
 									<input type="file" name="profile">
 								</div>
 							</div>
@@ -262,10 +255,9 @@
 									<input type="email" class="form-control" placeholder="email" name= "email" id="email">
 								</div>
 							</div>
-							
 							<div class="col-6">
 								<div class="form-group">
-									<input type="text" class="form-control" placeholder="manager" name= "manager" id="manager">
+									<input type="file" name="profile">
 								</div>
 							</div>
 							<div class="col-12">
@@ -274,7 +266,6 @@
 									<input type="date" class="form-control" name="startDate" id="startDate">
 								</div>
 							</div>
-							
 						</div>
 						<a data-dismiss="modal" class="closeModal">DISCARD</a>
         					&nbsp;
