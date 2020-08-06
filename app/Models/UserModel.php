@@ -8,22 +8,25 @@ class UserModel extends Model
 
     protected $returnType     = 'array';
 
-    protected $allowedFields = ['firstName', 'lastName','startDate', 'profile', 'email', 'password', 'role', 'position_id', 'department_id'];
+    protected $allowedFields = ['firstName', 'lastName','startDate', 'profile', 'email', 'password', 'role','manager', 'position_id', 'department_id'];
 
-    public function getUserInfo() 
+    public function getUserInfo()
     {
         return $this->db->table('user')
         ->join('position', 'user.position_id = position.p_id')
         ->join('department', 'department.d_id = user.department_id')
         ->get()->getResultArray();
     }
+    
     public function registerUser($userInfo){
         $this->insert([
         'firstName'=>$userInfo['firstName'],
         'lastName'=>$userInfo['lastName'],
         'startDate'=>$userInfo['startDate'],
+        'profile'=>$userInfo['profile'],
         'email'=>$userInfo['email'],
         'password'=>password_hash($userInfo['password'],PASSWORD_DEFAULT),
+        'role'=>$userInfo['role'],
         'position_id'=>$userInfo['position_id'],
         'department_id'=>$userInfo['department_id'],
         ]);

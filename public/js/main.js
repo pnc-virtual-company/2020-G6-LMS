@@ -16,7 +16,8 @@ $(document).ready(function(){
     $('#password').val(data[4]);
     $('#position_id:selected').val(data[5]);
     $('#department_id:selected').val(data[6]);
-    $('#startDate').val(data[7]);
+    $('#manager').val(data[7]);
+    $('#startDate').val(data[8]);
   });
   // Update department information modal
   $('.edit-btn-department').on('click', function() {

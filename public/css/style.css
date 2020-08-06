@@ -3,10 +3,8 @@ body{
     margin: 0;
     padding: 0;
 }
-
-.nav-item:hover{
-    background-color: rgb(10, 187, 241);
-    box-shadow: 0 0 2px 2px rgb(10, 187, 241);
+.nav-item a:hover{
+  background: rgb(42, 201, 201);
 }
 /* ===== */
 .login-container{

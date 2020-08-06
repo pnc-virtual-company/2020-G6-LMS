@@ -2,6 +2,8 @@
 use App\Models\UserModel;
 use App\Models\DepartmentModel;
 use App\Models\PositionModel;
+use CodeIgniter\HTTP\Request;
+
 class UserController extends BaseController
 {
 
@@ -79,8 +81,8 @@ class UserController extends BaseController
     
     //-------------------------------------------------------------------- 
     //--------------------------------------------------------------------
-	
     
+	
 	public function showUser()
 	{
         $data = [
@@ -120,12 +122,7 @@ class UserController extends BaseController
                         'is_unique' => 'The email already exists.',
                     ] 
                 ],
-                'password' => [
-                    'rules' => 'required',
-                    'errors'=>[
-                        'required'=> 'The password name field is required.',
-                    ] 
-                ],
+                
                 'position' => [
                     'rules' => 'required',
                     'errors'=>[
@@ -153,6 +150,10 @@ class UserController extends BaseController
                 $position = $this->request->getVar('position');
                 $department = $this->request->getVar('department');
                 $startDate = $this->request->getVar('startDate');
+                $role = $this->request->getVar('role');
+                $file = $this->request->getFile('profile');
+                $userProfile = $file->getRandomName();
+               
                 $data = array(
                     "firstName" => $firstName,
                     "lastName" => $lastName,
@@ -161,6 +162,9 @@ class UserController extends BaseController
                     "position_id" => $position,
                     "department_id" => $department,
                     "startDate" => $startDate,
+                    "role" => $role,
+                    'profile'=>$userProfile,
+                    
                 );
                 if ($position != "" and $department != "") {
                     $this->user->registerUser($data);
@@ -208,12 +212,7 @@ class UserController extends BaseController
                         'is_unique' => 'The email already exists.',
                     ] 
                 ],
-                'password' => [
-                    'rules' => 'required',
-                    'errors'=>[
-                        'required'=> 'The password name field is required.',
-                    ] 
-                ],
+                
                 'position' => [
                     'rules' => 'required',
                     'errors'=>[
@@ -242,6 +241,7 @@ class UserController extends BaseController
         $position = $this->request->getVar('position');
         $department = $this->request->getVar('department');
         $startDate = $this->request->getVar('startDate');
+        $file = $this->request->getFile('profile');
         $data = array(
             "firstName" => $firstName,
             "lastName" => $lastName,
@@ -250,6 +250,7 @@ class UserController extends BaseController
             "position_id" => $position,
             "department_id" => $department,
             "startDate" => $startDate,
+            "profile"=>$file
         );
         if ($position != "" and $department != "") {
             $this->user->update($userId, $data);
@@ -262,7 +263,6 @@ class UserController extends BaseController
         return redirect()->to(base_url("/employee"));
 
     }else{
-
         $data['validation'] = $this->validator;
        $sessionErrror = session();
        $validation = $this->validator;
@@ -272,11 +272,7 @@ class UserController extends BaseController
             }
         }
     }
-
-
-
     //--------------------------------------------------------------------
-
     public function deleteEmployee($id){
         $employee = new UserModel();
         $employee->delete($id);
