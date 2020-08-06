@@ -48,14 +48,14 @@ class PositionController extends BaseController
                 $data['validation'] = $this->validator;
                 $sessionSuccess = session();
                 $sessionSuccess->setFlashdata('success', 'Successful create position');
-                return redirect()->to("/position");
+                return redirect()->to(base_url("/position"));
             }else{
                 $data['validation'] = $this->validator;
                 $sessionErrror = session();
                 $validation = $this->validator;
                 $sessionErrror->setFlashdata('error', $validation);
                 
-                return redirect()->to('/position');
+                return redirect()->to(base_url("/position"));
             }
         }
     }
@@ -67,35 +67,45 @@ class PositionController extends BaseController
    {
        $position = new PositionModel();
        $position->delete($id);
-       return redirect()->to('/position');
+       return redirect()->to(base_url("/position"));
 
    } 
 
     // update old position to new to new position of employee
 
-    public function updateUser() 
+    public function updatePosition()
     {
-        $firstName = $this->request->getVar('firstName');
-        $lastName = $this->request->getVar('lastName');
-        $email = $this->request->getVar('email');
-        $password = $this->request->getVar('password');
-        $position = $this->request->getVar('position');
-        $department = $this->request->getVar('department');
-        $startDate = $this->request->getVar('startDate');
-        $data = array(
-            "firstName" => $firstName,
-            "lastName" => $lastName,
-            "email" => $email,
-            "password" => $password,
-            "position_id" => $position,
-            "department_id" => $department,
-            "startDate" => $startDate,
-        );
-        if ($position != "" and $department != "") {
-            $this->user->insert($data);
-        } else { 
-            // message error here with session 
+        $data = [];
+        helper(['form']);
+        if($this->request->getMethod() =='post') {
+            $rules = [
+                'pname' => [
+                    'rules' => 'required|is_unique[position.pname]',
+                    'errors'=>[
+                        'required'=> 'The position name field is required.',
+                        'is_unique' => 'The position already exists.',
+                    ] 
+                ],
+            ];
+            if($this->validate($rules)) {
+
+                $positionId = $this->request->getVar('position_id');
+                $position = $this->request->getVar('pname');
+                $data = array(
+                    'pname' => $position
+                );
+                $this->position->update($positionId, $data);
+                $data['validation'] = $this->validator;
+                $sessionSuccess = session();
+                $sessionSuccess->setFlashdata('success', 'Successful update position');
+                return redirect()->to(base_url("/position"));
+            }else{
+                $data['validation'] = $this->validator;
+                $sessionErrror = session();
+                $validation = $this->validator;
+                $sessionErrror->setFlashdata('error', $validation);
+                return redirect()->to(base_url("/position")); 
+            }
         }
-        return redirect()->to("/employee");
     }
 }

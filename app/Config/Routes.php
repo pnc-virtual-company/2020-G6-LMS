@@ -43,7 +43,7 @@ $routes->add('updatePosition', 'PositionController::updatePosition');
 $routes->add('department', 'DepartmentController::showDepartment',['filter'=> 'auth']);
 $routes->add('addDepartment', 'DepartmentController::addDepartment');
 $routes->add('removeDepartment/(:num)', 'DepartmentController::deleteDepartment/$1');
-$routes->add('updateDepartment', 'DepartmentController::updateDepartment');
+$routes->add('updatedDepartment', 'DepartmentController::updateDepartment');
 
 
 // employee CRUD
