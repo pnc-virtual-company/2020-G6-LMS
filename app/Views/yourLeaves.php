@@ -36,10 +36,12 @@
                         <td> 1day </td>
                         <td> Vacation </td>
                         <td> <span class="badge badge-info"> Requested </span> </td>
-						<td style="display:flex;justify-content:flex-end">
-							<a href="" data-toggle="modal" data-target="#updateYourLeave"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Your Leave!" data-placement="left">edit</i></a>
-							<a href="" data-toggle="modal" data-target="#deleteYourLeave"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Your Leave!" data-placement="right">delete</i></a>
-						</td>
+						<?php if(session('role') == 'Admin' || session('role') == 'HR'): ?>
+                            <td style="display:flex;justify-content:flex-end">
+                                <a href="" data-toggle="modal" data-target="#updateYourLeave"><i class="material-icons text-info " data-toggle="tooltip" title="Edit Your Leave!" data-placement="left">edit</i></a>
+                                <a href="" data-toggle="modal" data-target="#deleteYourLeave"><i class="material-icons text-danger " data-toggle="tooltip" title="Delete Your Leave!" data-placement="right">delete</i></a>
+                            </td>
+                        <?php endif; ?>
 					</tr>
 					<tr>
 						<td> 25/05/2005 </td>
@@ -47,10 +49,12 @@
                         <td> 2day </td>
                         <td> Training </td>
                         <td> <span class="badge badge-danger"> Cancelled </span> </td>
-						<td style="display:flex;justify-content:flex-end">
-							<a href="" data-toggle="modal" data-target="#updateYourLeave"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Your Leave!" data-placement="left">edit</i></a>
-							<a href="" data-toggle="modal" data-target="#deleteYourLeave"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Your Leave!" data-placement="right">delete</i></a>
-						</td>
+						<?php if(session('role') == 'Admin' || session('role') == 'HR'): ?>
+                            <td style="display:flex;justify-content:flex-end">
+                                <a href="" data-toggle="modal" data-target="#updateYourLeave"><i class="material-icons text-info " data-toggle="tooltip" title="Edit Your Leave!" data-placement="left">edit</i></a>
+                                <a href="" data-toggle="modal" data-target="#deleteYourLeave"><i class="material-icons text-danger " data-toggle="tooltip" title="Delete Your Leave!" data-placement="right">delete</i></a>
+                            </td>
+                        <?php endif; ?>
 					</tr>
 					<tr>
                         <td> 25/05/2005 </td>
@@ -58,10 +62,12 @@
                         <td> 0.5day </td>
                         <td> Vacation </td>
                         <td> <span class="badge badge-danger"> Rejected </span> </td>
-						<td style="display:flex;justify-content:flex-end">
-							<a href="" data-toggle="modal" data-target="#updateYourLeave"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Your Leave!" data-placement="left">edit</i></a>
-							<a href="" data-toggle="modal" data-target="#deleteYourLeave"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Your Leave!" data-placement="right">delete</i></a>
-						</td>
+						<?php if(session('role') == 'Admin' || session('role') == 'HR'): ?>
+                            <td style="display:flex;justify-content:flex-end">
+                                <a href="" data-toggle="modal" data-target="#updateYourLeave"><i class="material-icons text-info " data-toggle="tooltip" title="Edit Your Leave!" data-placement="left">edit</i></a>
+                                <a href="" data-toggle="modal" data-target="#deleteYourLeave"><i class="material-icons text-danger " data-toggle="tooltip" title="Delete Your Leave!" data-placement="right">delete</i></a>
+                            </td>
+                        <?php endif; ?>
 					</tr>
 					<tr>
                         <td> 25/05/2005 </td>
@@ -69,10 +75,12 @@
                         <td> 1day </td>
                         <td> Vacation </td>
                         <td> <span class="badge badge-success"> Accepted </span> </td>
-						<td style="display:flex;justify-content:flex-end">
-							<a href="" data-toggle="modal" data-target="#updateYourLeave"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Your Leave!" data-placement="left">edit</i></a>
-							<a href="" data-toggle="modal" data-target="#deleteYourLeave"><i class="material-icons text-danger" data-toggle="tooltip" title="Delete Your Leave!" data-placement="right">delete</i></a>
-						</td>
+						<?php if(session('role') == 'Admin' || session('role') == 'HR'): ?>
+                            <td style="display:flex;justify-content:flex-end">
+                                <a href="" data-toggle="modal" data-target="#updateYourLeave"><i class="material-icons text-info " data-toggle="tooltip" title="Edit Your Leave!" data-placement="left">edit</i></a>
+                                <a href="" data-toggle="modal" data-target="#deleteYourLeave"><i class="material-icons text-danger " data-toggle="tooltip" title="Delete Your Leave!" data-placement="right">delete</i></a>
+                            </td>
+                        <?php endif; ?>
 					</tr>
 				</table>
 			</div>

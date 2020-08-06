@@ -68,6 +68,7 @@ class UserController extends BaseController
     
     //-------------------------------------------------------------------- 
     //--------------------------------------------------------------------
+    
 	protected $user;
     protected $position;
     protected $department;
@@ -151,6 +152,7 @@ class UserController extends BaseController
                 $position = $this->request->getVar('position');
                 $department = $this->request->getVar('department');
                 $startDate = $this->request->getVar('startDate');
+                $role = $this->request->getVar('role');
                 $data = array(
                     "firstName" => $firstName,
                     "lastName" => $lastName,
@@ -159,6 +161,7 @@ class UserController extends BaseController
                     "position_id" => $position,
                     "department_id" => $department,
                     "startDate" => $startDate,
+                    "role" => $role,
                 );
                 if ($position != "" and $department != "") {
                     $this->user->registerUser($data);
