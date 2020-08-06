@@ -33,6 +33,7 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'UserController::index', ['filter'=> 'noauth']);
 $routes->add('yourLeave', 'YourLeave::showYourLeave', ['filter'=> 'auth']);
 $routes->add('addYourLeave', 'YourLeave::createYourLeave');
+$routes->add('removeYourLeave/(:num)', 'YourLeave::deleteYourLeave/$1');
 
 
 // POSITION CRUD

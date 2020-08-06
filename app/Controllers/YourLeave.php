@@ -132,4 +132,10 @@ class YourLeave extends BaseController
 	}
 	//--------------------------------------------------------------------
 	
+	// Delete your leave request
+	public function deleteYourLeave($id){
+		$yourLeave = new YourLeaveModel();
+		$yourLeave->delete($id);
+		return redirect()->to(base_url('/yourLeave'));
+	}
 }
