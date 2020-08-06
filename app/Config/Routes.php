@@ -32,7 +32,8 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'UserController::index', ['filter'=> 'noauth']);
 $routes->add('yourLeave', 'YourLeave::showYourLeave', ['filter'=> 'auth']);
-// $routes->add('department', 'Departments::showDepartment');
+$routes->add('addYourLeave', 'YourLeave::createYourLeave');
+
 
 // POSITION CRUD
 $routes->add('position', 'PositionController::showPosition',['filter'=> 'auth']);

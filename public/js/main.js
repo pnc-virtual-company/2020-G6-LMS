@@ -38,6 +38,43 @@ $(document).ready(function(){
     $("#myData ").filter(function() {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
-  });
-  
+  }); 
 });
+
+
+// How to calculate startDate and endDate of leave request
+function dateDiff() { 
+  var startDate = document.getElementById('startDate').value;
+  var endDate = document.getElementById('endDate').value;
+  var startPeriod = document.getElementById('timeToStart').value;
+  var endPeriod = document.getElementById('timeToEnd').value;
+  
+  var dateToStart = new Date(startDate);
+  var dateToEnd = new Date(endDate);
+  var getDateTime = dateToEnd.getTime() - dateToStart.getTime();
+  var days = getDateTime/(1000 * 60 * 60 * 24);
+  var period = 0;
+if(startPeriod == 1) {
+  if(endPeriod == 1){
+    period = 0.5;
+  }else{
+    period = 1;
+  }  
+}else {
+  if(endPeriod == 1){  
+    period = 0;
+  }else{
+    period = 0.5;
+  }
+}
+if(startDate > endDate){
+  $('#danger').html('<div class="alert alert-danger"><strong>Error! </strong>End date cannot be before start date.</div>');
+}else if(startDate == endDate && startPeriod == 2 && endPeriod == 1){
+  $('#danger').html('<div class="alert alert-danger"><strong>Error! </strong>Start date and end date cannot be selected in the past.</div>');
+}else{
+  document.getElementById("duration").value = (days + period)+" days";
+  $('#danger').html('');
+}
+  return false;
+}
+
