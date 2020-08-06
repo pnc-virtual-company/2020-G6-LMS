@@ -2,6 +2,8 @@
 use App\Models\UserModel;
 use App\Models\DepartmentModel;
 use App\Models\PositionModel;
+use CodeIgniter\HTTP\Request;
+
 class UserController extends BaseController
 {
 	public function setUserSession($user){
@@ -118,12 +120,7 @@ class UserController extends BaseController
                         'is_unique' => 'The email already exists.',
                     ] 
                 ],
-                'password' => [
-                    'rules' => 'required',
-                    'errors'=>[
-                        'required'=> 'The password name field is required.',
-                    ] 
-                ],
+                
                 'position' => [
                     'rules' => 'required',
                     'errors'=>[
@@ -151,6 +148,9 @@ class UserController extends BaseController
                 $position = $this->request->getVar('position');
                 $department = $this->request->getVar('department');
                 $startDate = $this->request->getVar('startDate');
+                $file = $this->request->getFile('profile');
+                $userProfile = $file->getRandomName();
+                $manager = $this->request->getVar('manager');
                 $data = array(
                     "firstName" => $firstName,
                     "lastName" => $lastName,
@@ -159,6 +159,8 @@ class UserController extends BaseController
                     "position_id" => $position,
                     "department_id" => $department,
                     "startDate" => $startDate,
+                    'profile'=>$userProfile,
+                    "manager" => $manager,
                 );
                 if ($position != "" and $department != "") {
                     $this->user->registerUser($data);
@@ -206,12 +208,7 @@ class UserController extends BaseController
                         'is_unique' => 'The email already exists.',
                     ] 
                 ],
-                'password' => [
-                    'rules' => 'required',
-                    'errors'=>[
-                        'required'=> 'The password name field is required.',
-                    ] 
-                ],
+                
                 'position' => [
                     'rules' => 'required',
                     'errors'=>[
@@ -222,6 +219,12 @@ class UserController extends BaseController
                     'rules' => 'required',
                     'errors'=>[
                         'required'=> 'The department name field is required.',
+                    ] 
+                ],
+                'manager' => [
+                    'rules' => 'required',
+                    'errors'=>[
+                        'required'=> 'The manager name field is required.',
                     ] 
                 ],
                 'startDate' => [
@@ -239,7 +242,9 @@ class UserController extends BaseController
         $password = $this->request->getVar('password');
         $position = $this->request->getVar('position');
         $department = $this->request->getVar('department');
+        $manager = $this->request->getVar('manager');
         $startDate = $this->request->getVar('startDate');
+        $file = $this->request->getFile('profile');
         $data = array(
             "firstName" => $firstName,
             "lastName" => $lastName,
@@ -247,7 +252,9 @@ class UserController extends BaseController
             "password" => $password,
             "position_id" => $position,
             "department_id" => $department,
+            "manager" => $manager,
             "startDate" => $startDate,
+            "profile"=>$file
         );
         if ($position != "" and $department != "") {
             $this->user->update($userId, $data);
@@ -258,9 +265,7 @@ class UserController extends BaseController
         $sessionSuccess = session();
         $sessionSuccess->setFlashdata('success', 'Successful update employee');
         return redirect()->to("/employee");
-
     }else{
-
         $data['validation'] = $this->validator;
        $sessionErrror = session();
        $validation = $this->validator;
@@ -270,11 +275,7 @@ class UserController extends BaseController
             }
         }
     }
-
-
-
     //--------------------------------------------------------------------
-
     public function deleteEmployee($id){
         $employee = new UserModel();
         $employee->delete($id);
