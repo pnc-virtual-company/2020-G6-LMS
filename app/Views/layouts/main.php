@@ -20,6 +20,7 @@
     </style>
 </head>
 <body>
+
     <script src="js/jquery.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -27,7 +28,7 @@
     <script>
         $(document).ready(function(){
     
-            // Update department information modal
+            // Update position information modal
             $('.edit-btn-position').on('click', function() {
             $('#updatePosition').modal('show');
 
@@ -54,7 +55,7 @@
         window.onunload= function () {null};
     </script>
 
-<script src="<?= base_url('js/main.js') ?>"></script>
+    <script src="<?= base_url('js/main.js') ?>"></script>
     <?= $this->renderSection('content') ?>
 </body>
 </html>

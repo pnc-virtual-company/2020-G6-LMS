@@ -81,8 +81,8 @@ class UserController extends BaseController
     
     //-------------------------------------------------------------------- 
     //--------------------------------------------------------------------
-	
     
+	
 	public function showUser()
 	{
         $data = [
@@ -150,9 +150,10 @@ class UserController extends BaseController
                 $position = $this->request->getVar('position');
                 $department = $this->request->getVar('department');
                 $startDate = $this->request->getVar('startDate');
+                $role = $this->request->getVar('role');
                 $file = $this->request->getFile('profile');
                 $userProfile = $file->getRandomName();
-                $manager = $this->request->getVar('manager');
+               
                 $data = array(
                     "firstName" => $firstName,
                     "lastName" => $lastName,
@@ -161,8 +162,9 @@ class UserController extends BaseController
                     "position_id" => $position,
                     "department_id" => $department,
                     "startDate" => $startDate,
+                    "role" => $role,
                     'profile'=>$userProfile,
-                    "manager" => $manager,
+                    
                 );
                 if ($position != "" and $department != "") {
                     $this->user->registerUser($data);
@@ -223,12 +225,6 @@ class UserController extends BaseController
                         'required'=> 'The department name field is required.',
                     ] 
                 ],
-                'manager' => [
-                    'rules' => 'required',
-                    'errors'=>[
-                        'required'=> 'The manager name field is required.',
-                    ] 
-                ],
                 'startDate' => [
                     'rules' => 'required',
                     'errors'=>[
@@ -244,7 +240,6 @@ class UserController extends BaseController
         $password = $this->request->getVar('password');
         $position = $this->request->getVar('position');
         $department = $this->request->getVar('department');
-        $manager = $this->request->getVar('manager');
         $startDate = $this->request->getVar('startDate');
         $file = $this->request->getFile('profile');
         $data = array(
@@ -254,7 +249,6 @@ class UserController extends BaseController
             "password" => $password,
             "position_id" => $position,
             "department_id" => $department,
-            "manager" => $manager,
             "startDate" => $startDate,
             "profile"=>$file
         );
