@@ -2,8 +2,22 @@
 use App\Models\UserModel;
 use App\Models\DepartmentModel;
 use App\Models\PositionModel;
+use CodeIgniter\HTTP\Request;
+
 class UserController extends BaseController
 {
+
+    protected $user;
+    protected $position;
+    protected $department;
+
+    public function __construct() 
+    {
+        $this->user = new UserModel();
+        $this->department = new DepartmentModel();
+        $this->position = new PositionModel();
+    }
+    
 	public function setUserSession($user){
 		$data = [
 			'u_id' => $user['u_id'],
@@ -44,16 +58,15 @@ class UserController extends BaseController
 				],
 			];
 
-			if(isset($_POST['submit'])){
 				if($this->validate($rules)){
 					$userModel = new UserModel();
 					$user = $userModel->where('email',$this->request->getVar('email')) ->first();
 					$this->setUserSession($user);
-					return redirect()->to('/yourLeave');
+					return redirect()->to(base_url('/yourLeave'));
 				}else{
 					$data['validation'] = $this->validator;
 				}
-			}
+			
 		}
 		return view('login',$data);
 	}
@@ -63,23 +76,13 @@ class UserController extends BaseController
 	}
 	public function logout(){
 		session()->destroy();
-		return redirect()->to('/');
+		return redirect()->to(base_url('/'));
 	}
     
     //-------------------------------------------------------------------- 
     //--------------------------------------------------------------------
     
-	protected $user;
-    protected $position;
-    protected $department;
-
-    public function __construct() 
-    {
-        $this->user = new UserModel();
-        $this->department = new DepartmentModel();
-        $this->position = new PositionModel();
-    }
-    
+	
 	public function showUser()
 	{
         $data = [
@@ -119,12 +122,7 @@ class UserController extends BaseController
                         'is_unique' => 'The email already exists.',
                     ] 
                 ],
-                'password' => [
-                    'rules' => 'required',
-                    'errors'=>[
-                        'required'=> 'The password name field is required.',
-                    ] 
-                ],
+                
                 'position' => [
                     'rules' => 'required',
                     'errors'=>[
@@ -153,6 +151,9 @@ class UserController extends BaseController
                 $department = $this->request->getVar('department');
                 $startDate = $this->request->getVar('startDate');
                 $role = $this->request->getVar('role');
+                $file = $this->request->getFile('profile');
+                $userProfile = $file->getRandomName();
+               
                 $data = array(
                     "firstName" => $firstName,
                     "lastName" => $lastName,
@@ -162,6 +163,8 @@ class UserController extends BaseController
                     "department_id" => $department,
                     "startDate" => $startDate,
                     "role" => $role,
+                    'profile'=>$userProfile,
+                    
                 );
                 if ($position != "" and $department != "") {
                     $this->user->registerUser($data);
@@ -171,14 +174,14 @@ class UserController extends BaseController
                 $data['validation'] = $this->validator;
                 $sessionSuccess = session();
                 $sessionSuccess->setFlashdata('success', 'Successful create employee');
-                return redirect()->to("/employee");
+                return redirect()->to(base_url("/employee"));
             }else{
                  $data['validation'] = $this->validator;
                 $sessionErrror = session();
                 $validation = $this->validator;
                 $sessionErrror->setFlashdata('error', $validation);
                 
-                return redirect()->to('/employee');
+                return redirect()->to(base_url('/employee'));
             }
         }
     }
@@ -209,12 +212,7 @@ class UserController extends BaseController
                         'is_unique' => 'The email already exists.',
                     ] 
                 ],
-                'password' => [
-                    'rules' => 'required',
-                    'errors'=>[
-                        'required'=> 'The password name field is required.',
-                    ] 
-                ],
+                
                 'position' => [
                     'rules' => 'required',
                     'errors'=>[
@@ -243,6 +241,7 @@ class UserController extends BaseController
         $position = $this->request->getVar('position');
         $department = $this->request->getVar('department');
         $startDate = $this->request->getVar('startDate');
+        $file = $this->request->getFile('profile');
         $data = array(
             "firstName" => $firstName,
             "lastName" => $lastName,
@@ -251,6 +250,7 @@ class UserController extends BaseController
             "position_id" => $position,
             "department_id" => $department,
             "startDate" => $startDate,
+            "profile"=>$file
         );
         if ($position != "" and $department != "") {
             $this->user->update($userId, $data);
@@ -260,28 +260,23 @@ class UserController extends BaseController
         $data['validation'] = $this->validator;
         $sessionSuccess = session();
         $sessionSuccess->setFlashdata('success', 'Successful update employee');
-        return redirect()->to("/employee");
+        return redirect()->to(base_url("/employee"));
 
     }else{
-
         $data['validation'] = $this->validator;
        $sessionErrror = session();
        $validation = $this->validator;
        $sessionErrror->setFlashdata('error', $validation);
        
-       return redirect()->to('/employee');
+       return redirect()->to(base_url('/employee'));
             }
         }
     }
-
-
-
     //--------------------------------------------------------------------
-
     public function deleteEmployee($id){
         $employee = new UserModel();
         $employee->delete($id);
-        return redirect()->to('/employee');
+        return redirect()->to(base_url('/employee'));
     }
 
     //--------------------------------------------------------------------

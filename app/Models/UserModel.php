@@ -8,9 +8,9 @@ class UserModel extends Model
 
     protected $returnType     = 'array';
 
-    protected $allowedFields = ['firstName', 'lastName','startDate', 'profile', 'email', 'password', 'role', 'position_id', 'department_id',];
+    protected $allowedFields = ['firstName', 'lastName','startDate', 'profile', 'email', 'password', 'role','manager', 'position_id', 'department_id'];
 
-    public function getUserInfo() 
+    public function getUserInfo()
     {
         return $this->db->table('user')
         ->join('position', 'user.position_id = position.p_id')
@@ -23,6 +23,7 @@ class UserModel extends Model
         'firstName'=>$userInfo['firstName'],
         'lastName'=>$userInfo['lastName'],
         'startDate'=>$userInfo['startDate'],
+        'profile'=>$userInfo['profile'],
         'email'=>$userInfo['email'],
         'password'=>password_hash($userInfo['password'],PASSWORD_DEFAULT),
         'role'=>$userInfo['role'],
