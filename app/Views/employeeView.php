@@ -47,6 +47,7 @@
 						<th class="hide">Password</th>
 						<th>Position</th>
 						<th>Department</th>
+						<th>Manager</th>
 						<th>Start Date</th>
 						
 					</tr>
@@ -61,6 +62,7 @@
 							<td class="hide"> <?= $user['password'] ?> </td>
 							<td> <?= $user['pname'] ?> </td>
 							<td> <?= $user['dname'] ?> </td>
+							<td> <?= $user['manager'] ?> </td>
 							<td> <?= $user['startDate'] ?> </td>
 							<td style="display:flex;justify-content:flex-end">
 								<a href="" data-toggle="modal" data-target="#updateEmployee" class=" edit-btn-user"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Employee!" data-placement="left">edit</i></a>
@@ -119,7 +121,7 @@
         
         	<!-- Modal body -->
         	<div class="modal-body text-right">
-				<form  action="<?= base_url("addUser") ?>" method="post">
+				<form  action="<?= base_url("addUser") ?>" method="post" enctype="multipart/form-data">
 					<div class="container">
 						<div class="row">
 							<div class="col-6">
@@ -130,16 +132,6 @@
 							<div class="col-6">
 								<div class="form-group">
 									<input type="text" class="form-control" placeholder="Last name" name= "lastName">
-								</div>
-							</div>
-							<div class="col-6">
-								<div class="form-group">
-									<input type="email" class="form-control" placeholder="email" name= "email">
-								</div>
-							</div>
-							<div class="col-6">
-								<div class="form-group">
-									<input type="password" class="form-control" placeholder="password" name= "password">
 								</div>
 							</div>
 							<div class="col-6">
@@ -160,6 +152,26 @@
 											<option value="<?= $department['d_id'] ?>"><?= $department['dname'] ?></option>
 										<?php endforeach ?>
 									</select>
+								</div>
+							</div>
+							<div class="col-6">
+								<div class="form-group">
+									<input type="email" class="form-control" placeholder="email" name= "email">
+								</div>
+							</div>
+							<div class="col-6">
+								<div class="form-group">
+									<input type="password" class="form-control" placeholder="password" name= "password">
+								</div>
+							</div>
+							<div class="col-6">
+								<div class="form-group">
+									<input type="text" class="form-control" placeholder="manager" name= "manager">
+								</div>
+							</div>
+							<div class="col-6">
+								<div class="form-group">
+									<input type="file" name="profile">
 								</div>
 							</div>
 							<div class="col-12">
@@ -208,16 +220,7 @@
 									<input type="text" class="form-control" placeholder="Last name" name= "lastName" id="lastName">
 								</div>
 							</div>
-							<div class="col-6">
-								<div class="form-group">
-									<input type="email" class="form-control" placeholder="email" name= "email" id="email">
-								</div>
-							</div>
-							<div class="col-6">
-								<div class="form-group">
-									<input type="password" class="form-control" placeholder="password" name= "password" id="password">
-								</div>
-							</div>
+							
 							<div class="col-6">
 								<div class="form-group">
 									<select class="form-control" name="position" id="position_id">
@@ -238,12 +241,25 @@
 									</select>
 								</div>
 							</div>
+
+							<div class="col-6">
+								<div class="form-group">
+									<input type="email" class="form-control" placeholder="email" name= "email" id="email">
+								</div>
+							</div>
+							
+							<div class="col-6">
+								<div class="form-group">
+									<input type="text" class="form-control" placeholder="manager" name= "manager" id="manager">
+								</div>
+							</div>
 							<div class="col-12">
 								<div class="form-group">
 									<label class="font-weight-bolder mt-2" id ="date"> Start Date </label>
 									<input type="date" class="form-control" name="startDate" id="startDate">
 								</div>
 							</div>
+							
 						</div>
 						<a data-dismiss="modal" class="closeModal">DISCARD</a>
         					&nbsp;
