@@ -23,10 +23,10 @@ class UserModel extends Model
         'firstName'=>$userInfo['firstName'],
         'lastName'=>$userInfo['lastName'],
         'startDate'=>$userInfo['startDate'],
-        'profile'=>$userInfo['profile'],
         'email'=>$userInfo['email'],
         'password'=>password_hash($userInfo['password'],PASSWORD_DEFAULT),
         'role'=>$userInfo['role'],
+        'manager'=>$userInfo['manager'],
         'position_id'=>$userInfo['position_id'],
         'department_id'=>$userInfo['department_id'],
         ]);

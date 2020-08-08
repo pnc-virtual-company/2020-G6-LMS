@@ -47,6 +47,7 @@
 						<th class="hide">Password</th>
 						<th>Position</th>
 						<th>Department</th>
+						<th>Manager</th>
 						<th>Start Date</th>
 						<th class="hide">Role</th>
 						
@@ -62,6 +63,7 @@
 							<td class="hide"> <?= $user['password'] ?> </td>
 							<td> <?= $user['pname'] ?> </td>
 							<td> <?= $user['dname'] ?> </td>
+							<td> <?= $user['manager'] ?> </td>
 							<td> <?= $user['startDate'] ?> </td>
 							<td class = "hide"><?= $user['role']?></td>
 							<td style="display:flex;justify-content:flex-end">
@@ -164,9 +166,16 @@
 									<input type="password" class="form-control" placeholder="password" name= "password">
 								</div>
 							</div>
-							<div class="col-6">
+							<div class="col-12">
 								<div class="form-group">
-									<input type="file" name="profile">
+									<select class="form-control" name="manager">
+										<option value="" selected disabled>Manager...</option>
+										<?php foreach($userData as $user): ?>
+											<?php if($user['role'] == 'Manager'): ?>
+												<option value="<?= $user['firstName'] ?>"><?= $user['firstName'] ?></option>
+											<?php endif; ?>
+										<?php endforeach ?>
+									</select>
 								</div>
 							</div>
 							<div class="col-12">
@@ -258,6 +267,18 @@
 							<div class="col-6">
 								<div class="form-group">
 									<input type="file" name="profile">
+								</div>
+							</div>
+							<div class="col-12">
+								<div class="form-group">
+									<select class="form-control" name="manager">
+										<option value="" selected disabled>Manager...</option>
+										<?php foreach($userData as $user): ?>
+											<?php if($user['role'] == 'Manager'): ?>
+												<option value="<?= $user['firstName'] ?>"><?= $user['firstName'] ?></option>
+											<?php endif; ?>
+										<?php endforeach ?>
+									</select>
 								</div>
 							</div>
 							<div class="col-12">
