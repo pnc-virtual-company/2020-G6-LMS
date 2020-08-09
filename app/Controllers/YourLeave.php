@@ -16,7 +16,7 @@ class YourLeave extends BaseController
 				'yourLeaveData' =>$this->yourLeave->getAllLeaveRequest(),
 			];
 			if(!session()->get('isLoggedIn')){
-				redirect()->to('/');
+				redirect()->to(base_url('/'));
 			}
 			return view('yourLeaves', $data);
 		}
