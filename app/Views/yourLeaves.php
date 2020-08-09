@@ -53,20 +53,22 @@
         </tr>
 
         <?php foreach($yourLeaveData as $yourLeave):?>
-        <tr>
-          <td><?= $yourLeave['start_date']?></td>
-          <td><?= $yourLeave['end_date']?></td>
-          <td><?= $yourLeave['duration']?></td>
-          <td><?= $yourLeave['leave_type']?></td>
+            <?php if($yourLeave['user_id'] == session()->get('u_id')):?>
+              <tr>
+                <td><?= $yourLeave['start_date']?></td>
+                <td><?= $yourLeave['end_date']?></td>
+                <td><?= $yourLeave['duration']?></td>
+                <td><?= $yourLeave['leave_type']?></td>
 
-          <td> <span class="badge badge-info"> Requested </span> </td>
-          <td style="display:flex;justify-content:flex-end">
-          <?php if(session('role') == 'Admin' || session('role') == 'HR'): ?>
-            <a href="" data-toggle="modal" data-target="#deleteYourLeave<?= $yourLeave['leave_id']?>"><i class="material-icons text-danger"
-                data-toggle="tooltip" title="Delete Your Leave!" data-placement="right">delete</i></a>
-          <?php endif;?>
-          </td>
-        </tr>
+                <td> <span class="badge badge-info"> Requested </span> </td>
+                <td style="display:flex;justify-content:flex-end">
+                <?php if(session('role') == 'Admin' || session('role') == 'HR'): ?>
+                  <a href="" data-toggle="modal" data-target="#deleteYourLeave<?= $yourLeave['leave_id']?>"><i class="material-icons text-danger"
+                      data-toggle="tooltip" title="Delete Your Leave!" data-placement="right">delete</i></a>
+                <?php endif;?>
+                </td>
+              </tr>
+            <?php endif;?>
         <?php endforeach;?>
       </table>
     </div>
@@ -153,7 +155,7 @@
           </div>
           <!-- input duration -->
           <div class="form-group">
-            <p><strong>Doration: </strong><input type="text" id="duration" name="duration"
+            <p><strong>Duration: </strong><input type="text" id="duration" name="duration"
                 style="border: none; background-color: white;" onchange=""></p>
             <p id="danger"></p>
           </div>
@@ -168,6 +170,7 @@
               <option value="maternity">Maternity leave</option>
             </select>
           </div>
+          <input type="hidden" name = "user_id" value="<?= session()->get('u_id') ?>">
           <div class="form-group">
             <textarea class="form-control" id="comment" name="comment" rows="3" placeholder="Comment"></textarea>
           </div>
