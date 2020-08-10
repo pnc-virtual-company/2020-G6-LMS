@@ -151,8 +151,7 @@ class UserController extends BaseController
                 $department = $this->request->getVar('department');
                 $startDate = $this->request->getVar('startDate');
                 $role = $this->request->getVar('role');
-                $file = $this->request->getFile('profile');
-                $userProfile = $file->getRandomName();
+                $manager = $this->request->getVar('manager');
                
                 $data = array(
                     "firstName" => $firstName,
@@ -163,7 +162,7 @@ class UserController extends BaseController
                     "department_id" => $department,
                     "startDate" => $startDate,
                     "role" => $role,
-                    'profile'=>$userProfile,
+                    "manager" => $manager,
                     
                 );
                 if ($position != "" and $department != "") {
@@ -242,6 +241,7 @@ class UserController extends BaseController
         $department = $this->request->getVar('department');
         $startDate = $this->request->getVar('startDate');
         $file = $this->request->getFile('profile');
+        $manager = $this->request->getVar('manager');
         $data = array(
             "firstName" => $firstName,
             "lastName" => $lastName,
@@ -250,7 +250,8 @@ class UserController extends BaseController
             "position_id" => $position,
             "department_id" => $department,
             "startDate" => $startDate,
-            "profile"=>$file
+            "profile"=>$file,
+            "manager" => $manager,
         );
         if ($position != "" and $department != "") {
             $this->user->update($userId, $data);
