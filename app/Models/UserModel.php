@@ -15,7 +15,6 @@ class UserModel extends Model
         return $this->db->table('user')
         ->join('position', 'user.position_id = position.p_id')
         ->join('department', 'department.d_id = user.department_id')
-        ->join('leave_request','leave_request.user_id = user.u_id')
         ->get()->getResultArray();
     }
     

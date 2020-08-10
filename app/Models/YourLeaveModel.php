@@ -11,9 +11,11 @@ class YourLeaveModel extends Model
 
     protected $allowedFields = ['start_date', 'time_start', 'end_date', 'time_end', 'duration', 'leave_type','comment', 'user_id'];
 
-    public function getAllLeaveRequest() 
+    public function getAllLeaveRequest()
     {
-        return $this->db->table('leave_request')->get()->getResultArray();
+    return $this->db->table('leave_request')
+    ->join('user', 'leave_request.user_id = user.u_id')
+    ->get()->getResultArray();
     }
 
  
