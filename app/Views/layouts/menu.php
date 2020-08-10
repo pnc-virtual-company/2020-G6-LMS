@@ -58,11 +58,11 @@
                   <table class="table table-borderless table-hover">
                         <tr>
                           <th>First name</th>
-                          <td>Ronan</td>
+                          <td> <?= $session = session('firstName') ?></td>
                         </tr>
                         <tr>
                           <th>Last name</th>
-                          <td>OGOR</td>
+                          <td> <?= $session = session('lastName') ?></td>
                         </tr>
                         <tr>
                           <th>Department</th>
@@ -73,8 +73,12 @@
                           <td>WEB Coordinator</td>
                         </tr>
                         <tr>
+                          <th>Manager</th>
+                          <td>Sim</td>
+                        </tr>
+                        <tr>
                           <th>Start date</th>
-                          <td>25/11/2019</td>
+                          <td> <?= $session = session('startDate') ?></td>
                         </tr>
                   </table>
             </div>
