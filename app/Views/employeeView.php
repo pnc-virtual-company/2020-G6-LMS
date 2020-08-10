@@ -259,14 +259,9 @@
 								</div>
 							</div>
 
-							<div class="col-6">
+							<div class="col-12">
 								<div class="form-group">
 									<input type="email" class="form-control" placeholder="email" name= "email" id="email">
-								</div>
-							</div>
-							<div class="col-6">
-								<div class="form-group">
-									<input type="file" name="profile">
 								</div>
 							</div>
 							<div class="col-12">

@@ -54,7 +54,7 @@
 
         <?php foreach($yourLeaveData as $yourLeave):?>
             <?php if($yourLeave['user_id'] == session()->get('u_id')):?>
-              <tr>
+              <tr class="edit_hover_class">
                 <td><?= $yourLeave['start_date']?></td>
                 <td><?= $yourLeave['end_date']?></td>
                 <td><?= $yourLeave['duration']?></td>
@@ -99,7 +99,7 @@
             </div>
             <a data-dismiss="modal" class="closeModal">DON'T REMOVE</a>
             &nbsp;
-            <input type ="submit" value = "DELETE" class="text-warning" style="border:none;background:white;">
+            <input type ="submit" value = "REMOVE" class="text-warning" style="border:none;background:white;">
           </form>
         </div>
       </div>
@@ -127,12 +127,13 @@
           <div class="row">
             <div class="col-sm-6">
               <div class="form-group pmd-textfield pmd-textfield-floating-label">
-                <label class="control-label float-left" for="datepicker-start">Start Date:</label>
+                <label class="control-label float-left" for="datepicker-start"><strong>Start Date:</strong></label>
                 <input type="date" id="startDate" name="start_date" etw-date="" data-date-format=" DD-YY-MM"
-                  class="form-control"">
+                  class="form-control">
               </div>
               <div class=" form-group">
                 <select class="form-control" id="timeToStart" name="time_start" onchange="dateDiff();">
+                  <option value="" selected disabled>Start time...</option>
                   <option value="1">Morning</option>
                   <option value="2">Afternoon</option>
                 </select>
@@ -140,13 +141,13 @@
             </div>
             <div class="col-sm-6">
               <div class="form-group pmd-textfield pmd-textfield-floating-label">
-                <label class="control-label float-left" for="datepicker-start">End Date:</label>
+                <label class="control-label float-left" for="datepicker-start"><strong>End Date:</strong></label>
                 <input type="date" id="endDate" name="end_date" etw-date="" data-date-format=" DD-YY-MM"
                   class="form-control" onchange="dateDiff();">
               </div>
               <div class="form-group">
                 <select class="form-control" id="timeToEnd" name="time_end" onchange="dateDiff();">
-
+                  <option value="" selected disabled>End time...</option>
                   <option value="1">Morning</option>
                   <option value="2">Afternoon</option>
                 </select>`
@@ -155,14 +156,14 @@
           </div>
           <!-- input duration -->
           <div class="form-group">
-            <p><strong>Duration: </strong><input type="text" id="duration" name="duration"
+            <p style="display:flex;justify-content:flex-start"><strong>Duration: </strong><input type="text" id="duration" name="duration"
                 style="border: none; background-color: white;" onchange=""></p>
             <p id="danger"></p>
           </div>
           <!-- select leave type -->
           <div class="form-group">
             <select class="form-control" id="leave_type" name="leave_type">
-              <option disabled>select leave type...</option>
+              <option value="" selected disabled>select leave type...</option>
               <option value="paid">Paid leave</option>
               <option value="sick">Sick leave</option>
               <option value="unpaid">Un paid leave</option>

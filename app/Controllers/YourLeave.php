@@ -3,7 +3,7 @@ use App\Models\YourLeaveModel;
 use App\Models\UserModel;
 class YourLeave extends BaseController
 {
-
+	
 	protected $yourLeave;
 	protected $user;
 

@@ -4,6 +4,7 @@ use CodeIgniter\Model;
 class YourLeaveModel extends Model
 {
     protected $table      = 'leave_request';
+    
     protected $primaryKey = 'leave_id';
 
     protected $returnType     = 'array';
