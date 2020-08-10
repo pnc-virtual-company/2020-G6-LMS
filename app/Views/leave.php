@@ -32,7 +32,8 @@ request
 						<?php if($leave['user_id'] == session()->get('u_id')) :?>
 
 							<tr>
-								<td><?= $leave['user_id']?></td>
+								<td><?= $leave['firstName']," ",$leave['lastName']?></td>
+								
 								<td><?= $leave['start_date']?></td>
 								<td><?= $leave['end_date']?></td>
 								<td><?= $leave['duration']?></td>
