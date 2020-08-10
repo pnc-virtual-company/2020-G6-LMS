@@ -1,22 +1,26 @@
 <?php namespace App\Controllers;
 use App\Models\YourLeaveModel;
+use App\Models\UserModel;
 class YourLeave extends BaseController
 {
-
+	
 	protected $yourLeave;
+	protected $user;
 
     public function __construct() 
         {
-        $this->yourLeave = new YourLeaveModel();
+		$this->yourLeave = new YourLeaveModel();
+		$this->user = new UserModel();
         }
         
 			public function showYourLeave()
 		{
 			$data = [
 				'yourLeaveData' =>$this->yourLeave->getAllLeaveRequest(),
+				'userData' => $this->user->getUserInfo(),
 			];
 			if(!session()->get('isLoggedIn')){
-				redirect()->to('/');
+				redirect()->to(base_url('/'));
 			}
 			return view('yourLeaves', $data);
 		}
@@ -35,6 +39,7 @@ class YourLeave extends BaseController
 				'leave_type'=>'required'
 			];
 			if($this->validate($rulse)) {
+				
 				$startDate = $this->request->getVar('start_date');
 				$timeStart = $this->request->getVar('time_start');
 				$endDate = $this->request->getVar('end_date');
@@ -42,8 +47,10 @@ class YourLeave extends BaseController
 				$duration = $this->request->getVar('duration');
 				$leaveType = $this->request->getVar('leave_type');
 				$comment = $this->request->getVar('comment');
+				$user_id = $this->request->getVar('user_id');
 
 				$newData = array(
+					
 					'start_date'=>$startDate,
 					'time_start'=>$timeStart,
 					'end_date'=>$endDate,
@@ -51,65 +58,68 @@ class YourLeave extends BaseController
 					'duration'=>$duration,
 					'leave_type'=>$leaveType,
 					'comment'=>$comment,
+					'user_id'=>$user_id,
 				);
 				$this->yourLeave->insert($newData);
 				$data['validation'] = $this->validator;
+				$EmployeeName = strstr(session()->get('email'),'@',true);
+				$employeeEmail = (session()->get('email'));
 				$sessionSuccess = session();
 				$sessionSuccess->setFlashdata('success', 'Your leave request created');
 
-				
-
-
 				$to = 'sim.doem@student.passerellesnumeriques.org';
+				$managerUser = $to;
+				$hrUser = 'boeb.roth@gmail.com';
 				$subject = "Leave Request";
-				$message =  '
-					<fieldset style="border:1px dotted teal;">
-						<div style="border-style: solid; width:80%;" id="emails">
-						<div class="container" style="width:90%; margin:0 outo; margin-top: 10px; display:flex;">
-						<div class="col-6" style="width:46%; margin-left:30px;">
-						<p>From: simdoem@gmail.com </p>
-						<p>To: sim.doem@student.passerellesnumeriques.org </p>
-						<p>Subject: New leave request assigned to you</p>
+				$message =  "
+					<fieldset style='border:1px dotted teal;'>
+						<div style='border-style: solid; width:80%;' id='emails'>
+						<div class='container' style='width:90%; margin:0 outo; margin-top: 10px; display:flex;'>
+						<div class='col-6' style='width:46%; margin-left:30px;'>
+						<p>From: $employeeEmail </p>
+						<p>To: $managerUser </p>
+						<p>Subject: $subject</p>
 						</div>
-						<div class="col-6" style="width:46%; margin-left:30px;">
-						<a href=""><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTs61yAjqutCtaLuEtugjwIyy_G7LRd35_OrA&usqp=CAU" style="width:50px; margin-left: 260px;" alt=""></a>
+						<div class='col-6' style='width:46%; margin-left:30px;'>
+						<a href=''><img src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTs61yAjqutCtaLuEtugjwIyy_G7LRd35_OrA&usqp=CAU' style='width:50px; margin-left: 260px;' alt=''></a>
 						</div>
 						</div>
 						<hr>
 
-						<div class="infomation">
-						<p style="margin-left:20px;"> Hello Jack Thomas,</p>
-						<p style="margin-left:20px;">Employee lina jacks has submited the following request for approval:</p>
-						<div class="card p-3 bg-light ml-5" style="width: 700px">
-						<div class="row-body" style="width:80%; margin:0 auto; border: 2px solid rgb(43, 42, 42); background-color: rgb(201, 198, 198); display: flex;">
+						<div class='infomation'>
+						<p style='margin-left:20px;'> Hello you $managerUser,</p>
+						<p style='margin-left:20px;'>Employee $EmployeeName has submited the following request for approval:</p>
+						<div class='card p-3 bg-light ml-5' style='width: 700px'>
+						<div class='row-body' style='width:80%; margin:0 auto; border: 2px solid rgb(43, 42, 42); background-color: rgb(201, 198, 198); display: flex;'>
 
-						<div class="col1-6" style="width:40%; padding:10px; margin-left:30px;">
-						<p><strong>Start date </strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;startdate</p>
-						<p><strong>Emd date </strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enddate</p>
-						<p><strong>Duration </strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;duration</p>
-						<p><strong>Leave type </strong> &nbsp;&nbsp;&nbsp;&nbsp;type</p>
+						<div class='col1-6' style='width:40%; padding:10px; margin-left:30px;'>
+						<p><strong>Start date </strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $startDate</p>
+						<p><strong>Emd date </strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $endDate</p>
+						<p><strong>Duration </strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $duration</p>
+						<p><strong>Leave type </strong> &nbsp;&nbsp;&nbsp;&nbsp; $duration</p>
 						</div>
 
-						<div class="col2-6" style=" width:40%; padding:10px; margin-left:30px;">
-						<p><strong>Comment </strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;comment</p>
-						<p><strong>Employee </strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;firstName</p>
+						<div class='col2-6' style=' width:40%; padding:10px; margin-left:30px;'>
+						<p><strong>Comment </strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $comment</p> 
+						<p><strong>Employee </strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $EmployeeName</p>
 						<p><strong>Staus </strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Request</p>
 						</div>
 						</div>
 						</div>
 						</div>
 
-						<p style="margin-left: 20px;">Can you please <a href="/sendback" onclick="myFunction()">ACCEPT</a> OR <a href="/sendback" onclick="myFunction()">REJECT</a>
-						this leave request you can also access to <a href="http://localhost:8080/">leave request details </a>to review this request</p>
-						<p style="margin-left: 20px;">Thank & regard,</p>
-						<p style="margin-left: 20px;">HR officer </p>
+						<p style='margin-left: 20px;'>Can you please <a href='/sendback' onclick='myFunction()'>ACCEPT</a> OR <a href='/sendback' onclick='myFunction()'>REJECT</a>
+						this leave request you can also access to <a href='http://localhost:8080/'>leave request details </a>to review this request</p>
+						<p style='margin-left: 20px;'>Thank & regard,</p>
+						<p style='margin-left: 20px;'>$hrUser</p>
 						</div>
 						</div>
-					</fieldset>';
+					</fieldset>";
 
 				$email = \Config\Services::email();
-				$email->setfrom('simdoem99@gmail.com', 'Sim');
-				$email->setTo($to);
+				$email->setfrom($employeeEmail, $EmployeeName);
+				$email->setTo($managerUser);
+				$email->setCC($hrUser);//CC
 				$email->setSubject($subject);
 				$email->setMessage( $message);
 
@@ -118,7 +128,7 @@ class YourLeave extends BaseController
 				}else{
 				echo "Cannot send";
 				}
-
+					
 				return redirect()->to(base_url('/yourLeave'));
 					
 			}else{

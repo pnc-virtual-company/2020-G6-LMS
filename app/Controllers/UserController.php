@@ -240,7 +240,6 @@ class UserController extends BaseController
         $position = $this->request->getVar('position');
         $department = $this->request->getVar('department');
         $startDate = $this->request->getVar('startDate');
-        $file = $this->request->getFile('profile');
         $manager = $this->request->getVar('manager');
         $data = array(
             "firstName" => $firstName,
@@ -250,7 +249,6 @@ class UserController extends BaseController
             "position_id" => $position,
             "department_id" => $department,
             "startDate" => $startDate,
-            "profile"=>$file,
             "manager" => $manager,
         );
         if ($position != "" and $department != "") {
