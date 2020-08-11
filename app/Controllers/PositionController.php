@@ -1,12 +1,15 @@
 <?php namespace App\Controllers;
 use App\Models\PositionModel;
+use App\Models\UserModel;
 class PositionController extends BaseController
 {
 	protected $position;
+	protected $user;
 
     public function __construct() 
         {
         $this->position = new PositionModel();
+        $this->user = new UserModel();
         }
         
     //--------------------------------------------------------------------
@@ -15,6 +18,7 @@ class PositionController extends BaseController
         {
             $data = [
                 'positionData' => $this->position->getAllPosition(),
+                "viewUserInfo" => $this->user->viewUserInfo(),
             ];
             return view('position', $data); 
     }

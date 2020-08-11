@@ -1,13 +1,16 @@
 <?php namespace App\Controllers;
 use App\Models\DepartmentModel;
+use App\Models\UserModel;
 class DepartmentController extends BaseController
 {
 
     protected $department;
+    protected $user;
     
 	public function __construct() 
     {
         $this->department = new DepartmentModel();
+        $this->user = new UserModel();
     }
     
     //--------------------------------------------------------------------
@@ -17,6 +20,7 @@ class DepartmentController extends BaseController
 	{
 		$departmentData = [
             'departmentData' => $this->department->getAllDepartment(),
+            "viewUserInfo" => $this->user->viewUserInfo(),
         ];
 		return view('department', $departmentData);
 	}

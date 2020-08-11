@@ -88,6 +88,7 @@ class UserController extends BaseController
             'userData' => $this->user->getUserInfo(),
             "positionData" => $this->position->getAllPosition(),
             "departmentData" => $this->department->getAllDepartment(),
+            "viewUserInfo" => $this->user->viewUserInfo(),
             
         ];
 		return view('employeeView', $userData);
