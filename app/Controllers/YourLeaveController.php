@@ -1,35 +1,40 @@
 <?php namespace App\Controllers;
 use App\Models\YourLeaveModel;
 use App\Models\UserModel;
-class YourLeave extends BaseController
+class YourLeaveController extends BaseController
 {
 	
-	protected $yourLeave;
+	protected $yourLeaveRequest;
 	protected $user;
 
     public function __construct() 
         {
-		$this->yourLeave = new YourLeaveModel();
+		$this->yourLeaveRequest = new YourLeaveModel();
 		$this->user = new UserModel();
-        }
-        
-			public function showYourLeave()
+		}
+		
+		// The function to show all your leave requests created.
+			public function showYourLeaveRequests()
 		{
-			$data = [
-				'yourLeaveData' =>$this->yourLeave->getAllLeaveRequest(),
+			$getData = [
+				'yourLeaveData' =>$this->yourLeaveRequest->getAllLeaveRequest(),
 				'userData' => $this->user->getUserInfo(),
 			];
 			if(!session()->get('isLoggedIn')){
 				redirect()->to(base_url('/'));
 			}
-			return view('yourLeaves', $data);
+			return view('yourLeaves', $getData);
 		}
 
-		public function createYourLeave()
+	// The function create to add or create new employee's leave request.
+		public function createYourLeaveRequest()
 	{
 		$data = [];
 		helper(['form']);
 		if($this->request->getMethod() == "post"){
+
+			// set rulse of input filed when employee create leave request.
+			// All the filed input must be input information.
 			$rulse = [
 				'start_date'=>'required',
 				'time_start'=>'required',
@@ -38,6 +43,7 @@ class YourLeave extends BaseController
 				'duration'=>'required',
 				'leave_type'=>'required'
 			];
+
 			if($this->validate($rulse)) {
 				
 				$startDate = $this->request->getVar('start_date');
@@ -60,15 +66,15 @@ class YourLeave extends BaseController
 					'comment'=>$comment,
 					'user_id'=>$user_id,
 				);
-				$this->yourLeave->insert($newData);
+				$this->yourLeaveRequest->insert($newData);
 				$data['validation'] = $this->validator;
 				$EmployeeName = strstr(session()->get('email'),'@',true);
 				$employeeEmail = (session()->get('email'));
 				$sessionSuccess = session();
 				$sessionSuccess->setFlashdata('success', 'Your leave request created');
 
-				$to = 'sim.doem@student.passerellesnumeriques.org';
-				$managerUser = $to;
+				$managerEmail = 'sim.doem@student.passerellesnumeriques.org';
+				$managerName = 'sim doem';
 				$hrUser = 'boeb.roth@gmail.com';
 				$subject = "Leave Request";
 				$message =  "
@@ -77,7 +83,7 @@ class YourLeave extends BaseController
 						<div class='container' style='width:90%; margin:0 outo; margin-top: 10px; display:flex;'>
 						<div class='col-6' style='width:46%; margin-left:30px;'>
 						<p>From: $employeeEmail </p>
-						<p>To: $managerUser </p>
+						<p>To: $managerEmail </p>
 						<p>Subject: $subject</p>
 						</div>
 						<div class='col-6' style='width:46%; margin-left:30px;'>
@@ -87,7 +93,7 @@ class YourLeave extends BaseController
 						<hr>
 
 						<div class='infomation'>
-						<p style='margin-left:20px;'> Hello you $managerUser,</p>
+						<p style='margin-left:20px;'> Hello you $managerName,</p>
 						<p style='margin-left:20px;'>Employee $EmployeeName has submited the following request for approval:</p>
 						<div class='card p-3 bg-light ml-5' style='width: 700px'>
 						<div class='row-body' style='width:80%; margin:0 auto; border: 2px solid rgb(43, 42, 42); background-color: rgb(201, 198, 198); display: flex;'>
@@ -109,19 +115,19 @@ class YourLeave extends BaseController
 						</div>
 
 						<p style='margin-left: 20px;'>Can you please <a href='/sendback' onclick='myFunction()'>ACCEPT</a> OR <a href='/sendback' onclick='myFunction()'>REJECT</a>
-						this leave request you can also access to <a href='http://localhost:8080/'>leave request details </a>to review this request</p>
+						this leave request you can also access to <a href='http://localhost:8080'>leave request details </a>to review this request</p>
 						<p style='margin-left: 20px;'>Thank & regard,</p>
-						<p style='margin-left: 20px;'>$hrUser</p>
+						<p style='margin-left: 20px;'>$managerName</p>
 						</div>
 						</div>
 					</fieldset>";
 
 				$email = \Config\Services::email();
 				$email->setfrom($employeeEmail, $EmployeeName);
-				$email->setTo($managerUser);
-				$email->setCC($hrUser);//CC
-				$email->setSubject($subject);
-				$email->setMessage( $message);
+				$email->setTo($managerEmail); // send to employee's manager.
+				$email->setCC($hrUser);//the employee CC to employee's hr.
+				$email->setSubject($subject); // set the purpose of leave request.
+				$email->setMessage( $message); 
 
 				if($email->send()){
 				echo "Success sending";
@@ -140,12 +146,12 @@ class YourLeave extends BaseController
 			}	
 		}		
 	}
+
 	//--------------------------------------------------------------------
-	
-	// Delete your leave request
+	// Delete employee's leave request.
 	public function deleteYourLeave($id){
-		$yourLeave = new YourLeaveModel();
-		$yourLeave->delete($id);
+		$yourLeaveRequest = new YourLeaveModel();
+		$yourLeaveRequest->delete($id);
 		return redirect()->to(base_url('/yourLeave'));
 	}
 }

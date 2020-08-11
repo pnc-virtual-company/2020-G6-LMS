@@ -3,7 +3,7 @@
 use App\Models\YourLeaveModel;
 use App\Models\userModel;
 
-class Leave extends BaseController
+class LeaveController extends BaseController
 {
 	protected $leave;
 	protected $user;
@@ -22,7 +22,7 @@ class Leave extends BaseController
 		return view('leave', $data);
 	}
 
-	public function sendEmailAccpt()
+	public function sendEmailAccept()
 	{
 		$managerEmail = 'boeb.roth@gmail.com';
 		$employeeName = strstr(session()->get('email'),'@',true);

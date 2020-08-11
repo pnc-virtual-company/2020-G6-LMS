@@ -1,3 +1,5 @@
+
+
 <?= $this->extend('layouts/main') ?>
 <?= $this->section('content') ?>
 <?= $this->include('layouts/menu') ?>
@@ -22,7 +24,8 @@
 						<?= session()->get('success') ?>
 					</div>
                     
-    			<?php endif ?>
+				<?php endif ?>
+				
 				<!-- alert message success if user incorrect information-->
 				<?php if(session()->get('error')): ?>
 					<div class="alert alert-danger alert-dismissible fade show">
@@ -108,11 +111,7 @@
 						<div class="form-group">
 							<input type="text" class="form-control" placeholder="Position name" name="pname">
 						</div>
-						<!-- valitdation on create position form.  -->
-						<!-- alert message success if user incorrect information. -->
-								
-									
-						
+
 						<a data-dismiss="modal" class="closeModal">DISCARD</a>
 						&nbsp;
 						<input type ="submit" value = "CREATE" class="text-warning" style="border:none;background:white;">
@@ -128,7 +127,7 @@
 
 
   <!-- ========================================START Model UPDATE================================================ -->
-	<!-- The Modal -->
+<!-- The Modal -->
 <div class="modal fade" id="updatePosition">
     <div class="modal-dialog">
         <div class="modal-content">

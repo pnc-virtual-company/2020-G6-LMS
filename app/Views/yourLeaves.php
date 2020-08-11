@@ -1,3 +1,4 @@
+
 <?= $this->extend('layouts/main') ?>
 <?= $this->section('content') ?>
 <?= $this->include('layouts/menu') ?>
@@ -6,7 +7,7 @@
     <div class="col-2"></div>
     <div class="col-8">
       <div class="input-group md-form form-sm form-2 pl-0">
-        <input class="form-control my-0 py-1 red-border" type="text" placeholder="Search" aria-label="Search">
+        <input class="form-control my-0 py-1 red-border" type="text" placeholder="Search" aria-label="Search" id="search">
         <div class="input-group-append">
           <span class="input-group-text red lighten-3" id="basic-text1">
             <i class="material-icons text-success" data-toggle="tooltip" title="Search!"
@@ -54,7 +55,9 @@
 
         <?php foreach($yourLeaveData as $yourLeave):?>
             <?php if($yourLeave['user_id'] == session()->get('u_id')):?>
-              <tr class="edit_hover_class">
+
+            <tbody id="myData">
+						<tr class="edit_hover_class">
                 <td><?= $yourLeave['start_date']?></td>
                 <td><?= $yourLeave['end_date']?></td>
                 <td><?= $yourLeave['duration']?></td>
@@ -68,6 +71,7 @@
                 <?php endif;?>
                 </td>
               </tr>
+              </tbody>
             <?php endif;?>
         <?php endforeach;?>
       </table>
@@ -132,7 +136,7 @@
                   class="form-control">
               </div>
               <div class=" form-group">
-                <select class="form-control" id="timeToStart" name="time_start" onchange="dateDiff();">
+                <select class="form-control" id="timeToStart" name="time_start" onchange="calculateDuration();">
                   <option value="" selected disabled>Start time...</option>
                   <option value="1">Morning</option>
                   <option value="2">Afternoon</option>
@@ -143,10 +147,10 @@
               <div class="form-group pmd-textfield pmd-textfield-floating-label">
                 <label class="control-label float-left" for="datepicker-start"><strong>End Date:</strong></label>
                 <input type="date" id="endDate" name="end_date" etw-date="" data-date-format=" DD-YY-MM"
-                  class="form-control" onchange="dateDiff();">
+                  class="form-control" onchange="calculateDuration();">
               </div>
               <div class="form-group">
-                <select class="form-control" id="timeToEnd" name="time_end" onchange="dateDiff();">
+                <select class="form-control" id="timeToEnd" name="time_end" onchange="calculateDuration();">
                   <option value="" selected disabled>End time...</option>
                   <option value="1">Morning</option>
                   <option value="2">Afternoon</option>
@@ -157,7 +161,7 @@
           <!-- input duration -->
           <div class="form-group">
             <p style="display:flex;justify-content:flex-start"><strong>Duration: </strong><input type="text" id="duration" name="duration"
-                style="border: none; background-color: white;" onchange=""></p>
+                style="border: none; background-color: white;"></p>
             <p id="danger"></p>
           </div>
           <!-- select leave type -->

@@ -9,19 +9,19 @@ class PositionController extends BaseController
         $this->position = new PositionModel();
         }
         
+    //--------------------------------------------------------------------
+    // The function to show all employee's position created.
         public function showPosition()
         {
             $data = [
                 'positionData' => $this->position->getAllPosition(),
             ];
-            return view('position', $data);
-            //echo "Hello";
+            return view('position', $data); 
     }
+
+
 	//--------------------------------------------------------------------
-
-    // Create or add more position of employee
-
-    
+   // The function create to add or create new employee's position.
 	public function addPosition() 
     {
         
@@ -61,7 +61,8 @@ class PositionController extends BaseController
     }
     
 
-    // delete on position of employee
+    //--------------------------------------------------------------------
+    // Delete employee's position that created.
 
    public function deletePosition($id)
    {
@@ -71,8 +72,7 @@ class PositionController extends BaseController
 
    } 
 
-    // update old position to new to new position of employee
-
+    // monify employee's position that created.
     public function updatePosition()
     {
         $data = [];

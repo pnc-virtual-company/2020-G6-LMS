@@ -8,7 +8,7 @@ request
 			<div class="col-8">
 
 			<div class="input-group md-form form-sm form-2 pl-0">
-  					<input class="form-control my-0 py-1 red-border" type="text" placeholder="Search" aria-label="Search">
+  					<input class="form-control my-0 py-1 red-border" type="text" placeholder="Search" aria-label="Search" id="search">
   					<div class="input-group-append">
     					<span class="input-group-text red lighten-3" id="basic-text1">
 							<i class="material-icons text-success" data-toggle="tooltip" title="Search!" data-placement="left">search</i>
@@ -30,7 +30,8 @@ request
 
 					<?php foreach($LeaveDate as $leave) :?>
 						<?php if($leave['user_id'] == session()->get('u_id')) :?>
-
+							
+							<tbody id="myData">
 							<tr>
 								<td><?= $leave['firstName']," ",$leave['lastName']?></td>
 								
@@ -49,6 +50,7 @@ request
 									</div>
 								</td>
 							</tr>
+							</tbody>
 						<?php endif;?>
                     <?php endforeach;?>
 				</table>
