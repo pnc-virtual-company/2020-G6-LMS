@@ -9,7 +9,7 @@
             <div class="row" id="form-shadow">
                 <div class="col-md-6 login-form-1">
                     <h3>Login</h3>
-                    <form action="<?php echo base_url()?>" method="post">
+                    <form action="" method="post">
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Your Email *" name="email" value="<?php echo set_value('email'); ?>">
                         </div>
