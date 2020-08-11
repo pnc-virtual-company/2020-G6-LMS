@@ -55,6 +55,7 @@
         
             <!-- Modal body -->
             <div class="modal-body ">
+            <?php foreach($viewUserInfo as $profile) :?>
                   <table class="table table-borderless table-hover">
                         <tr>
                           <th>First name</th>
@@ -66,21 +67,22 @@
                         </tr>
                         <tr>
                           <th>Department</th>
-                          <td>Training and education</td>
+                          <td><?= $profile['dname'] ?></td>
                         </tr>
                         <tr>
                           <th>Position</th>
-                          <td>WEB Coordinator</td>
+                          <td><?= $profile['pname'] ?></td>
                         </tr>
                         <tr>
                           <th>Manager</th>
-                          <td>Sim</td>
+                          <td><?= $profile['manager'] ?></td>
                         </tr>
                         <tr>
                           <th>Start date</th>
                           <td> <?= $session = session('startDate') ?></td>
                         </tr>
                   </table>
+                <?php endforeach ?>
             </div>
         </div>
     </div>

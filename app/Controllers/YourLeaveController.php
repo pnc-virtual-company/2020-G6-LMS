@@ -19,6 +19,7 @@ class YourLeaveController extends BaseController
 			$getData = [
 				'yourLeaveData' =>$this->yourLeaveRequest->getAllLeaveRequest(),
 				'userData' => $this->user->getUserInfo(),
+				"viewUserInfo" => $this->user->viewUserInfo(),
 			];
 			if(!session()->get('isLoggedIn')){
 				redirect()->to(base_url('/'));

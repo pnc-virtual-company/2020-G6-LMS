@@ -18,6 +18,7 @@ class LeaveController extends BaseController
 		$data = [
 			'LeaveDate' => $this->leave->getAllLeaveRequest(),
 			'userDate' => $this->user->getUserInfo(),
+			"viewUserInfo" => $this->user->viewUserInfo(),
 		];
 		return view('leave', $data);
 	}
