@@ -31,4 +31,12 @@ class UserModel extends Model
         'department_id'=>$userInfo['department_id'],
         ]);
         }
+        public function viewUserInfo(){
+            $userId = session()->get('u_id');
+            return $this->db->table('user')
+            ->join('position', 'user.position_id = position.p_id')
+            ->join('department', 'department.d_id = user.department_id')
+            ->where('u_id = "'.$userId.'"')
+            ->get()->getResultArray();
+            }
 }

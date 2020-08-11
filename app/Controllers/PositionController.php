@@ -1,27 +1,31 @@
 <?php namespace App\Controllers;
 use App\Models\PositionModel;
+use App\Models\UserModel;
 class PositionController extends BaseController
 {
 	protected $position;
+	protected $user;
 
     public function __construct() 
         {
         $this->position = new PositionModel();
+        $this->user = new UserModel();
         }
         
+    //--------------------------------------------------------------------
+    // The function to show all employee's position created.
         public function showPosition()
         {
             $data = [
                 'positionData' => $this->position->getAllPosition(),
+                "viewUserInfo" => $this->user->viewUserInfo(),
             ];
-            return view('position', $data);
-            //echo "Hello";
+            return view('position', $data); 
     }
+
+
 	//--------------------------------------------------------------------
-
-    // Create or add more position of employee
-
-    
+   // The function create to add or create new employee's position.
 	public function addPosition() 
     {
         
@@ -61,7 +65,8 @@ class PositionController extends BaseController
     }
     
 
-    // delete on position of employee
+    //--------------------------------------------------------------------
+    // Delete employee's position that created.
 
    public function deletePosition($id)
    {
@@ -71,8 +76,7 @@ class PositionController extends BaseController
 
    } 
 
-    // update old position to new to new position of employee
-
+    // monify employee's position that created.
     public function updatePosition()
     {
         $data = [];

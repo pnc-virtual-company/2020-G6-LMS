@@ -78,25 +78,24 @@ class UserController extends BaseController
 		session()->destroy();
 		return redirect()->to(base_url('/'));
 	}
-    
-    //-------------------------------------------------------------------- 
+ 
+
     //--------------------------------------------------------------------
-    
-	
+	// The function to show all user created.
 	public function showUser()
 	{
-        $data = [
+        $userData = [
             'userData' => $this->user->getUserInfo(),
             "positionData" => $this->position->getAllPosition(),
             "departmentData" => $this->department->getAllDepartment(),
+            "viewUserInfo" => $this->user->viewUserInfo(),
             
         ];
-		return view('employeeView', $data);
+		return view('employeeView', $userData);
     }
     
     //--------------------------------------------------------------------
-    
-    // Create user
+    // The function create to add or create new employee.
 	public function createUser() 
     {
         helper(['form']);
@@ -185,7 +184,7 @@ class UserController extends BaseController
         }
     }
 
-    // Update employee
+    // monify employee information that created.
     public function updateUser()
     {
         helper(['form']);
@@ -240,7 +239,6 @@ class UserController extends BaseController
         $position = $this->request->getVar('position');
         $department = $this->request->getVar('department');
         $startDate = $this->request->getVar('startDate');
-        $file = $this->request->getFile('profile');
         $manager = $this->request->getVar('manager');
         $data = array(
             "firstName" => $firstName,
@@ -250,7 +248,6 @@ class UserController extends BaseController
             "position_id" => $position,
             "department_id" => $department,
             "startDate" => $startDate,
-            "profile"=>$file,
             "manager" => $manager,
         );
         if ($position != "" and $department != "") {
@@ -273,14 +270,13 @@ class UserController extends BaseController
             }
         }
     }
+
     //--------------------------------------------------------------------
-    public function deleteEmployee($id){
+    // Delete employee that created.
+    public function deleteUser($id){
         $employee = new UserModel();
         $employee->delete($id);
         return redirect()->to(base_url('/employee'));
-    }
-
-    //--------------------------------------------------------------------
-    
+    }    
 
 }

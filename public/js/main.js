@@ -1,4 +1,6 @@
+
 $(document).ready(function(){
+
     // Update user information modal
   $('.edit-btn-user').on('click', function(){
     $('#updateEmployee').modal('show');
@@ -19,6 +21,21 @@ $(document).ready(function(){
     $('#manager').val(data[7]);
     $('#startDate').val(data[8]);
   });
+
+  // Update position information modal
+  $('.edit-btn-position').on('click', function() {
+    $('#updatePosition').modal('show');
+
+    $tr = $(this).closest('tr');
+    var data = $tr.children("td").map(function() {
+        return $(this).text();
+    }).get();
+    //  console.log(data);
+
+    $('#update_id').val(data[0]);
+    $('#pname').val(data[1]);
+    });
+
   // Update department information modal
   $('.edit-btn-department').on('click', function() {
     $('#updateDepartment').modal('show');
@@ -27,16 +44,15 @@ $(document).ready(function(){
     var data = $tr.children("td").map(function() {
       return $(this).text();
     }).get();
-  //  console.log(data);
 
     $('#update_id').val(data[0]);
     $('#dname').val(data[1]);
   });
 
-  // Search department information
+  // Search department, position, employee and leave information
   $("#search").on("keyup", function() {
     var value = $(this).val().toLowerCase();
-    $("#myData ").filter(function() {
+    $("#myData").filter(function() {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
   }); 
@@ -44,7 +60,7 @@ $(document).ready(function(){
 
 
 // How to calculate startDate and endDate of leave request
-function dateDiff() { 
+function calculateDuration() { 
   var startDate = document.getElementById('startDate').value;
   var endDate = document.getElementById('endDate').value;
   var startPeriod = document.getElementById('timeToStart').value;
@@ -78,4 +94,28 @@ if(startDate > endDate){
 }
   return false;
 }
+
+// manage the leave request
+//Reject and Accept leave request
+var id = document.getElementsByClassName('hide');
+function beforeAccept(id1,id2,id3,id4) {
+    document.getElementById(id1).style.display = 'block';
+    document.getElementById(id2).style.display = 'none';
+    document.getElementById(id3).style.display = 'none';
+    document.getElementById(id4).style.display = 'block';
+}
+function beforeReject(id1,id2,id3,id4) {
+    document.getElementById(id1).style.display = 'block';
+    document.getElementById(id2).style.display = 'none';
+    document.getElementById(id3).style.display = 'none';
+    document.getElementById(id4).style.display = 'block';
+}
+function undo(id1,id2,id3,id4,id5) {
+    document.getElementById(id1).style.display = 'block';
+    document.getElementById(id2).style.display = 'block';
+    document.getElementById(id3).style.display = 'none';
+    document.getElementById(id4).style.display = 'none';
+    document.getElementById(id5).style.display = 'none';
+}
+
 

@@ -1,31 +1,41 @@
 <?php namespace App\Controllers;
 use App\Models\DepartmentModel;
+use App\Models\UserModel;
 class DepartmentController extends BaseController
 {
 
-	protected $department;
+    protected $department;
+    protected $user;
+    
 	public function __construct() 
     {
         $this->department = new DepartmentModel();
+        $this->user = new UserModel();
     }
     
     //--------------------------------------------------------------------
+    // The function to show all employee's department created.
 
 	public function showDepartment()
 	{
-		$data = [
+		$departmentData = [
             'departmentData' => $this->department->getAllDepartment(),
+            "viewUserInfo" => $this->user->viewUserInfo(),
         ];
-		return view('department', $data);
+		return view('department', $departmentData);
 	}
 
 	//--------------------------------------------------------------------
-
+     // The function create to add or create new employee's department.
 	public function addDepartment()
     {
         $data = [];
         if($this->request->getMethod() == "post"){
             helper(['form']);
+
+            // set rulse of input filed when employee create new department.
+			// All the filed input must be input information.
+			// The information must be differen.
             $rules = [
                 'dname'=> [
                     'rules'=> 'required|is_unique[department.dname]',
@@ -56,7 +66,7 @@ class DepartmentController extends BaseController
     }
 
     //--------------------------------------------------------------------
-
+    // Delete employee's department that created.
 	public function deleteDepartment($id)
     {
         $department = new DepartmentModel();
@@ -65,7 +75,7 @@ class DepartmentController extends BaseController
     }
 
 	//--------------------------------------------------------------------
-	
+	// monify employee's department that created.
 	public function updateDepartment()
     {
         $data = [];
